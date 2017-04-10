@@ -17,10 +17,10 @@
 		B56537651E9B1E0200594EFC /* GWDPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56537641E9B1E0200594EFC /* GWDPublishViewController.m */; };
 		B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56537671E9B1E8500594EFC /* GWDNewViewController.m */; };
 		B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B565376A1E9B2A2B00594EFC /* GWDNavgationController.m */; };
-		B5761A341E9AF0E1009E7AED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5761A331E9AF0E1009E7AED /* main.m */; };
 		B5761A3D1E9AF0E1009E7AED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5761A3B1E9AF0E1009E7AED /* Main.storyboard */; };
 		B5761A3F1E9AF0E1009E7AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5761A3E1E9AF0E1009E7AED /* Assets.xcassets */; };
 		B5761A4D1E9AF0E1009E7AED /* BuDeJieUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5761A4C1E9AF0E1009E7AED /* BuDeJieUITests.m */; };
+		B5A9D9241E9B5E2200C0F414 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A9D9231E9B5E2200C0F414 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,13 +55,13 @@
 		B56537691E9B2A2B00594EFC /* GWDNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDNavgationController.h; sourceTree = "<group>"; };
 		B565376A1E9B2A2B00594EFC /* GWDNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDNavgationController.m; sourceTree = "<group>"; };
 		B5761A2F1E9AF0E1009E7AED /* BuDeJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuDeJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5761A331E9AF0E1009E7AED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5761A3C1E9AF0E1009E7AED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5761A3E1E9AF0E1009E7AED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5761A431E9AF0E1009E7AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5761A481E9AF0E1009E7AED /* BuDeJieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuDeJieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5761A4C1E9AF0E1009E7AED /* BuDeJieUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuDeJieUITests.m; sourceTree = "<group>"; };
 		B5761A4E1E9AF0E1009E7AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5A9D9231E9B5E2200C0F414 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F73410B409767A4040338871 /* Pods-BuDeJie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuDeJie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BuDeJie/Pods-BuDeJie.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -287,6 +287,7 @@
 			children = (
 				B56537491E9B14BD00594EFC /* AppDelegate.h */,
 				B565374A1E9B14BD00594EFC /* AppDelegate.m */,
+				B5A9D9231E9B5E2200C0F414 /* main.m */,
 				B565374B1E9B14BD00594EFC /* Category */,
 			);
 			path = Other;
@@ -369,7 +370,6 @@
 		B5761A321E9AF0E1009E7AED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B5761A331E9AF0E1009E7AED /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -538,6 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A9D9241E9B5E2200C0F414 /* main.m in Sources */,
 				B565375F1E9B1DB600594EFC /* GWDMeViewController.m in Sources */,
 				B56537651E9B1E0200594EFC /* GWDPublishViewController.m in Sources */,
 				B56537501E9B14BD00594EFC /* AppDelegate.m in Sources */,
@@ -546,7 +547,6 @@
 				B565375C1E9B1D8200594EFC /* GWDFriendTrendViewController.m in Sources */,
 				B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */,
 				B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */,
-				B5761A341E9AF0E1009E7AED /* main.m in Sources */,
 				B56537591E9B1D5800594EFC /* GWDEssenceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
