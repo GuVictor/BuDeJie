@@ -8,6 +8,7 @@
 
 #import "GWDTabBar.h"
 
+
 @interface GWDTabBar ()
 
 @property (weak, nonatomic) UIButton *plusBtn;
@@ -29,6 +30,8 @@
         
         [self addSubview:btn];
         _plusBtn = btn;
+        
+        
     }
     
     return _plusBtn;
@@ -49,8 +52,8 @@
     
     //跳转tabBarButton位置
     NSInteger count = self.items.count;
-    CGFloat btnW = self.bounds.size.width / (count + 1); //因为只有四个页面，而下面要显示5个button
-    CGFloat btnH = self.bounds.size.height;
+    CGFloat btnW = self.gwd_width / (count + 1); //因为只有四个页面，而下面要显示5个button
+    CGFloat btnH = self.gwd_height;
     CGFloat btnX = 0;
     CGFloat btnY = 0;
     
@@ -77,7 +80,7 @@
     }
     
     //发布按钮的位置
-    self.plusBtn.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5);
+    self.plusBtn.center = CGPointMake(self.gwd_width * 0.5, self.gwd_height * 0.5);
     
     
 }

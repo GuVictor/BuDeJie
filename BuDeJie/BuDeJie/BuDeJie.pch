@@ -1,0 +1,27 @@
+//
+//  BuDeJie.pch
+//  BuDeJie
+//
+//  Created by 古伟东 on 2017/4/12.
+//  Copyright © 2017年 victorgu. All rights reserved.
+//
+
+/*
+    pch步骤:1.提前编译Pch
+    
+    1.存放公用宏
+    2.存放公共头文件
+    3.自定义Log
+*/
+
+#import "UIView+Frame.h"
+
+#ifdef DEBUG // 调试
+
+#define GWDLog(...) NSLog(__VA_ARGS__)
+
+#else // 发布
+
+#define GWDLog(...)
+
+#endif
