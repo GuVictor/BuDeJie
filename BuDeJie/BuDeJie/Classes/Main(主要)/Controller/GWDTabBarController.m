@@ -78,11 +78,11 @@
     GWDNewViewController *newVc = [[GWDNewViewController alloc] init];
     [self setUpOneChildVC:newVc image:[UIImage imageNamed:@"tabBar_new_icon"] selImage:[UIImage imageOriginalWithName:@"tabBar_new_click_icon"] title:@"新帖"];
     
-    //发布
-    GWDPublishViewController *publishVc = [[GWDPublishViewController alloc] init];
-    [self setUpOneChildVC:publishVc image:[UIImage imageOriginalWithName:@"tabBar_publish_icon"] selImage:[UIImage imageOriginalWithName:@"tabBar_publish_click_icon"] title:@"发布"];
-    //设置图片位置
-    publishVc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+//    //发布(不能是系统的tabBarButton)
+//    GWDPublishViewController *publishVc = [[GWDPublishViewController alloc] init];
+//    [self setUpOneChildVC:publishVc image:[UIImage imageOriginalWithName:@"tabBar_publish_icon"] selImage:[UIImage imageOriginalWithName:@"tabBar_publish_click_icon"] title:@"发布"];
+//    //设置图片位置
+//    publishVc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     
     //关注
      GWDFriendTrendViewController *friendTrendVc = [[GWDFriendTrendViewController alloc] init];
