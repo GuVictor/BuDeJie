@@ -26,7 +26,9 @@
     问题
     1.选中按钮的图片被渲染 -> iOS7之后默认tabBar上按钮图片都会被渲染 1.修改图片(在图片属性中修改) 2.通过代码
     2.选中按钮的标题颜色：黑色 标题字体大 -> 对应子控制器的tabBarItem
-    3.发布按钮显示不出来
+    3.发布按钮显示不出来 分析：为什么其他图片可以显示，我的图片不能显示 => 发布按钮图片太大，导致显示不出来 => 达不到高亮状态
+ 
+ 解决：不能修改图片尺寸，效果：让发布图片居中
  */
 
 //只会调用一次, 而initialize会调用多次
@@ -69,7 +71,9 @@
     
     //发布
     GWDPublishViewController *publishVc = [[GWDPublishViewController alloc] init];
-    [self setUpOneChildVC:publishVc image:[UIImage imageNamed:@"tabBar_publish_icon"] selImage:[UIImage imageOriginalWithName:@"tabBar_publish_click_icon"] title:@"发布"];
+    [self setUpOneChildVC:publishVc image:[UIImage imageOriginalWithName:@"tabBar_publish_icon"] selImage:[UIImage imageOriginalWithName:@"tabBar_publish_click_icon"] title:@"发布"];
+    //设置图片位置
+    publishVc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     
     //关注
      GWDFriendTrendViewController *friendTrendVc = [[GWDFriendTrendViewController alloc] init];

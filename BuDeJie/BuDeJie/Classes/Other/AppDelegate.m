@@ -22,7 +22,7 @@
  
  LaunchScreen:Xcode6开始才有
  LaunchScreen好处:1.自动识别当前真机或者模拟器的尺寸 2.只要让美工提供一个可拉伸图片
- 3.展示更多东西
+ 3.展示更多东西 分析：为什么其他图片可以显示，我的不显示
  
  LaunchScreen底层实现:把LaunchScreen截屏,生成一张图片.作为启动界面
  
