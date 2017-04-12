@@ -43,7 +43,7 @@
 }
 
 - (void)setting {
-    
+    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
 }
 
 - (void)night:(UIButton *)button {
