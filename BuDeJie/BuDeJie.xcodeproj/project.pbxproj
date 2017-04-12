@@ -21,6 +21,7 @@
 		B5761A3F1E9AF0E1009E7AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5761A3E1E9AF0E1009E7AED /* Assets.xcassets */; };
 		B5761A4D1E9AF0E1009E7AED /* BuDeJieUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5761A4C1E9AF0E1009E7AED /* BuDeJieUITests.m */; };
 		B5A9D9241E9B5E2200C0F414 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A9D9231E9B5E2200C0F414 /* main.m */; };
+		B5E669151E9E20DC00F196C2 /* GWDTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E669141E9E20DC00F196C2 /* GWDTabBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		B5761A4C1E9AF0E1009E7AED /* BuDeJieUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuDeJieUITests.m; sourceTree = "<group>"; };
 		B5761A4E1E9AF0E1009E7AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A9D9231E9B5E2200C0F414 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B5E669131E9E20DC00F196C2 /* GWDTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTabBar.h; sourceTree = "<group>"; };
+		B5E669141E9E20DC00F196C2 /* GWDTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTabBar.m; sourceTree = "<group>"; };
 		F73410B409767A4040338871 /* Pods-BuDeJie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuDeJie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BuDeJie/Pods-BuDeJie.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,6 +215,8 @@
 		B565373F1E9B14BD00594EFC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B5E669131E9E20DC00F196C2 /* GWDTabBar.h */,
+				B5E669141E9E20DC00F196C2 /* GWDTabBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 				B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */,
 				B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */,
 				B56537591E9B1D5800594EFC /* GWDEssenceViewController.m in Sources */,
+				B5E669151E9E20DC00F196C2 /* GWDTabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

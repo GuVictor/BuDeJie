@@ -13,6 +13,7 @@
 #import "GWDNewViewController.h"
 #import "GWDPublishViewController.h"
 #import "GWDNavgationController.h"
+#import "GWDTabBar.h"
 
 #import "UIImage+OriginalImage.h"
 
@@ -22,13 +23,18 @@
 @end
 
 @implementation GWDTabBarController
+#warning TODO:发布按钮显示不出来
 /*
     问题
     1.选中按钮的图片被渲染 -> iOS7之后默认tabBar上按钮图片都会被渲染 1.修改图片(在图片属性中修改) 2.通过代码
     2.选中按钮的标题颜色：黑色 标题字体大 -> 对应子控制器的tabBarItem
     3.发布按钮显示不出来 分析：为什么其他图片可以显示，我的图片不能显示 => 发布按钮图片太大，导致显示不出来 => 达不到高亮状态
  
- 解决：不能修改图片尺寸，效果：让发布图片居中
+    1 解决：不能修改图片尺寸，效果：让发布图片居中
+ 
+    2，如何解决：系统的tabbar上按钮状态只有选中没有高亮状态 => 中间发布按钮 不能用系统tabBarButton => 发布按钮 不是 tabBarController子控制器
+ 
+        1)自定义tabBar
  */
 
 //只会调用一次, 而initialize会调用多次
@@ -56,6 +62,9 @@
     
     //添加子控制器(5个子控制器) -> 自定义控制器 -> 划分项目文件结构
     [self setupAllChildViewController];
+    
+    //自定义tabBar
+    [self setupTabBar];
     
     
 }
@@ -93,6 +102,12 @@
     nav.tabBarItem.selectedImage = selImage;
     
     [self addChildViewController:nav];
+}
+
+#pragma mark - 自定义tabBar
+- (void)setupTabBar {
+    GWDTabBar *tabBar = [[GWDTabBar alloc] init];
+    [self setValue:tabBar forKey:@"tabBar"];
 }
 
 
