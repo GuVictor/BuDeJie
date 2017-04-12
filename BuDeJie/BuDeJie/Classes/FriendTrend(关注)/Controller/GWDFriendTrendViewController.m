@@ -16,22 +16,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setupNavBar];
+    
+    NSMutableDictionary *attrsDict = [NSMutableDictionary dictionary];
+    attrsDict[NSFontAttributeName] = [UIFont boldSystemFontOfSize:20];
+    [self.navigationController.navigationBar setTitleTextAttributes:attrsDict];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupNavBar {
+    //左边按钮
+    //把UIButton暴走成UIBarButtonItem.就导致按钮点击区域扩大
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:[UIImage imageNamed:@"friendsRecommentIcon"] highImage:[UIImage imageNamed:@"friendsRecommentIcon"] target:self action:@selector(friendRecomment)];
+    
+    self.navigationItem.title = @"我的关注";
+}
+- (void)friendRecomment {
+    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

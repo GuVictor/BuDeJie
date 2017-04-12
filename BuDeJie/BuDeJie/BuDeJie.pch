@@ -15,10 +15,9 @@
 */
 
 #import "UIView+Frame.h"
+#import "UIBarButtonItem+Item.h"
 
 #ifdef DEBUG // 调试
-
-#define GWDLog(...) NSLog(__VA_ARGS__)
 
 #else // 发布
 
