@@ -31,6 +31,20 @@
     
 }
 
+// <_UINavigationInteractiveTransition: 0x7f9c948302a0>:手势代理
+
+/*
+ UIPanGestureRecognizer
+ 
+ UIScreenEdgePanGestureRecognizer:导航滑动手势
+ target=<_UINavigationInteractiveTransition 0x7fdc4a740440>)
+ action=handleNavigationTransition:
+ 
+ 
+ <UIScreenEdgePanGestureRecognizer: 0x7fdc4a740120; state = Possible; delaysTouchesBegan = YES; view = <UILayoutContainerView 0x7fdc4a73e690>; target= <(action=handleNavigationTransition:, >>
+ 
+ */
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -38,7 +52,17 @@
 //    self.interactivePopGestureRecognizer.delegate = nil;
     
     //控制手势在什么时候触发，只有非根控制器才需要触发手势
-    self.interactivePopGestureRecognizer.delegate = self;
+//    self.interactivePopGestureRecognizer.delegate = self;
+    
+    //全屏滑动手势
+    //self.interactivePopGestureRecognizer.delegate从他的类型看，和一般设置手势的的代理推断
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self.interactivePopGestureRecognizer.delegate action:@selector(handleNavigationTransition:)];
+    [self.view addGestureRecognizer:pan];
+    
+    //控制手势什么时候触发，只有非根控制器才触发手势
+    pan.delegate = self;
+    
+    self.interactivePopGestureRecognizer.enabled = NO;
     
     
 }
