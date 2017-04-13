@@ -7,10 +7,15 @@
 //
 
 #import "GWDMeViewController.h"
-
+#import "GWDSettingViewController.h"
 @interface GWDMeViewController ()
 
 @end
+/*
+ 搭建基本结构 -> 设置底部条 -> 设置顶部条 -> 设置顶部条标题字体 -> 处理导航控制器业务逻辑(跳转)
+ 
+ */
+
 
 @implementation GWDMeViewController
 
@@ -28,6 +33,9 @@
     UIBarButtonItem *nightBtnItem = [UIBarButtonItem itemWithImage:[UIImage imageNamed:@"mine-moon-icon"] selLimage:[UIImage imageNamed:@"mine-moon-icon-click"] target:self action:@selector(night:)];
     
     self.navigationItem.rightBarButtonItems = @[btnSettiongItem, nightBtnItem];
+    
+    //titleView
+    self.navigationItem.title = @"我的";
 }
 
 #pragma mark - Table view data source
@@ -44,6 +52,18 @@
 
 - (void)setting {
     NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
+    
+    //设置界面跳转
+    GWDSettingViewController *settingVc = [[GWDSettingViewController alloc] init];
+    //必须要在跳转之前设置
+    settingVc.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:settingVc animated:YES];
+    
+    /*
+        1.底部条没有隐藏
+        2.处理返回按钮样式
+     */
 }
 
 - (void)night:(UIButton *)button {

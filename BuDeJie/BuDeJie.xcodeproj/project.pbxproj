@@ -23,6 +23,7 @@
 		B5E669151E9E20DC00F196C2 /* GWDTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E669141E9E20DC00F196C2 /* GWDTabBar.m */; };
 		B5E669181E9E2FFB00F196C2 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E669171E9E2FFB00F196C2 /* UIView+Frame.m */; };
 		B5E6691D1E9E7D3400F196C2 /* UIBarButtonItem+Item.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E6691C1E9E7D3400F196C2 /* UIBarButtonItem+Item.m */; };
+		B5E669241E9E9DD600F196C2 /* GWDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E669231E9E9DD600F196C2 /* GWDSettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		B5E6691A1E9E408400F196C2 /* BuDeJie.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BuDeJie.pch; path = ../../BuDeJie.pch; sourceTree = "<group>"; };
 		B5E6691B1E9E7D3300F196C2 /* UIBarButtonItem+Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Item.h"; sourceTree = "<group>"; };
 		B5E6691C1E9E7D3400F196C2 /* UIBarButtonItem+Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Item.m"; sourceTree = "<group>"; };
+		B5E669221E9E9DD600F196C2 /* GWDSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSettingViewController.h; sourceTree = "<group>"; };
+		B5E669231E9E9DD600F196C2 /* GWDSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDSettingViewController.m; sourceTree = "<group>"; };
 		F73410B409767A4040338871 /* Pods-BuDeJie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuDeJie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BuDeJie/Pods-BuDeJie.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +115,7 @@
 		B56537331E9B14BD00594EFC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B5E6691E1E9E9DA800F196C2 /* Setting(设置) */,
 				B565373C1E9B14BD00594EFC /* Main(主要) */,
 				B56537341E9B14BD00594EFC /* Essence(精华) */,
 				B56537381E9B14BD00594EFC /* FriendTrend(关注) */,
@@ -397,6 +401,39 @@
 			path = BuDeJieUITests;
 			sourceTree = "<group>";
 		};
+		B5E6691E1E9E9DA800F196C2 /* Setting(设置) */ = {
+			isa = PBXGroup;
+			children = (
+				B5E6691F1E9E9DA800F196C2 /* Controller */,
+				B5E669201E9E9DA800F196C2 /* Model */,
+				B5E669211E9E9DA800F196C2 /* View */,
+			);
+			path = "Setting(设置)";
+			sourceTree = "<group>";
+		};
+		B5E6691F1E9E9DA800F196C2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B5E669221E9E9DD600F196C2 /* GWDSettingViewController.h */,
+				B5E669231E9E9DD600F196C2 /* GWDSettingViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B5E669201E9E9DA800F196C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B5E669211E9E9DA800F196C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -561,6 +598,7 @@
 				B5E6691D1E9E7D3400F196C2 /* UIBarButtonItem+Item.m in Sources */,
 				B565375C1E9B1D8200594EFC /* GWDFriendTrendViewController.m in Sources */,
 				B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */,
+				B5E669241E9E9DD600F196C2 /* GWDSettingViewController.m in Sources */,
 				B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */,
 				B56537591E9B1D5800594EFC /* GWDEssenceViewController.m in Sources */,
 				B5E669151E9E20DC00F196C2 /* GWDTabBar.m in Sources */,
