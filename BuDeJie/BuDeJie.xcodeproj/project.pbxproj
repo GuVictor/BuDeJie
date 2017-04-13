@@ -19,6 +19,15 @@
 		B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B565376A1E9B2A2B00594EFC /* GWDNavgationController.m */; };
 		B5761A3F1E9AF0E1009E7AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5761A3E1E9AF0E1009E7AED /* Assets.xcassets */; };
 		B5761A4D1E9AF0E1009E7AED /* BuDeJieUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5761A4C1E9AF0E1009E7AED /* BuDeJieUITests.m */; };
+		B59FF0471E9F82700089BAA8 /* GWDDdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59FF0451E9F82700089BAA8 /* GWDDdViewController.m */; };
+		B59FF0481E9F82700089BAA8 /* GWDDdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59FF0461E9F82700089BAA8 /* GWDDdViewController.xib */; };
+		B59FF0511E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59FF04A1E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png */; };
+		B59FF0521E9FDDBC0089BAA8 /* LaunchImage-700-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59FF04B1E9FDDBC0089BAA8 /* LaunchImage-700-568h@2x.png */; };
+		B59FF0531E9FDDBC0089BAA8 /* LaunchImage-700@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59FF04C1E9FDDBC0089BAA8 /* LaunchImage-700@2x.png */; };
+		B59FF0541E9FDDBC0089BAA8 /* LaunchImage-800-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59FF04D1E9FDDBC0089BAA8 /* LaunchImage-800-667h@2x.png */; };
+		B59FF0551E9FDDBC0089BAA8 /* LaunchImage-800-Portrait-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59FF04E1E9FDDBC0089BAA8 /* LaunchImage-800-Portrait-736h@3x.png */; };
+		B59FF0561E9FDDBC0089BAA8 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B59FF04F1E9FDDBC0089BAA8 /* LaunchImage.png */; };
+		B59FF0571E9FDDBC0089BAA8 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59FF0501E9FDDBC0089BAA8 /* LaunchImage@2x.png */; };
 		B5A9D9241E9B5E2200C0F414 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A9D9231E9B5E2200C0F414 /* main.m */; };
 		B5E669151E9E20DC00F196C2 /* GWDTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E669141E9E20DC00F196C2 /* GWDTabBar.m */; };
 		B5E669181E9E2FFB00F196C2 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E669171E9E2FFB00F196C2 /* UIView+Frame.m */; };
@@ -63,6 +72,16 @@
 		B5761A481E9AF0E1009E7AED /* BuDeJieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuDeJieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5761A4C1E9AF0E1009E7AED /* BuDeJieUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuDeJieUITests.m; sourceTree = "<group>"; };
 		B5761A4E1E9AF0E1009E7AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B59FF0441E9F82700089BAA8 /* GWDDdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDDdViewController.h; sourceTree = "<group>"; };
+		B59FF0451E9F82700089BAA8 /* GWDDdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDDdViewController.m; sourceTree = "<group>"; };
+		B59FF0461E9F82700089BAA8 /* GWDDdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDDdViewController.xib; sourceTree = "<group>"; };
+		B59FF04A1E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-568h@2x.png"; sourceTree = "<group>"; };
+		B59FF04B1E9FDDBC0089BAA8 /* LaunchImage-700-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700-568h@2x.png"; sourceTree = "<group>"; };
+		B59FF04C1E9FDDBC0089BAA8 /* LaunchImage-700@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700@2x.png"; sourceTree = "<group>"; };
+		B59FF04D1E9FDDBC0089BAA8 /* LaunchImage-800-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-800-667h@2x.png"; sourceTree = "<group>"; };
+		B59FF04E1E9FDDBC0089BAA8 /* LaunchImage-800-Portrait-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-800-Portrait-736h@3x.png"; sourceTree = "<group>"; };
+		B59FF04F1E9FDDBC0089BAA8 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		B59FF0501E9FDDBC0089BAA8 /* LaunchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage@2x.png"; sourceTree = "<group>"; };
 		B5A9D9231E9B5E2200C0F414 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5E669131E9E20DC00F196C2 /* GWDTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTabBar.h; sourceTree = "<group>"; };
 		B5E669141E9E20DC00F196C2 /* GWDTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTabBar.m; sourceTree = "<group>"; };
@@ -115,6 +134,7 @@
 		B56537331E9B14BD00594EFC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B59FF0401E9F82520089BAA8 /* AD(广告) */,
 				B5E6691E1E9E9DA800F196C2 /* Setting(设置) */,
 				B565373C1E9B14BD00594EFC /* Main(主要) */,
 				B56537341E9B14BD00594EFC /* Essence(精华) */,
@@ -379,6 +399,7 @@
 			children = (
 				B56537331E9B14BD00594EFC /* Classes */,
 				B5761A3E1E9AF0E1009E7AED /* Assets.xcassets */,
+				B59FF0491E9FDDBC0089BAA8 /* 启动图片 */,
 				B5761A431E9AF0E1009E7AED /* Info.plist */,
 				B5761A321E9AF0E1009E7AED /* Supporting Files */,
 			);
@@ -399,6 +420,54 @@
 				B5761A4E1E9AF0E1009E7AED /* Info.plist */,
 			);
 			path = BuDeJieUITests;
+			sourceTree = "<group>";
+		};
+		B59FF0401E9F82520089BAA8 /* AD(广告) */ = {
+			isa = PBXGroup;
+			children = (
+				B59FF0411E9F82520089BAA8 /* Controller */,
+				B59FF0421E9F82520089BAA8 /* Model */,
+				B59FF0431E9F82520089BAA8 /* View */,
+			);
+			path = "AD(广告)";
+			sourceTree = "<group>";
+		};
+		B59FF0411E9F82520089BAA8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B59FF0441E9F82700089BAA8 /* GWDDdViewController.h */,
+				B59FF0451E9F82700089BAA8 /* GWDDdViewController.m */,
+				B59FF0461E9F82700089BAA8 /* GWDDdViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B59FF0421E9F82520089BAA8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B59FF0431E9F82520089BAA8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B59FF0491E9FDDBC0089BAA8 /* 启动图片 */ = {
+			isa = PBXGroup;
+			children = (
+				B59FF04A1E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png */,
+				B59FF04B1E9FDDBC0089BAA8 /* LaunchImage-700-568h@2x.png */,
+				B59FF04C1E9FDDBC0089BAA8 /* LaunchImage-700@2x.png */,
+				B59FF04D1E9FDDBC0089BAA8 /* LaunchImage-800-667h@2x.png */,
+				B59FF04E1E9FDDBC0089BAA8 /* LaunchImage-800-Portrait-736h@3x.png */,
+				B59FF04F1E9FDDBC0089BAA8 /* LaunchImage.png */,
+				B59FF0501E9FDDBC0089BAA8 /* LaunchImage@2x.png */,
+			);
+			path = "启动图片";
 			sourceTree = "<group>";
 		};
 		B5E6691E1E9E9DA800F196C2 /* Setting(设置) */ = {
@@ -522,7 +591,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59FF0561E9FDDBC0089BAA8 /* LaunchImage.png in Resources */,
+				B59FF0571E9FDDBC0089BAA8 /* LaunchImage@2x.png in Resources */,
 				B5761A3F1E9AF0E1009E7AED /* Assets.xcassets in Resources */,
+				B59FF0541E9FDDBC0089BAA8 /* LaunchImage-800-667h@2x.png in Resources */,
+				B59FF0511E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png in Resources */,
+				B59FF0531E9FDDBC0089BAA8 /* LaunchImage-700@2x.png in Resources */,
+				B59FF0521E9FDDBC0089BAA8 /* LaunchImage-700-568h@2x.png in Resources */,
+				B59FF0481E9F82700089BAA8 /* GWDDdViewController.xib in Resources */,
+				B59FF0551E9FDDBC0089BAA8 /* LaunchImage-800-Portrait-736h@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +678,7 @@
 				B5E669241E9E9DD600F196C2 /* GWDSettingViewController.m in Sources */,
 				B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */,
 				B56537591E9B1D5800594EFC /* GWDEssenceViewController.m in Sources */,
+				B59FF0471E9F82700089BAA8 /* GWDDdViewController.m in Sources */,
 				B5E669151E9E20DC00F196C2 /* GWDTabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

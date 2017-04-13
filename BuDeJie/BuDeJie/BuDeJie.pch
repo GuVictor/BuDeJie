@@ -17,6 +17,16 @@
 #import "UIView+Frame.h"
 #import "UIBarButtonItem+Item.h"
 
+/***********屏幕适配*************/
+#define GWDScreenW [UIScreen mainScreen].bounds.size.width
+#define GWDScreenH [UIScreen mainScreen].bounds.size.height
+#define iphone6P (GWDScreenH == 736)
+#define iphone6 (GWDScreenH == 667)
+#define iphone5 (GWDScreenH == 568)
+#define iphone4 (GWDScreenH == 480)
+/***********屏幕适配*************/
+
+
 #ifdef DEBUG // 调试
 
 #else // 发布

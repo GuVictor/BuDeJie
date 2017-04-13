@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GWDTabBarController.h"
+#import "GWDDdViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -44,8 +45,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     //设置跟控制器
-    GWDTabBarController *tabBarVc = [[GWDTabBarController alloc] init];
-    self.window.rootViewController = tabBarVc;
+//    GWDTabBarController *tabBarVc = [[GWDTabBarController alloc] init];
+//    self.window.rootViewController = tabBarVc;
+    GWDDdViewController *adVC = [[GWDDdViewController alloc] init];
+    self.window.rootViewController = adVC;
+    
     //显示窗口
     [self.window makeKeyAndVisible];
     
