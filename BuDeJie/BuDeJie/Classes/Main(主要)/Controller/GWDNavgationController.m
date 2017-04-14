@@ -72,6 +72,8 @@
         
         //默认返回按钮有滑动返回，我们覆盖了 恢复滑动返回功能 -> 分析：把系统的返回按钮覆盖 -> 1.手势失效（看导航控制器属性，有一个手势属性）(1.手势被清空（覆盖系统按钮时打印手势是否存在，在）=> 2.(打印手势代理 有)可能手势代理做了一些事情，导致手势失效) 所有我们清空代理就有效
         
+        viewController.hidesBottomBarWhenPushed = YES;
+        
         //设置返回按钮，只有非根控制器
         viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithImage:[UIImage imageNamed:@"navigationButtonReturn"] highImage:[UIImage imageNamed:@"navigationButtonReturnClick"] target:self action:@selector(back) title:@"返回"];
     }

@@ -7,7 +7,7 @@
 //
 
 #import "GWDNewViewController.h"
-
+#import "GWDSubTagTableVC.h"
 @interface GWDNewViewController ()
 
 @end
@@ -16,23 +16,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
+    
+    [self setupNavBar];
+    
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MainTitle"]];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupNavBar {
+    //左边按钮
+    //把UIButton暴走成UIBarButtonItem.就导致按钮点击区域扩大
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:[UIImage imageNamed:@"MainTagSubIcon"] highImage:[UIImage imageNamed:@"MainTagSubIconClick"] target:self action:@selector(mainTag)];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)mainTag {
+    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
+    //进入推荐标签界面
+    GWDSubTagTableVC *subTag = [[GWDSubTagTableVC alloc] init];
+    
+    [self.navigationController pushViewController:subTag animated:YES];
+    
 }
-*/
-
 @end
