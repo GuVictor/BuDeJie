@@ -18,7 +18,7 @@
 @end
 @implementation GWDSubTagTableViewCell
 
-#pragma mark - 从xib加载就会调用，就会调用一次
+#pragma mark - 从xib加载就会调用一次
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -33,6 +33,8 @@
 //    self.iconImageV.layer.cornerRadius = 30;
 //    self.iconImageV.layer.masksToBounds = YES;
     
+    self.layoutMargins = UIEdgeInsetsZero;
+    
     
 }
 
@@ -40,10 +42,13 @@
 - (void)setItem:(GWDSubTagItem *)item {
     _item = item;
     
+    //设置订阅名
     _nameView.text = item.theme_name;
     
+    //订阅数字处理；判断下有没有>1000
     [self resolveNum];
     
+    //设置圆形图片
     [_iconImageV sd_setImageWithURL:[NSURL URLWithString:item.image_list] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] options:SDWebImageCacheMemoryOnly completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         //1.开启上下文
             //最后一个参数，是比例参数，6P 3X ， 6 2X ， 4s 1; 传0自动适配设备
