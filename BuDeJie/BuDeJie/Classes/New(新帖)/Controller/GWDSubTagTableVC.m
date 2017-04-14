@@ -22,12 +22,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"推荐标签";
+    
     
     //展示标签数据 -> 请求数据(接口文档) -> 解析数据(写成Plist)
     //先写必填的() -> 返回有用的数据(image_list,sub_number,theme_name) -> 设计模型 -> 模型转换 -> 展示数据
     [self loadData];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GWDSubTagTableViewCell" bundle:nil]  forCellReuseIdentifier:NSStringFromClass([self class])];
+    
+    
+    
 }
 
 #pragma mark - 请求数据

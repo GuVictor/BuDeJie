@@ -13,6 +13,7 @@
 		B5644ECD1EA0BD59009E9F89 /* GWDSubTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644ECC1EA0BD59009E9F89 /* GWDSubTagItem.m */; };
 		B5644ED81EA0D2E9009E9F89 /* GWDSubTagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644ED61EA0D2E9009E9F89 /* GWDSubTagTableViewCell.m */; };
 		B5644ED91EA0D2E9009E9F89 /* GWDSubTagTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5644ED71EA0D2E9009E9F89 /* GWDSubTagTableViewCell.xib */; };
+		B5644EDC1EA12711009E9F89 /* UIImage+Antialias.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EDB1EA12711009E9F89 /* UIImage+Antialias.m */; };
 		B56537501E9B14BD00594EFC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B565374A1E9B14BD00594EFC /* AppDelegate.m */; };
 		B56537531E9B15B600594EFC /* UIImage+OriginalImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B56537521E9B15B600594EFC /* UIImage+OriginalImage.m */; };
 		B56537561E9B17BC00594EFC /* GWDTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56537551E9B17BC00594EFC /* GWDTabBarController.m */; };
@@ -62,6 +63,8 @@
 		B5644ED51EA0D2E9009E9F89 /* GWDSubTagTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSubTagTableViewCell.h; sourceTree = "<group>"; };
 		B5644ED61EA0D2E9009E9F89 /* GWDSubTagTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDSubTagTableViewCell.m; sourceTree = "<group>"; };
 		B5644ED71EA0D2E9009E9F89 /* GWDSubTagTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDSubTagTableViewCell.xib; sourceTree = "<group>"; };
+		B5644EDA1EA12711009E9F89 /* UIImage+Antialias.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Antialias.h"; sourceTree = "<group>"; };
+		B5644EDB1EA12711009E9F89 /* UIImage+Antialias.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Antialias.m"; sourceTree = "<group>"; };
 		B56537491E9B14BD00594EFC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B565374A1E9B14BD00594EFC /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B56537511E9B15B600594EFC /* UIImage+OriginalImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OriginalImage.h"; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 		B565374B1E9B14BD00594EFC /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B5644EDA1EA12711009E9F89 /* UIImage+Antialias.h */,
+				B5644EDB1EA12711009E9F89 /* UIImage+Antialias.m */,
 				B5E6691B1E9E7D3300F196C2 /* UIBarButtonItem+Item.h */,
 				B5E6691C1E9E7D3400F196C2 /* UIBarButtonItem+Item.m */,
 				B56537511E9B15B600594EFC /* UIImage+OriginalImage.h */,
@@ -689,6 +694,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5644EDC1EA12711009E9F89 /* UIImage+Antialias.m in Sources */,
 				B5E669181E9E2FFB00F196C2 /* UIView+Frame.m in Sources */,
 				B5644ED81EA0D2E9009E9F89 /* GWDSubTagTableViewCell.m in Sources */,
 				B5A9D9241E9B5E2200C0F414 /* main.m in Sources */,
