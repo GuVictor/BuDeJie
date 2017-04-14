@@ -33,9 +33,18 @@
 //    self.iconImageV.layer.cornerRadius = 30;
 //    self.iconImageV.layer.masksToBounds = YES;
     
-    self.layoutMargins = UIEdgeInsetsZero;
+//    self.layoutMargins = UIEdgeInsetsZero;
     
     
+}
+
+- (void)setFrame:(CGRect)frame {
+    
+    
+    GWDLog(@"%@", NSStringFromCGRect(frame));
+    frame.size.height -= 1;
+    //才是真正去给cell赋值
+    [super setFrame:frame];
 }
 
 #pragma mark - 设置数据

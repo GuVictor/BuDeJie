@@ -34,7 +34,10 @@
     //处理cell的分割线，1.自定义分割线 2.系统属性（ios8后）3.种万能
     
     //清空tableView分割线内边距 清空cell的约束边距
-    self.tableView.separatorInset = UIEdgeInsetsZero;//先打印一下左边16，ios8添加了边缘约束， cell的边缘
+//    self.tableView.separatorInset = UIEdgeInsetsZero;//先打印一下左边16，ios8添加了边缘约束， cell的边缘
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//取消系统分割线
+    
+    self.tableView.backgroundColor = GWDColor(220, 220, 221);//设置背景颜色为灰色，然后设置frame，设置cell的高度-1
     
 }
 
