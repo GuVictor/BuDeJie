@@ -8,6 +8,7 @@
 
 #import "GWDDdViewController.h"
 #import "GWDAdItem.h"
+#import "GWDTabBarController.h"
 #import <AFNetworking/AFNetworking.h>
 #import <MJExtension.h>
 #import <UIImageView+WebCache.h>
@@ -23,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *launchImageView;
 @property (weak, nonatomic) IBOutlet UIView *adContainView;
 @property (weak, nonatomic) UIImageView *adView;
+@property (weak, nonatomic) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet UIButton *jumpBtn;
+
 
 
 @property (strong, nonatomic) GWDAdItem *adItem;
@@ -31,6 +35,7 @@
 
 @implementation GWDDdViewController
 
+#pragma mark - view的声明周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -38,6 +43,35 @@
     [self setupLaunchImage];
     //加载广告数据 => 拿到活数据 => 服务器 = > 查看接口文档 => 1.判断接口对不对 2.解析数据(w_picurl,ori_curl:跳转到广告界面,w,h) => 请求数据(AFN)
     [self loadAdData];
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeChange) userInfo:nil repeats:YES];
+}
+
+//点击跳转做的事情
+- (IBAction)clickJump:(id)sender {
+    //销毁广告界面，进入主框架界面
+    GWDTabBarController *tabVc = [[GWDTabBarController alloc] init];
+    [UIApplication sharedApplication].keyWindow.rootViewController = tabVc;
+    
+    //干掉定时器
+    [_timer invalidate];
+}
+
+#pragma mark - 定时器做的任务
+- (void)timeChange {
+    //倒计时
+    static int i = 3;
+    
+    if (i == 0) {
+        //到0时跳转
+        [self clickJump:self.jumpBtn];
+    }
+    
+    i--;
+    
+    //设置跳转按钮文字
+    [_jumpBtn setTitle:[NSString stringWithFormat:@"跳转 (%d)", i] forState:UIControlStateNormal];
+    
 }
 
 #pragma mark - 懒加载
@@ -105,7 +139,8 @@
     NSURL *url = [NSURL URLWithString:_adItem.ori_curl];
     UIApplication *app = [UIApplication sharedApplication];
     if ([app canOpenURL:url]) {
-        [app openURL:url options:nil completionHandler:nil];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [app openURL:url options:dict completionHandler:nil];
     }
 }
 

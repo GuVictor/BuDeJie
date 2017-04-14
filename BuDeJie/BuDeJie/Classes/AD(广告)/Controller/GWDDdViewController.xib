@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GWDDdViewController">
             <connections>
                 <outlet property="adContainView" destination="LPJ-Y9-aDE" id="Oel-4v-78M"/>
+                <outlet property="jumpBtn" destination="WZw-QE-kMr" id="gtj-GS-Tav"/>
                 <outlet property="launchImageView" destination="gaY-k1-oiP" id="vl0-hX-3GV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,13 +29,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZw-QE-kMr">
-                    <rect key="frame" x="290" y="20" width="65" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZw-QE-kMr">
+                    <rect key="frame" x="290" y="20" width="65" height="34"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.7656785102739726" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="65" id="BKt-rD-Gd9"/>
                     </constraints>
                     <state key="normal" title="跳过(3)"/>
+                    <connections>
+                        <action selector="clickJump:" destination="-1" eventType="touchUpInside" id="R3F-bg-w4O"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
