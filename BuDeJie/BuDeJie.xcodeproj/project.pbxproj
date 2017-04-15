@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3285B0670519A93E3F8BA70D /* libPods-BuDeJie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3932E15098A00BAF220C78 /* libPods-BuDeJie.a */; };
+		B508B6DE1EA1C58D005B9767 /* GWDFriendTrendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508B6DD1EA1C58D005B9767 /* GWDFriendTrendViewController.xib */; };
 		B5644EC71EA069C7009E9F89 /* GWDAdItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC61EA069C7009E9F89 /* GWDAdItem.m */; };
 		B5644ECA1EA0B1A4009E9F89 /* GWDSubTagTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC91EA0B1A4009E9F89 /* GWDSubTagTableVC.m */; };
 		B5644ECD1EA0BD59009E9F89 /* GWDSubTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644ECC1EA0BD59009E9F89 /* GWDSubTagItem.m */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		125B78F8F41FD7135C3A08E2 /* Pods-BuDeJie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuDeJie.release.xcconfig"; path = "Pods/Target Support Files/Pods-BuDeJie/Pods-BuDeJie.release.xcconfig"; sourceTree = "<group>"; };
 		2E3932E15098A00BAF220C78 /* libPods-BuDeJie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BuDeJie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B508B6DD1EA1C58D005B9767 /* GWDFriendTrendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDFriendTrendViewController.xib; sourceTree = "<group>"; };
 		B5644EC51EA069C7009E9F89 /* GWDAdItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDAdItem.h; sourceTree = "<group>"; };
 		B5644EC61EA069C7009E9F89 /* GWDAdItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDAdItem.m; sourceTree = "<group>"; };
 		B5644EC81EA0B1A4009E9F89 /* GWDSubTagTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSubTagTableVC.h; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			children = (
 				B565375A1E9B1D8200594EFC /* GWDFriendTrendViewController.h */,
 				B565375B1E9B1D8200594EFC /* GWDFriendTrendViewController.m */,
+				B508B6DD1EA1C58D005B9767 /* GWDFriendTrendViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				B59FF0541E9FDDBC0089BAA8 /* LaunchImage-800-667h@2x.png in Resources */,
 				B59FF0511E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png in Resources */,
 				B59FF0531E9FDDBC0089BAA8 /* LaunchImage-700@2x.png in Resources */,
+				B508B6DE1EA1C58D005B9767 /* GWDFriendTrendViewController.xib in Resources */,
 				B59FF0521E9FDDBC0089BAA8 /* LaunchImage-700-568h@2x.png in Resources */,
 				B59FF0481E9F82700089BAA8 /* GWDDdViewController.xib in Resources */,
 				B59FF0551E9FDDBC0089BAA8 /* LaunchImage-800-Portrait-736h@3x.png in Resources */,

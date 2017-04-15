@@ -60,7 +60,7 @@
     //销毁指示器
     [SVProgressHUD dismiss];
     
-    //取消之前的请求
+    //取消之前的请求（block的内容什么时候调用的方法是，跟着block作为参数一直走，看它传到哪里，看他在哪里调用）
     [_mgr.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     
