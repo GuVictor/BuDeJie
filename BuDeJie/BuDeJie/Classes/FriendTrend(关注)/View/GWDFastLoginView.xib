@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GWDFastLoginView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgP-pK-OmK" customClass="GWDFastButton">
+                    <rect key="frame" x="0.0" y="20" width="125" height="100"/>
+                    <state key="normal" title="QQ登录" image="login_QQ_icon"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyI-Ee-6zu" customClass="GWDFastButton">
+                    <rect key="frame" x="125" y="20" width="125" height="100"/>
+                    <state key="normal" title="微博登录" image="login_sina_icon"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6q-yj-ojB" customClass="GWDFastButton">
+                    <rect key="frame" x="250" y="20" width="125" height="100"/>
+                    <state key="normal" title="腾讯微博" image="login_tecent_icon"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快速登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWK-cT-jDJ">
+                    <rect key="frame" x="156" y="0.0" width="61.5" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="61.5" id="t8W-Dm-qZs"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_register_left_line" translatesAutoresizingMaskIntoConstraints="NO" id="Lzh-Lh-QHi">
+                    <rect key="frame" x="0.0" y="0.0" width="156" height="20"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_register_right_line" translatesAutoresizingMaskIntoConstraints="NO" id="zMN-MF-D84">
+                    <rect key="frame" x="217.5" y="0.0" width="157.5" height="20"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="zMN-MF-D84" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1TQ-Lm-LeJ"/>
+                <constraint firstItem="m6q-yj-ojB" firstAttribute="top" secondItem="zMN-MF-D84" secondAttribute="bottom" id="3cO-80-ROI"/>
+                <constraint firstItem="cyI-Ee-6zu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="5BU-rh-lqw"/>
+                <constraint firstItem="cgP-pK-OmK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="8kT-Wf-Wdl"/>
+                <constraint firstItem="cgP-pK-OmK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CnH-Dk-1wf"/>
+                <constraint firstItem="cgP-pK-OmK" firstAttribute="width" secondItem="cyI-Ee-6zu" secondAttribute="width" id="DCo-f7-dsI"/>
+                <constraint firstItem="cyI-Ee-6zu" firstAttribute="leading" secondItem="cgP-pK-OmK" secondAttribute="trailing" id="FFN-H6-t1h"/>
+                <constraint firstItem="zMN-MF-D84" firstAttribute="leading" secondItem="sWK-cT-jDJ" secondAttribute="trailing" id="HNe-m0-NG2"/>
+                <constraint firstAttribute="trailing" secondItem="zMN-MF-D84" secondAttribute="trailing" id="Kxc-KF-4lm"/>
+                <constraint firstAttribute="trailing" secondItem="m6q-yj-ojB" secondAttribute="trailing" id="LeY-m3-4fr"/>
+                <constraint firstItem="cyI-Ee-6zu" firstAttribute="width" secondItem="m6q-yj-ojB" secondAttribute="width" id="Pub-e7-Zhp"/>
+                <constraint firstItem="cyI-Ee-6zu" firstAttribute="top" secondItem="Lzh-Lh-QHi" secondAttribute="bottom" id="QGH-iR-cQ8"/>
+                <constraint firstAttribute="bottom" secondItem="cyI-Ee-6zu" secondAttribute="bottom" id="QvZ-3S-Lki"/>
+                <constraint firstItem="cyI-Ee-6zu" firstAttribute="height" secondItem="m6q-yj-ojB" secondAttribute="height" id="U2Z-ky-cZe"/>
+                <constraint firstItem="Lzh-Lh-QHi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UZu-Ka-E9K"/>
+                <constraint firstItem="Lzh-Lh-QHi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XDt-Gt-idY"/>
+                <constraint firstItem="cgP-pK-OmK" firstAttribute="height" secondItem="cyI-Ee-6zu" secondAttribute="height" id="YVt-yH-Its"/>
+                <constraint firstItem="sWK-cT-jDJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cx8-kF-od2"/>
+                <constraint firstAttribute="bottom" secondItem="m6q-yj-ojB" secondAttribute="bottom" id="gYe-pP-mge"/>
+                <constraint firstItem="sWK-cT-jDJ" firstAttribute="leading" secondItem="Lzh-Lh-QHi" secondAttribute="trailing" id="i9J-C2-aFh"/>
+                <constraint firstAttribute="bottom" secondItem="cgP-pK-OmK" secondAttribute="bottom" id="iQG-JC-daP"/>
+                <constraint firstItem="sWK-cT-jDJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jEX-zp-wyw"/>
+                <constraint firstItem="m6q-yj-ojB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="q8S-Wh-CGU"/>
+                <constraint firstItem="m6q-yj-ojB" firstAttribute="leading" secondItem="cyI-Ee-6zu" secondAttribute="trailing" id="v7Z-zc-JVE"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="10.5" y="45"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="login_QQ_icon" width="70" height="70"/>
+        <image name="login_register_left_line" width="1" height="1"/>
+        <image name="login_register_right_line" width="1" height="1"/>
+        <image name="login_sina_icon" width="70" height="70"/>
+        <image name="login_tecent_icon" width="70" height="70"/>
+    </resources>
+</document>

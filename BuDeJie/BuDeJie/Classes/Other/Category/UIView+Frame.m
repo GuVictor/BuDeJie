@@ -54,5 +54,25 @@
     return self.frame.origin.y;
 }
 
+- (void)setGwd_centerX:(CGFloat)gwd_centerX {
+    CGPoint center = self.center;
+    center.x = gwd_centerX;
+    self.center = center;
+}
+
+- (CGFloat)gwd_centerX {
+    return self.center.x;
+}
+
+- (void)setGwd_centerY:(CGFloat)gwd_centerY {
+    CGPoint center = self.center;
+    center.y = gwd_centerY;
+    self.center  = center;
+}
+
+- (CGFloat)gwd_centerY {
+    return self.center.y;
+}
+
 
 @end

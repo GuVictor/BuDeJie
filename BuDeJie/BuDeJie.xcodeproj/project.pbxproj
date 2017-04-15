@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		3285B0670519A93E3F8BA70D /* libPods-BuDeJie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3932E15098A00BAF220C78 /* libPods-BuDeJie.a */; };
 		B508B6DE1EA1C58D005B9767 /* GWDFriendTrendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508B6DD1EA1C58D005B9767 /* GWDFriendTrendViewController.xib */; };
+		B508B6E21EA1D99D005B9767 /* GWDLoginRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6E01EA1D99D005B9767 /* GWDLoginRegisterViewController.m */; };
+		B508B6E31EA1D99D005B9767 /* GWDLoginRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508B6E11EA1D99D005B9767 /* GWDLoginRegisterViewController.xib */; };
+		B508B6E61EA20511005B9767 /* GWDLoginRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6E51EA20511005B9767 /* GWDLoginRegisterView.m */; };
+		B508B6E81EA20520005B9767 /* GWDLoginRegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508B6E71EA20520005B9767 /* GWDLoginRegisterView.xib */; };
+		B508B6EB1EA222D5005B9767 /* GWDFastLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6EA1EA222D5005B9767 /* GWDFastLoginView.m */; };
+		B508B6ED1EA222F0005B9767 /* GWDFastLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508B6EC1EA222F0005B9767 /* GWDFastLoginView.xib */; };
+		B508B6F01EA22804005B9767 /* GWDFastButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6EF1EA22804005B9767 /* GWDFastButton.m */; };
 		B5644EC71EA069C7009E9F89 /* GWDAdItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC61EA069C7009E9F89 /* GWDAdItem.m */; };
 		B5644ECA1EA0B1A4009E9F89 /* GWDSubTagTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC91EA0B1A4009E9F89 /* GWDSubTagTableVC.m */; };
 		B5644ECD1EA0BD59009E9F89 /* GWDSubTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644ECC1EA0BD59009E9F89 /* GWDSubTagItem.m */; };
@@ -56,6 +63,17 @@
 		125B78F8F41FD7135C3A08E2 /* Pods-BuDeJie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuDeJie.release.xcconfig"; path = "Pods/Target Support Files/Pods-BuDeJie/Pods-BuDeJie.release.xcconfig"; sourceTree = "<group>"; };
 		2E3932E15098A00BAF220C78 /* libPods-BuDeJie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BuDeJie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B508B6DD1EA1C58D005B9767 /* GWDFriendTrendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDFriendTrendViewController.xib; sourceTree = "<group>"; };
+		B508B6DF1EA1D99D005B9767 /* GWDLoginRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDLoginRegisterViewController.h; sourceTree = "<group>"; };
+		B508B6E01EA1D99D005B9767 /* GWDLoginRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDLoginRegisterViewController.m; sourceTree = "<group>"; };
+		B508B6E11EA1D99D005B9767 /* GWDLoginRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDLoginRegisterViewController.xib; sourceTree = "<group>"; };
+		B508B6E41EA20511005B9767 /* GWDLoginRegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDLoginRegisterView.h; sourceTree = "<group>"; };
+		B508B6E51EA20511005B9767 /* GWDLoginRegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDLoginRegisterView.m; sourceTree = "<group>"; };
+		B508B6E71EA20520005B9767 /* GWDLoginRegisterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDLoginRegisterView.xib; sourceTree = "<group>"; };
+		B508B6E91EA222D5005B9767 /* GWDFastLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDFastLoginView.h; sourceTree = "<group>"; };
+		B508B6EA1EA222D5005B9767 /* GWDFastLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDFastLoginView.m; sourceTree = "<group>"; };
+		B508B6EC1EA222F0005B9767 /* GWDFastLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDFastLoginView.xib; sourceTree = "<group>"; };
+		B508B6EE1EA22804005B9767 /* GWDFastButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDFastButton.h; sourceTree = "<group>"; };
+		B508B6EF1EA22804005B9767 /* GWDFastButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDFastButton.m; sourceTree = "<group>"; };
 		B5644EC51EA069C7009E9F89 /* GWDAdItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDAdItem.h; sourceTree = "<group>"; };
 		B5644EC61EA069C7009E9F89 /* GWDAdItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDAdItem.m; sourceTree = "<group>"; };
 		B5644EC81EA0B1A4009E9F89 /* GWDSubTagTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSubTagTableVC.h; sourceTree = "<group>"; };
@@ -215,6 +233,9 @@
 				B565375A1E9B1D8200594EFC /* GWDFriendTrendViewController.h */,
 				B565375B1E9B1D8200594EFC /* GWDFriendTrendViewController.m */,
 				B508B6DD1EA1C58D005B9767 /* GWDFriendTrendViewController.xib */,
+				B508B6DF1EA1D99D005B9767 /* GWDLoginRegisterViewController.h */,
+				B508B6E01EA1D99D005B9767 /* GWDLoginRegisterViewController.m */,
+				B508B6E11EA1D99D005B9767 /* GWDLoginRegisterViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -229,6 +250,14 @@
 		B565373B1E9B14BD00594EFC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B508B6E41EA20511005B9767 /* GWDLoginRegisterView.h */,
+				B508B6E51EA20511005B9767 /* GWDLoginRegisterView.m */,
+				B508B6E71EA20520005B9767 /* GWDLoginRegisterView.xib */,
+				B508B6E91EA222D5005B9767 /* GWDFastLoginView.h */,
+				B508B6EA1EA222D5005B9767 /* GWDFastLoginView.m */,
+				B508B6EC1EA222F0005B9767 /* GWDFastLoginView.xib */,
+				B508B6EE1EA22804005B9767 /* GWDFastButton.h */,
+				B508B6EF1EA22804005B9767 /* GWDFastButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -627,11 +656,14 @@
 				B59FF0571E9FDDBC0089BAA8 /* LaunchImage@2x.png in Resources */,
 				B5761A3F1E9AF0E1009E7AED /* Assets.xcassets in Resources */,
 				B59FF0541E9FDDBC0089BAA8 /* LaunchImage-800-667h@2x.png in Resources */,
+				B508B6E81EA20520005B9767 /* GWDLoginRegisterView.xib in Resources */,
 				B59FF0511E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png in Resources */,
+				B508B6ED1EA222F0005B9767 /* GWDFastLoginView.xib in Resources */,
 				B59FF0531E9FDDBC0089BAA8 /* LaunchImage-700@2x.png in Resources */,
 				B508B6DE1EA1C58D005B9767 /* GWDFriendTrendViewController.xib in Resources */,
 				B59FF0521E9FDDBC0089BAA8 /* LaunchImage-700-568h@2x.png in Resources */,
 				B59FF0481E9F82700089BAA8 /* GWDDdViewController.xib in Resources */,
+				B508B6E31EA1D99D005B9767 /* GWDLoginRegisterViewController.xib in Resources */,
 				B59FF0551E9FDDBC0089BAA8 /* LaunchImage-800-Portrait-736h@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,15 +740,19 @@
 				B56537501E9B14BD00594EFC /* AppDelegate.m in Sources */,
 				B56537531E9B15B600594EFC /* UIImage+OriginalImage.m in Sources */,
 				B5644ECA1EA0B1A4009E9F89 /* GWDSubTagTableVC.m in Sources */,
+				B508B6E61EA20511005B9767 /* GWDLoginRegisterView.m in Sources */,
 				B56537561E9B17BC00594EFC /* GWDTabBarController.m in Sources */,
 				B5E6691D1E9E7D3400F196C2 /* UIBarButtonItem+Item.m in Sources */,
 				B565375C1E9B1D8200594EFC /* GWDFriendTrendViewController.m in Sources */,
 				B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */,
 				B5E669241E9E9DD600F196C2 /* GWDSettingViewController.m in Sources */,
+				B508B6E21EA1D99D005B9767 /* GWDLoginRegisterViewController.m in Sources */,
 				B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */,
 				B5644EC71EA069C7009E9F89 /* GWDAdItem.m in Sources */,
+				B508B6EB1EA222D5005B9767 /* GWDFastLoginView.m in Sources */,
 				B56537591E9B1D5800594EFC /* GWDEssenceViewController.m in Sources */,
 				B59FF0471E9F82700089BAA8 /* GWDDdViewController.m in Sources */,
+				B508B6F01EA22804005B9767 /* GWDFastButton.m in Sources */,
 				B5E669151E9E20DC00F196C2 /* GWDTabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,4 +15,7 @@
 @property CGFloat gwd_x;
 @property CGFloat gwd_y;
 
+@property CGFloat gwd_centerX;
+@property CGFloat gwd_centerY;
+
 @end
