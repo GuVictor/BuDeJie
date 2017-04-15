@@ -113,10 +113,17 @@
         
         //字典转模型
         _adItem = [GWDAdItem mj_objectWithKeyValues:adDict];
-        NSLog(@"%@", _adItem.w_picurl);
         
+        CGFloat h = 0;
         //创建imageView展示图片
-        CGFloat h = GWDScreenW / _adItem.w * _adItem.h;
+        if (_adItem.w == 0) {
+            NSLog(@"_adItem.w等于0");
+            NSLog(@"%@", _adItem.w_picurl);
+            
+        }else{
+            h = GWDScreenW / _adItem.w * _adItem.h;
+        }
+        
         self.adView.frame = CGRectMake(0, 0, GWDScreenW, h);
         [self.adView sd_setImageWithURL:[NSURL URLWithString:_adItem.w_picurl]];
         
