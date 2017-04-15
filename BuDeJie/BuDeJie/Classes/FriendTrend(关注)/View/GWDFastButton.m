@@ -15,7 +15,7 @@
     
     
     //设置图片位置
-    self.imageView.gwd_x = 0;
+    self.imageView.gwd_y = 0;
     self.imageView.gwd_centerX = self.gwd_width * 0.5;
     //设置标题位置
     self.titleLabel.gwd_y = self.gwd_height - self.titleLabel.gwd_height;
