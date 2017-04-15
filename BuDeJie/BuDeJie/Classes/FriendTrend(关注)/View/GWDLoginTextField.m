@@ -7,7 +7,7 @@
 //
 
 #import "GWDLoginTextField.h"
-
+#import "UITextField+Placeholder.h"
 @implementation GWDLoginTextField
 
 /*
@@ -42,33 +42,44 @@
     
     
     //设置占位文字颜色变成白色
+    /*
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
     
     self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:attrs];
+     */
+    
+    //快速设置占位文字颜色 => 文本框占位文字可能是label => 验证占位文字是label => 拿到label => 查看label属性名(1.runtime 2.断点)
+    self.placeholderColor = [UIColor lightGrayColor];
+    
 }
 
 #pragma mark - 文本框开始编辑时调用
 - (void)textBegin {
     
     //设置占位文字颜色变成白色
+    /*
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
     
     self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:attrs];
+    */
     
-    
+    self.placeholderColor = [UIColor whiteColor];
 }
 
 #pragma mark - 文本框结束编辑时调用
 - (void)textEnd {
     //结束时应该还原
     //设置占位文字颜色变成白色
+    
+    /*
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
     
     self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholder attributes:attrs];
-    
+    */
+    self.placeholderColor = [UIColor lightGrayColor];
 }
 
 

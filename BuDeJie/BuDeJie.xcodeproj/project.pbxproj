@@ -17,6 +17,7 @@
 		B508B6ED1EA222F0005B9767 /* GWDFastLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508B6EC1EA222F0005B9767 /* GWDFastLoginView.xib */; };
 		B508B6F01EA22804005B9767 /* GWDFastButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6EF1EA22804005B9767 /* GWDFastButton.m */; };
 		B508B6F31EA27DCD005B9767 /* GWDLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6F21EA27DCD005B9767 /* GWDLoginTextField.m */; };
+		B508B6F61EA28853005B9767 /* UITextField+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6F51EA28853005B9767 /* UITextField+Placeholder.m */; };
 		B5644EC71EA069C7009E9F89 /* GWDAdItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC61EA069C7009E9F89 /* GWDAdItem.m */; };
 		B5644ECA1EA0B1A4009E9F89 /* GWDSubTagTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC91EA0B1A4009E9F89 /* GWDSubTagTableVC.m */; };
 		B5644ECD1EA0BD59009E9F89 /* GWDSubTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644ECC1EA0BD59009E9F89 /* GWDSubTagItem.m */; };
@@ -77,6 +78,8 @@
 		B508B6EF1EA22804005B9767 /* GWDFastButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDFastButton.m; sourceTree = "<group>"; };
 		B508B6F11EA27DCD005B9767 /* GWDLoginTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDLoginTextField.h; sourceTree = "<group>"; };
 		B508B6F21EA27DCD005B9767 /* GWDLoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDLoginTextField.m; sourceTree = "<group>"; };
+		B508B6F41EA28853005B9767 /* UITextField+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Placeholder.h"; sourceTree = "<group>"; };
+		B508B6F51EA28853005B9767 /* UITextField+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Placeholder.m"; sourceTree = "<group>"; };
 		B5644EC51EA069C7009E9F89 /* GWDAdItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDAdItem.h; sourceTree = "<group>"; };
 		B5644EC61EA069C7009E9F89 /* GWDAdItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDAdItem.m; sourceTree = "<group>"; };
 		B5644EC81EA0B1A4009E9F89 /* GWDSubTagTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSubTagTableVC.h; sourceTree = "<group>"; };
@@ -400,6 +403,8 @@
 				B56537521E9B15B600594EFC /* UIImage+OriginalImage.m */,
 				B5E669161E9E2FFB00F196C2 /* UIView+Frame.h */,
 				B5E669171E9E2FFB00F196C2 /* UIView+Frame.m */,
+				B508B6F41EA28853005B9767 /* UITextField+Placeholder.h */,
+				B508B6F51EA28853005B9767 /* UITextField+Placeholder.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -740,6 +745,7 @@
 				B5644ED81EA0D2E9009E9F89 /* GWDSubTagTableViewCell.m in Sources */,
 				B5A9D9241E9B5E2200C0F414 /* main.m in Sources */,
 				B565375F1E9B1DB600594EFC /* GWDMeViewController.m in Sources */,
+				B508B6F61EA28853005B9767 /* UITextField+Placeholder.m in Sources */,
 				B508B6F31EA27DCD005B9767 /* GWDLoginTextField.m in Sources */,
 				B5644ECD1EA0BD59009E9F89 /* GWDSubTagItem.m in Sources */,
 				B56537651E9B1E0200594EFC /* GWDPublishViewController.m in Sources */,
