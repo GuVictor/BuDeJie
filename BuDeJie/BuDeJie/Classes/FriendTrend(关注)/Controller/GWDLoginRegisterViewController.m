@@ -78,4 +78,10 @@
     
 }
 
+#pragma mark - 点击结束编辑
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.MiddleView endEditing:YES];
+}
+
+
 @end
