@@ -12,7 +12,8 @@
 #import <AFNetworking/AFNetworking.h>
 #import <MJExtension/MJExtension.h>
 #import "GWDSquareItem.h"
-#import <SafariServices/SafariServices.h>
+#import "GWDWebViewController.h"
+//#import <SafariServices/SafariServices.h>
 
 static NSInteger cols = 4;
 static CGFloat margin = 1;
@@ -55,7 +56,7 @@ static CGFloat margin = 1;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     //2017-04-16 17:01:47.291 BuDeJie[3162:214209] {64, 0, 49, 0} 默认滚动范围64，49是collectionView算出来的
-    NSLog(@"%@", NSStringFromUIEdgeInsets(self.tableView.contentInset));
+//    NSLog(@"%@", NSStringFromUIEdgeInsets(self.tableView.contentInset));
 }
 
 #pragma mark - 打印cell值
@@ -203,15 +204,20 @@ static CGFloat margin = 1;
 //    NSLog(@"%@", item.url);
     if (![item.url containsString:@"http"]) {
 //        return;
+#warning 如果不是http格式，暂时化为百度先
         item.url = @"https://www.baidu.com";
     }
     
     NSURL *url = [NSURL URLWithString:item.url];
     
     //SFSafariViewController使用modal苹果推荐
-    SFSafariViewController *safariVc = [[SFSafariViewController alloc] initWithURL:url];
+//    SFSafariViewController *safariVc = [[SFSafariViewController alloc] initWithURL:url];
+//    [self presentViewController:safariVc animated:YES completion:nil];
     
-    [self presentViewController:safariVc animated:YES completion:nil];
+    GWDWebViewController *webVc = [[GWDWebViewController alloc] init];
+    webVc.url = url;
+    [self.navigationController pushViewController:webVc animated:YES];
+    
 }
 
 
