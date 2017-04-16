@@ -89,7 +89,9 @@
     [self setUpOneChildVC:friendTrendVc image:[UIImage imageNamed:@"tabBar_friendTrends_icon"] selImage:[UIImage imageOriginalWithName:@"tabBar_friendTrends_click_icon"] title:@"关注"];
     
     //我
-    GWDMeViewController *meVc = [[GWDMeViewController alloc] init];
+//    GWDMeViewController *meVc = [[GWDMeViewController alloc] init];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:NSStringFromClass([GWDMeViewController class]) bundle:nil];
+    GWDMeViewController *meVc = [storyBoard instantiateInitialViewController];
     [self setUpOneChildVC:meVc image:[UIImage imageNamed:@"tabBar_me_icon"] selImage:[UIImage imageOriginalWithName:@"tabBar_me_click_icon"] title:@"我"];
     
     
