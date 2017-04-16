@@ -12,9 +12,15 @@
 #import <AFNetworking/AFNetworking.h>
 #import <MJExtension/MJExtension.h>
 #import "GWDSquareItem.h"
+
+static NSInteger cols = 4;
+static CGFloat margin = 1;
+#define itemWH ( GWDScreenW - (cols - 1) * margin ) / cols
+
+
 @interface GWDMeViewController ()<UICollectionViewDataSource>
 
-@property (strong, nonatomic) NSArray<GWDSquareItem *> *squareItems;
+@property (strong, nonatomic) NSMutableArray<GWDSquareItem *> *squareItems;
 @property (weak, nonatomic) UICollectionView *collectionView;
 
 @end
@@ -57,14 +63,53 @@
         //字典数组转换成模型数组
         _squareItems = [GWDSquareItem mj_objectArrayWithKeyValuesArray:dictArr];
         
+        //处理数据
+        [self resloveData];
+        
+        //设置collectionview的高度  计算collectionView高度 = rows * itemWH
+        //rows = (count - 1) / cols + 1(没有补齐时)
+        
+//        NSInteger count = self.squareItems.count;
+//        NSInteger rowAllcount = (count - 1) / cols + 1;
+        
+        
+        
+        NSInteger rows = self.squareItems.count / cols;//(有补齐)
+        //设置collectionView高度
+        self.collectionView.gwd_height = rows * itemWH;
+        
+        
+        //设置tableView的滚动范围(自动计算)
+        self.tableView.tableFooterView = self.collectionView;
+        
+        
+        
         //刷新collection表格
         [self.collectionView reloadData];
+        
+    
         
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);
     }];
+}
+
+#pragma mark - 处理请求完成数据
+- (void)resloveData {
+    //判断下缺几个,创建几个补齐
+    //3 % 4 = 3 cols - 3 = 1
+    //5 % 4 = 1 cols - 1 = 3
+    NSInteger count = self.squareItems.count;
+    NSInteger exter = count % cols;
+    if (exter) {
+        exter = cols - exter;
+        for (int i = 0; i<exter; i++) {
+            GWDSquareItem *item = [[GWDSquareItem alloc] init];
+            [self.squareItems addObject:item];
+        }
+    }
 }
 
 #pragma mark - 设置tableView底部视图 
@@ -80,9 +125,7 @@
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     
     //设置cell尺寸
-    NSInteger cols = 4;
-    CGFloat margin = 1;
-    CGFloat itemWH = (GWDScreenW - (cols - 1) * margin) / cols;
+
     flowLayout.itemSize = CGSizeMake(itemWH, itemWH);
     flowLayout.minimumLineSpacing = margin;
     flowLayout.minimumInteritemSpacing = margin;
@@ -95,6 +138,9 @@
     
     //设置数据源
     collectionView.dataSource = self;
+    
+    //设置collectionVIew不能滚动
+    collectionView.scrollEnabled = NO;
     
     //注册cell
     [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([GWDSquareCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([self class])];
