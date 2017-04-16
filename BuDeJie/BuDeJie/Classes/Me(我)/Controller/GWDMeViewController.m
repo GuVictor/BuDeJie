@@ -9,7 +9,13 @@
 #import "GWDMeViewController.h"
 #import "GWDSettingViewController.h"
 #import "GWDSquareCollectionViewCell.h"
+#import <AFNetworking/AFNetworking.h>
+#import <MJExtension/MJExtension.h>
+#import "GWDSquareItem.h"
 @interface GWDMeViewController ()<UICollectionViewDataSource>
+
+@property (strong, nonatomic) NSArray<GWDSquareItem *> *squareItems;
+@property (weak, nonatomic) UICollectionView *collectionView;
 
 @end
 /*
@@ -27,7 +33,38 @@
     //设置tableView底部视图
     [self setupFootView];
     
+    
     //展示方块内容 -> 请求数据
+    [self loadData];
+}
+
+#pragma mark - 请求数据
+- (void)loadData {
+    //1.创建请求会话管理者
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    //2.拼接请求参数
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"a"] = @"square";
+    parameters[@"c"] = @"topic";
+    
+    
+    //3.发送请求
+    [mgr GET:@"http://api.budejie.com/api/api_open.php" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSLog(@"%@", responseObject);
+//        [responseObject writeToFile:@"/Users/guweidong/Desktop/plist文件/me.plist" atomically:YES];
+        NSArray *dictArr = responseObject[@"square_list"];
+        
+        //字典数组转换成模型数组
+        _squareItems = [GWDSquareItem mj_objectArrayWithKeyValuesArray:dictArr];
+        
+        //刷新collection表格
+        [self.collectionView reloadData];
+        
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 #pragma mark - 设置tableView底部视图 
@@ -54,6 +91,7 @@
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 300) collectionViewLayout:flowLayout];
     collectionView.backgroundColor = self.tableView.backgroundColor;//设置间距颜色
     self.tableView.tableFooterView = collectionView;
+    _collectionView = collectionView;
     
     //设置数据源
     collectionView.dataSource = self;
@@ -67,11 +105,12 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 10;
+    return self.squareItems.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     GWDSquareCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([self class]) forIndexPath:indexPath];
+    cell.item = self.squareItems[indexPath.row];
     
     return cell;
 }

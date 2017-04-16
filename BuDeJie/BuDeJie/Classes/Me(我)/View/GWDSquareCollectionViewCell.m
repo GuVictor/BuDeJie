@@ -7,7 +7,8 @@
 //
 
 #import "GWDSquareCollectionViewCell.h"
-
+#import <UIImageView+WebCache.h>
+#import "GWDSquareItem.h"
 @interface GWDSquareCollectionViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
 @property (weak, nonatomic) IBOutlet UILabel *textL;
@@ -19,6 +20,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setItem:(GWDSquareItem *)item {
+    _item = item;
+    
+    [self.imageV sd_setImageWithURL:[NSURL  URLWithString:item.icon]];
+    self.textL.text = item.name;
 }
 
 @end

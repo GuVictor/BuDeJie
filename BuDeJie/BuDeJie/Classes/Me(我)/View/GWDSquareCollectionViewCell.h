@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class GWDSquareItem;
 @interface GWDSquareCollectionViewCell : UICollectionViewCell
 
+@property (strong, nonatomic) GWDSquareItem *item;
 @end

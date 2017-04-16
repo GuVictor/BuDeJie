@@ -38,6 +38,7 @@
 		B57C168C1EA3157F00B8BE0C /* GWDMeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57C168B1EA3157F00B8BE0C /* GWDMeViewController.storyboard */; };
 		B57C16901EA31CC500B8BE0C /* GWDSquareCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B57C168E1EA31CC500B8BE0C /* GWDSquareCollectionViewCell.m */; };
 		B57C16911EA31CC500B8BE0C /* GWDSquareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57C168F1EA31CC500B8BE0C /* GWDSquareCollectionViewCell.xib */; };
+		B57C16941EA34EED00B8BE0C /* GWDSquareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B57C16931EA34EED00B8BE0C /* GWDSquareItem.m */; };
 		B59FF0471E9F82700089BAA8 /* GWDDdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59FF0451E9F82700089BAA8 /* GWDDdViewController.m */; };
 		B59FF0481E9F82700089BAA8 /* GWDDdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59FF0461E9F82700089BAA8 /* GWDDdViewController.xib */; };
 		B59FF0511E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59FF04A1E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png */; };
@@ -122,6 +123,8 @@
 		B57C168D1EA31CC500B8BE0C /* GWDSquareCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSquareCollectionViewCell.h; sourceTree = "<group>"; };
 		B57C168E1EA31CC500B8BE0C /* GWDSquareCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDSquareCollectionViewCell.m; sourceTree = "<group>"; };
 		B57C168F1EA31CC500B8BE0C /* GWDSquareCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDSquareCollectionViewCell.xib; sourceTree = "<group>"; };
+		B57C16921EA34EED00B8BE0C /* GWDSquareItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSquareItem.h; sourceTree = "<group>"; };
+		B57C16931EA34EED00B8BE0C /* GWDSquareItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDSquareItem.m; sourceTree = "<group>"; };
 		B59FF0441E9F82700089BAA8 /* GWDDdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDDdViewController.h; sourceTree = "<group>"; };
 		B59FF0451E9F82700089BAA8 /* GWDDdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDDdViewController.m; sourceTree = "<group>"; };
 		B59FF0461E9F82700089BAA8 /* GWDDdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDDdViewController.xib; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 		B56537421E9B14BD00594EFC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B57C16921EA34EED00B8BE0C /* GWDSquareItem.h */,
+				B57C16931EA34EED00B8BE0C /* GWDSquareItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -753,6 +758,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B57C16941EA34EED00B8BE0C /* GWDSquareItem.m in Sources */,
 				B5644EDC1EA12711009E9F89 /* UIImage+Antialias.m in Sources */,
 				B5E669181E9E2FFB00F196C2 /* UIView+Frame.m in Sources */,
 				B5644ED81EA0D2E9009E9F89 /* GWDSubTagTableViewCell.m in Sources */,
