@@ -35,6 +35,7 @@
     placeHolderLabel.textColor = placeholderColor;
 }
 
+//给取 自己给的属性的值
 -(UIColor *)placeholderColor {
     return objc_getAssociatedObject(self, @"placeholderColor");
 }

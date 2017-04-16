@@ -27,7 +27,8 @@
     //设置占位文字颜色
     _textFiled.placeholderColor = [UIColor blueColor];
     //设置占位位置:每次设置占位文字的后，再拿到之前保存占位文字颜色，重新设置
-    [_textFiled setGwd_PlaceHoder:@"hello"];
+//    [_textFiled setGwd_PlaceHoder:@"hello"];
+    _textFiled.placeholder = @"hello";
     
     
 }
