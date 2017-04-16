@@ -11,4 +11,6 @@
 @interface UITextField (Placeholder)
 
 @property UIColor * placeholderColor;
+//- (void)setGwd_PlaceHoder:(NSString *)placeHoder;
+
 @end

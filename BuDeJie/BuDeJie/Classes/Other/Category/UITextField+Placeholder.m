@@ -7,17 +7,44 @@
 //
 
 #import "UITextField+Placeholder.h"
+#import <objc/message.h>
 
 @implementation UITextField (Placeholder)
+
++ (void)load {
+    Method setPlaceHolderMethod = class_getInstanceMethod(self, @selector(setPlaceholder:));
+    Method setGwd_PlaceHolderMethod = class_getInstanceMethod(self, @selector(setGwd_PlaceHoder:));
+    
+    method_exchangeImplementations(setPlaceHolderMethod, setGwd_PlaceHolderMethod);
+}
+
 
 - (void)setPlaceholderColor:(UIColor *)placeholderColor {
     
     //设置占位文字颜色
+    //先把设置的颜色(因为那是还没有值)，用属性保存起来
+    
+    //给成员属性赋值 runtime给系统的类添加成员属性
+    //添加成员属性
+    objc_setAssociatedObject(self, @"placeholderColor", placeholderColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    //获取占位文字label控件
     UILabel *placeHolderLabel = [self valueForKey:@"placeholderLabel"];
+    
+    //设置占位文字颜色
     placeHolderLabel.textColor = placeholderColor;
 }
 
 -(UIColor *)placeholderColor {
-    return nil;
+    return objc_getAssociatedObject(self, @"placeholderColor");
 }
+
+- (void)setGwd_PlaceHoder:(NSString *)placeHoder {
+//    [self setPlaceholder:placeHoder];调换了要改
+    [self setGwd_PlaceHoder:placeHoder];
+    
+    self.placeholderColor = self.placeholderColor;
+}
+
+
 @end
