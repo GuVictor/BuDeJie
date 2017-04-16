@@ -18,7 +18,7 @@ static CGFloat margin = 1;
 #define itemWH ( GWDScreenW - (cols - 1) * margin ) / cols
 
 
-@interface GWDMeViewController ()<UICollectionViewDataSource>
+@interface GWDMeViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray<GWDSquareItem *> *squareItems;
 @property (weak, nonatomic) UICollectionView *collectionView;
@@ -42,6 +42,26 @@ static CGFloat margin = 1;
     
     //展示方块内容 -> 请求数据
     [self loadData];
+    
+    //处理cell间距 -> 默认tableView分组样式，有额外头部和尾部
+    self.tableView.sectionHeaderHeight = 0;
+    self.tableView.sectionFooterHeight = 10;
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0); // 35 - 15 = 10
+}
+
+#pragma mark - 打印cell值
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    //2017-04-16 17:01:50.214 BuDeJie[3162:214209] {{0, 35}, {375, 44}} 静态的默认头部加35，也算是tableView的frame
+    NSLog(@"%@", NSStringFromCGRect(cell.frame));
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    //2017-04-16 17:01:47.291 BuDeJie[3162:214209] {64, 0, 49, 0} 默认滚动范围64，49是collectionView算出来的
+    NSLog(@"%@", NSStringFromUIEdgeInsets(self.tableView.contentInset));
 }
 
 #pragma mark - 请求数据
@@ -138,6 +158,7 @@ static CGFloat margin = 1;
     
     //设置数据源
     collectionView.dataSource = self;
+    collectionView.delegate = self;
     
     //设置collectionVIew不能滚动
     collectionView.scrollEnabled = NO;
