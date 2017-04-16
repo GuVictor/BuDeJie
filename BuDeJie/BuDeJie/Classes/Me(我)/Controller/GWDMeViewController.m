@@ -12,6 +12,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <MJExtension/MJExtension.h>
 #import "GWDSquareItem.h"
+#import <SafariServices/SafariServices.h>
 
 static NSInteger cols = 4;
 static CGFloat margin = 1;
@@ -30,6 +31,7 @@ static CGFloat margin = 1;
  */
 @implementation GWDMeViewController
 
+#pragma mark - View生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -50,6 +52,12 @@ static CGFloat margin = 1;
     self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0); // 35 - 15 = 10
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    //2017-04-16 17:01:47.291 BuDeJie[3162:214209] {64, 0, 49, 0} 默认滚动范围64，49是collectionView算出来的
+    NSLog(@"%@", NSStringFromUIEdgeInsets(self.tableView.contentInset));
+}
+
 #pragma mark - 打印cell值
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -58,11 +66,7 @@ static CGFloat margin = 1;
     NSLog(@"%@", NSStringFromCGRect(cell.frame));
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    //2017-04-16 17:01:47.291 BuDeJie[3162:214209] {64, 0, 49, 0} 默认滚动范围64，49是collectionView算出来的
-    NSLog(@"%@", NSStringFromUIEdgeInsets(self.tableView.contentInset));
-}
+
 
 #pragma mark - 请求数据
 - (void)loadData {
@@ -168,7 +172,9 @@ static CGFloat margin = 1;
     
 }
 
-#pragma mark - dataSource
+
+
+#pragma mark - 九宫格dataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
@@ -182,6 +188,31 @@ static CGFloat margin = 1;
     return cell;
 }
 
+#pragma mark - 九宫格点击
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    //跳转界面 push 网页
+    /*
+     1.Safari openUrl ;自带很多功能(进度条，刷新，前进，倒退的功能)，必须要跳出当前应用
+     2.uiwebview (没有功能)当前应用打开网页,并且有Safari，自己实现，uiwebView不能实现进度条
+     3.SFSafariViewController：专门用来展示网页 需求：即想要在当前应用展示，又想要Safari的工功能，可息只要iOS 9才能用
+     
+     4wkwebView
+     */
+    
+    GWDSquareItem *item = self.squareItems[indexPath.row];
+//    NSLog(@"%@", item.url);
+    if (![item.url containsString:@"http"]) {
+//        return;
+        item.url = @"https://www.baidu.com";
+    }
+    
+    NSURL *url = [NSURL URLWithString:item.url];
+    
+    //SFSafariViewController使用modal苹果推荐
+    SFSafariViewController *safariVc = [[SFSafariViewController alloc] initWithURL:url];
+    
+    [self presentViewController:safariVc animated:YES completion:nil];
+}
 
 
 #pragma mark - 设置导航条
