@@ -48,7 +48,10 @@
     //SDWebImage：帮我们做了缓存
     NSInteger size = [SDImageCache sharedImageCache].getSize;
     
-    [self getFileSize];
+    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *defalutPath =  [cachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"];
+    
+    [self getFileSize:defalutPath];
     cell.textLabel.text = [NSString stringWithFormat:@"清除缓存,%ld", size];
     
     return cell;
@@ -67,30 +70,55 @@
  */
 
 #pragma mark - 计算缓存大小
-- (void)getFileSize {
-//    NSFileManager
-//attributesOfItemAtPath:指定文件路径,就能获取文件属性
+- (void)getFileSize:(NSString *)directoryPath {
+    //NSFileManager
+    //attributesOfItemAtPath:指定文件路径,就能获取文件属性
     //把所有尺寸加起来
     
-    //获取caches文件路径
-    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-    //获取default文件路径
-    NSString *defaultPath = [cachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default/0ba18a32270775194993b5ae505c4895.jpg"];
-    
-    //遍历文件间，一个一个加起来
-    
-    //获取文件管理者
-    
+//    //获取caches文件路径
+//    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+//    //获取default文件路径
+//    NSString *defaultPath = [cachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default/0ba18a32270775194993b5ae505c4895.jpg"];
+//    遍历文件间，一个一个加起来
+
+    //    获取文件管理者
     NSFileManager *mgr = [NSFileManager defaultManager];
     
-    //获取文件属性
-    // attributesOfItemAtPath:只能获取文件尺寸,获取文件夹不对,
-    NSDictionary *attr = [mgr attributesOfItemAtPath:defaultPath error:nil];
+    //获取文件下所有的子路径
+    NSArray *subPaths = [mgr subpathsAtPath:directoryPath];
     
-    //default
-    NSInteger fileSize = [attr fileSize];
+    NSInteger totalSize = 0;
     
-    NSLog(@"%ld", fileSize);
+    for (NSString *subPath in subPaths) {
+        //获取文件全路径
+        NSString *filePath = [directoryPath stringByAppendingPathComponent:subPath];
+        
+        //判断隐藏文件
+        if ([filePath containsString:@".DS"]) continue;
+        
+        //判断是否是文件夹
+        BOOL isDirectory;
+        //判断文件是否存在，并且判断是否是文件夹
+        BOOL isExist = [mgr fileExistsAtPath:filePath isDirectory:&isDirectory];
+        if (!isExist || isDirectory) {
+            continue;
+        }
+        
+        //获取文件属性
+        // attributesOfItemAtPath:只能获取文件尺寸,获取文件夹不对,
+        NSDictionary *attr = [mgr attributesOfItemAtPath:filePath error:nil];
+
+        //获取文件尺寸
+        
+        NSInteger fileSize = [attr fileSize];
+        
+        totalSize += fileSize;
+    }
+    
+    
+
+    
+    NSLog(@"%ld", totalSize);
 
 
 
