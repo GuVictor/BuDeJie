@@ -17,7 +17,7 @@
  *
  *  @return 返回文件夹尺寸
  */
-+ (NSInteger)getFileSize:(NSString *)directoryPath;
++ (void)getFileSize:(NSString *)directoryPath completion: (void(^)(NSInteger)) completion;
 
 
 /**

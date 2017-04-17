@@ -9,11 +9,11 @@
 #import "GWDSettingViewController.h"
 #import <SDImageCache.h>
 #import "GWDFileTool.h"
-
+#import <SVProgressHUD.h>
 #define CachePath [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
 
 @interface GWDSettingViewController ()
-
+@property (assign, nonatomic) NSInteger  totalSize;
 @end
 
 @implementation GWDSettingViewController
@@ -29,6 +29,20 @@
     
     //注册cell
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([self class])];
+    
+    [SVProgressHUD showWithStatus:@"正在计算缓存尺寸"];
+    
+    //计算文件夹尺寸
+    //文件夹非常小，如果我文件非常大
+    [GWDFileTool getFileSize:[CachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"] completion:^(NSInteger totalSize) {
+        _totalSize = totalSize;
+        [self.tableView reloadData];
+        NSLog(@"%@ %d",[NSThread currentThread], __LINE__);
+        [SVProgressHUD dismiss];
+
+    }];
+    
+    
     
 }
 
@@ -52,7 +66,7 @@
     //SDWebImage：帮我们做了缓存
     NSInteger size = [SDImageCache sharedImageCache].getSize;
     double sizeMB = size / 1000.0 / 1000.0;
-    NSLog(@"%ld  %d", size, __LINE__);
+    NSLog(@"SDImageCache算的%ld  %d", size, __LINE__);
     
    
 //    cell.textLabel.text = [NSString stringWithFormat:@"清除缓存,%ld", size];
@@ -102,14 +116,9 @@
 
 #pragma mark - 获取百思缓存尺寸字符串
 - (NSString *)sizeStr {
-//    获取文件夹路径
-    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *defalutPath =  [cachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"];
-    NSLog(@"%@, %d", defalutPath, __LINE__);
+   
     
-     NSInteger totalSize =  [GWDFileTool getFileSize:defalutPath];
-    NSLog(@"%ld   %d", totalSize, __LINE__);
-    
+    NSInteger totalSize = _totalSize;
     NSString *sizeStr = @"清除缓存";
     
     
