@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GWDSettingViewController : UIViewController
+@interface GWDSettingViewController : UITableViewController
 
 @end

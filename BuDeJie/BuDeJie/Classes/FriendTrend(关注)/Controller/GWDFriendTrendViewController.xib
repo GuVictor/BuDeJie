@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GWDFriendTrendViewController">
             <connections>
-                <outlet property="textFiled" destination="quc-rY-jL3" id="OO0-Hs-ETJ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kH1-Bp-vWY"/>
             </connections>
         </placeholder>
@@ -50,13 +49,6 @@
                         <action selector="clickRegisterOrLogin:" destination="-1" eventType="touchUpInside" id="cRL-lt-pbR"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="quc-rY-jL3" customClass="GWDLoginTextField">
-                    <rect key="frame" x="139" y="588" width="97" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>

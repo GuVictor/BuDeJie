@@ -11,7 +11,7 @@
 #import "UITextField+Placeholder.h"
 #import "GWDLoginTextField.h"
 @interface GWDFriendTrendViewController ()
-@property (weak, nonatomic) IBOutlet GWDLoginTextField *textFiled;
+//@property (weak, nonatomic) IBOutlet GWDLoginTextField *textFiled;
 
 @end
 
@@ -25,10 +25,10 @@
     //分析:为什么先设置占位位置颜色,就没有效果 => 占位文字label拿不到
     //1.保存起来
     //设置占位文字颜色
-    _textFiled.placeholderColor = [UIColor blueColor];
+//    _textFiled.placeholderColor = [UIColor blueColor];
     //设置占位位置:每次设置占位文字的后，再拿到之前保存占位文字颜色，重新设置
 //    [_textFiled setGwd_PlaceHoder:@"hello"];
-    _textFiled.placeholder = @"hello";
+//    _textFiled.placeholder = @"hello";
     
     
 }
