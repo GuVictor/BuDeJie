@@ -18,6 +18,7 @@
 		B508B6F01EA22804005B9767 /* GWDFastButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6EF1EA22804005B9767 /* GWDFastButton.m */; };
 		B508B6F31EA27DCD005B9767 /* GWDLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6F21EA27DCD005B9767 /* GWDLoginTextField.m */; };
 		B508B6F61EA28853005B9767 /* UITextField+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6F51EA28853005B9767 /* UITextField+Placeholder.m */; };
+		B51D6B051EA47A850059B9C7 /* GWDFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B51D6B041EA47A850059B9C7 /* GWDFileTool.m */; };
 		B5644EC71EA069C7009E9F89 /* GWDAdItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC61EA069C7009E9F89 /* GWDAdItem.m */; };
 		B5644ECA1EA0B1A4009E9F89 /* GWDSubTagTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC91EA0B1A4009E9F89 /* GWDSubTagTableVC.m */; };
 		B5644ECD1EA0BD59009E9F89 /* GWDSubTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644ECC1EA0BD59009E9F89 /* GWDSubTagItem.m */; };
@@ -86,6 +87,8 @@
 		B508B6F21EA27DCD005B9767 /* GWDLoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDLoginTextField.m; sourceTree = "<group>"; };
 		B508B6F41EA28853005B9767 /* UITextField+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Placeholder.h"; sourceTree = "<group>"; };
 		B508B6F51EA28853005B9767 /* UITextField+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Placeholder.m"; sourceTree = "<group>"; };
+		B51D6B031EA47A850059B9C7 /* GWDFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDFileTool.h; sourceTree = "<group>"; };
+		B51D6B041EA47A850059B9C7 /* GWDFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDFileTool.m; sourceTree = "<group>"; };
 		B5644EC51EA069C7009E9F89 /* GWDAdItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDAdItem.h; sourceTree = "<group>"; };
 		B5644EC61EA069C7009E9F89 /* GWDAdItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDAdItem.m; sourceTree = "<group>"; };
 		B5644EC81EA0B1A4009E9F89 /* GWDSubTagTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSubTagTableVC.h; sourceTree = "<group>"; };
@@ -189,9 +192,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B51D6B011EA47A6F0059B9C7 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				B51D6B021EA47A6F0059B9C7 /* File */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		B51D6B021EA47A6F0059B9C7 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				B51D6B031EA47A850059B9C7 /* GWDFileTool.h */,
+				B51D6B041EA47A850059B9C7 /* GWDFileTool.m */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
 		B56537331E9B14BD00594EFC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B51D6B011EA47A6F0059B9C7 /* Tool */,
 				B59FF0401E9F82520089BAA8 /* AD(广告) */,
 				B5E6691E1E9E9DA800F196C2 /* Setting(设置) */,
 				B565373C1E9B14BD00594EFC /* Main(主要) */,
@@ -787,6 +808,7 @@
 				B565375C1E9B1D8200594EFC /* GWDFriendTrendViewController.m in Sources */,
 				B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */,
 				B5E669241E9E9DD600F196C2 /* GWDSettingViewController.m in Sources */,
+				B51D6B051EA47A850059B9C7 /* GWDFileTool.m in Sources */,
 				B508B6E21EA1D99D005B9767 /* GWDLoginRegisterViewController.m in Sources */,
 				B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */,
 				B57C16901EA31CC500B8BE0C /* GWDSquareCollectionViewCell.m in Sources */,

@@ -23,9 +23,10 @@
     //设置导航条左边按钮
     self.title = @"设置";
     
-    //设置右边
+    //设置右边导航条
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"jump" style:0 target:self action:@selector(jump)];
     
+    //注册cell
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([self class])];
     
 }
@@ -60,21 +61,35 @@
 }
 
 #pragma mark - tableView的数据源
+//清空缓存
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  //清空缓存
+  
     //获取文件管理者
     NSFileManager *mgr = [NSFileManager defaultManager];
     
     //获取cache文件夹下所有文件, 不包括子路径的子路径
     NSString *defalutPath =  [CachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"];
+    
+    //拿到的是子文件和文件夹（不包括它下面的下面的子路径）
+    /*
+     ( 
+         ".DS_Store",
+         "fa6350dbfd1b72e85578af8da20b641e.jpg",
+         victor
+
+     )
+     */
+    //一删除什么也删除了
+    
+    
     NSArray *subPaths = [mgr contentsOfDirectoryAtPath:defalutPath error:nil];
+    NSLog(@"%@   %d", subPaths, __LINE__);
     
     for (NSString *subPath in subPaths) {
         //拼接全路径
         NSString *filePath = [defalutPath stringByAppendingPathComponent:subPath];
         
         //删除路径
-        
         [mgr removeItemAtPath:filePath error:nil];
         
     }
@@ -88,7 +103,8 @@
 //    获取文件夹路径
     NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
     NSString *defalutPath =  [cachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"];
-
+//    NSLog(@"%@, %d", defalutPath, __LINE__);
+    
      NSInteger totalSize =  [self getFileSize:defalutPath];
     NSLog(@"%ld   %d", totalSize, __LINE__);
     
@@ -113,11 +129,6 @@
     
 }
 
-/*
- /Users/guweidong/Library/Developer/CoreSimulator/Devices/AA5F0959-8824-4AEE-9EC2-E8F15852F985/data/Containers/Data/Application/DBF155C0-D176-408B-8C55-CBB737A2EEE1/Library/Caches/default/com.hackemist.SDWebImageCache.default/0ba18a32270775194993b5ae505c4895.jpg
- 
- */
-
 #pragma mark - 计算缓存大小
 - (NSInteger)getFileSize:(NSString *)directoryPath {
     //NSFileManager
@@ -133,8 +144,16 @@
     //    获取文件管理者
     NSFileManager *mgr = [NSFileManager defaultManager];
     
-    //获取文件下所有的子路径(包含子路径的子路径)
+    //获取文件下所有的子路径(包含子路径的子路径), 打印显示时文件用双引号，文件夹没引号，文件夹的子路径文件也打印出来
+    /*
+     ( ".DS_Store",
+     "fa6350dbfd1b72e85578af8da20b641e.jpg",
+     victor,
+     "victor/857467d804301b68e44e82622e28cf5b.jpg" )
+     */
+    
     NSArray *subPaths = [mgr subpathsAtPath:directoryPath];
+    NSLog(@"%@    %d", subPaths , __LINE__);
     
     NSInteger totalSize = 0;
     
@@ -149,6 +168,7 @@
         BOOL isDirectory;
         //判断文件是否存在，并且判断是否是文件夹
         BOOL isExist = [mgr fileExistsAtPath:filePath isDirectory:&isDirectory];
+#warning <#message#>
         if (!isExist || isDirectory) {
             continue;
         }
