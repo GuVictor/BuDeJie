@@ -9,6 +9,8 @@
 #import "GWDSettingViewController.h"
 #import <SDImageCache.h>
 
+#define CachePath [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+
 @interface GWDSettingViewController ()
 
 @end
@@ -47,20 +49,67 @@
     
     //SDWebImage：帮我们做了缓存
     NSInteger size = [SDImageCache sharedImageCache].getSize;
+    double sizeMB = size / 1000.0 / 1000.0;
+    NSLog(@"%ld  %d", size, __LINE__);
     
-    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *defalutPath =  [cachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"];
-    
-    [self getFileSize:defalutPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"清除缓存,%ld", size];
+   
+//    cell.textLabel.text = [NSString stringWithFormat:@"清除缓存,%ld", size];
+    cell.textLabel.text = [self sizeStr];
     
     return cell;
 }
 
 #pragma mark - tableView的数据源
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+  //清空缓存
+    //获取文件管理者
+    NSFileManager *mgr = [NSFileManager defaultManager];
     
+    //获取cache文件夹下所有文件, 不包括子路径的子路径
+    NSString *defalutPath =  [CachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"];
+    NSArray *subPaths = [mgr contentsOfDirectoryAtPath:defalutPath error:nil];
+    
+    for (NSString *subPath in subPaths) {
+        //拼接全路径
+        NSString *filePath = [defalutPath stringByAppendingPathComponent:subPath];
+        
+        //删除路径
+        
+        [mgr removeItemAtPath:filePath error:nil];
+        
+    }
+    
+    [self.tableView reloadData];
+    
+}
+
+#pragma mark - 获取百思缓存尺寸字符串
+- (NSString *)sizeStr {
+//    获取文件夹路径
+    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *defalutPath =  [cachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"];
+
+     NSInteger totalSize =  [self getFileSize:defalutPath];
+    NSLog(@"%ld   %d", totalSize, __LINE__);
+    
+    NSString *sizeStr = @"清除缓存";
+    
+    
+    if (totalSize > 1000 * 1000) {
+        //MB
+        
+        CGFloat sizeF = totalSize / 1000.0 /1000.0;
+        sizeStr = [NSString stringWithFormat:@"%@(%.1fMB)", sizeStr, sizeF];
+    }else if (totalSize > 1000) {
+        //KB
+        CGFloat sizeF = totalSize / 1000.0;
+        sizeStr = [NSString stringWithFormat:@"%@(%.1fKB)", sizeStr, sizeF];
+
+    }else if (totalSize > 0) {
+        sizeStr = [NSString stringWithFormat:@"%@(%ldB)", sizeStr, totalSize];
+    }
+    
+    return sizeStr;
     
 }
 
@@ -70,7 +119,7 @@
  */
 
 #pragma mark - 计算缓存大小
-- (void)getFileSize:(NSString *)directoryPath {
+- (NSInteger)getFileSize:(NSString *)directoryPath {
     //NSFileManager
     //attributesOfItemAtPath:指定文件路径,就能获取文件属性
     //把所有尺寸加起来
@@ -84,7 +133,7 @@
     //    获取文件管理者
     NSFileManager *mgr = [NSFileManager defaultManager];
     
-    //获取文件下所有的子路径
+    //获取文件下所有的子路径(包含子路径的子路径)
     NSArray *subPaths = [mgr subpathsAtPath:directoryPath];
     
     NSInteger totalSize = 0;
@@ -114,14 +163,8 @@
         
         totalSize += fileSize;
     }
-    
-    
 
-    
-    NSLog(@"%ld", totalSize);
-
-
-
+    return totalSize;
 }
 
 
