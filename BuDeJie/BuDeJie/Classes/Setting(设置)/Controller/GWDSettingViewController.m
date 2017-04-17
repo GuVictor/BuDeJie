@@ -8,6 +8,7 @@
 
 #import "GWDSettingViewController.h"
 #import <SDImageCache.h>
+#import "GWDFileTool.h"
 
 #define CachePath [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
 
@@ -69,7 +70,7 @@
     
     //获取cache文件夹下所有文件, 不包括子路径的子路径
     NSString *defalutPath =  [CachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"];
-    
+    [GWDFileTool removeDirectoryPath:defalutPath];
     //拿到的是子文件和文件夹（不包括它下面的下面的子路径）
     /*
      ( 
@@ -81,8 +82,8 @@
      */
     //一删除什么也删除了
     
-    
-    NSArray *subPaths = [mgr contentsOfDirectoryAtPath:defalutPath error:nil];
+    /*
+    NSArray *subPaths = [mgr contentsOfDirectoryAtPath:defalutPath error:nil];//它文件夹下的文件或者文件夹（不包括子文件夹和子文件夹里面的文件）
     NSLog(@"%@   %d", subPaths, __LINE__);
     
     for (NSString *subPath in subPaths) {
@@ -93,6 +94,7 @@
         [mgr removeItemAtPath:filePath error:nil];
         
     }
+     */
     
     [self.tableView reloadData];
     
@@ -103,9 +105,9 @@
 //    获取文件夹路径
     NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
     NSString *defalutPath =  [cachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"];
-//    NSLog(@"%@, %d", defalutPath, __LINE__);
+    NSLog(@"%@, %d", defalutPath, __LINE__);
     
-     NSInteger totalSize =  [self getFileSize:defalutPath];
+     NSInteger totalSize =  [GWDFileTool getFileSize:defalutPath];
     NSLog(@"%ld   %d", totalSize, __LINE__);
     
     NSString *sizeStr = @"清除缓存";
