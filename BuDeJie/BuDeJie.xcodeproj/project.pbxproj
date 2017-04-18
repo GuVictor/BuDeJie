@@ -18,6 +18,7 @@
 		B508B6F01EA22804005B9767 /* GWDFastButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6EF1EA22804005B9767 /* GWDFastButton.m */; };
 		B508B6F31EA27DCD005B9767 /* GWDLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6F21EA27DCD005B9767 /* GWDLoginTextField.m */; };
 		B508B6F61EA28853005B9767 /* UITextField+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6F51EA28853005B9767 /* UITextField+Placeholder.m */; };
+		B5123D901EA5B169009A0A34 /* GWDTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B5123D8F1EA5B169009A0A34 /* GWDTitleButton.m */; };
 		B51D6B051EA47A850059B9C7 /* GWDFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B51D6B041EA47A850059B9C7 /* GWDFileTool.m */; };
 		B5644EC71EA069C7009E9F89 /* GWDAdItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC61EA069C7009E9F89 /* GWDAdItem.m */; };
 		B5644ECA1EA0B1A4009E9F89 /* GWDSubTagTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC91EA0B1A4009E9F89 /* GWDSubTagTableVC.m */; };
@@ -88,6 +89,8 @@
 		B508B6F21EA27DCD005B9767 /* GWDLoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDLoginTextField.m; sourceTree = "<group>"; };
 		B508B6F41EA28853005B9767 /* UITextField+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Placeholder.h"; sourceTree = "<group>"; };
 		B508B6F51EA28853005B9767 /* UITextField+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Placeholder.m"; sourceTree = "<group>"; };
+		B5123D8E1EA5B169009A0A34 /* GWDTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTitleButton.h; sourceTree = "<group>"; };
+		B5123D8F1EA5B169009A0A34 /* GWDTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTitleButton.m; sourceTree = "<group>"; };
 		B51D6B031EA47A850059B9C7 /* GWDFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDFileTool.h; sourceTree = "<group>"; };
 		B51D6B041EA47A850059B9C7 /* GWDFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDFileTool.m; sourceTree = "<group>"; };
 		B5644EC51EA069C7009E9F89 /* GWDAdItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDAdItem.h; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 		B56537371E9B14BD00594EFC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B5123D8E1EA5B169009A0A34 /* GWDTitleButton.h */,
+				B5123D8F1EA5B169009A0A34 /* GWDTitleButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -804,6 +809,7 @@
 				B508B6F31EA27DCD005B9767 /* GWDLoginTextField.m in Sources */,
 				B5644ECD1EA0BD59009E9F89 /* GWDSubTagItem.m in Sources */,
 				B56537651E9B1E0200594EFC /* GWDPublishViewController.m in Sources */,
+				B5123D901EA5B169009A0A34 /* GWDTitleButton.m in Sources */,
 				B56537501E9B14BD00594EFC /* AppDelegate.m in Sources */,
 				B56537531E9B15B600594EFC /* UIImage+OriginalImage.m in Sources */,
 				B5644ECA1EA0B1A4009E9F89 /* GWDSubTagTableVC.m in Sources */,
