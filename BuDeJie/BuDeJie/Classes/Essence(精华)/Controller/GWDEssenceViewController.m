@@ -8,6 +8,13 @@
 
 #import "GWDEssenceViewController.h"
 #import "GWDTitleButton.h"
+
+#import "GWDAllTableViewController.h"
+#import "GWDVideoTableViewController.h"
+#import "GWDVoiceTableViewController.h"
+#import "GWDPictureTableViewController.h"
+#import "GWDWordTableViewController.h"
+
 //UIBarButtonItem:描述按钮具体的内容
 //UINavigationItem:设置导航条上内容（左边，右边，中间）
 //tabBarItem: 设置tabBar上按钮内容（tabBarButton）
@@ -44,6 +51,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //设置所有子控制器
+    [self setupAllChildViewController];
+    
     //设置导航条
     [self setUpNavBar];
     
@@ -55,15 +65,52 @@
     
 }
 
+#pragma mark - 初始化所有子控制器
+- (void)setupAllChildViewController {
+    
+    [self addChildViewController:[[GWDAllTableViewController alloc] init]];
+    [self addChildViewController:[[GWDVideoTableViewController alloc] init]];
+    [self addChildViewController:[[GWDVoiceTableViewController alloc] init]];
+    [self addChildViewController:[[GWDPictureTableViewController alloc] init]];
+    [self addChildViewController:[[GWDWordTableViewController alloc] init]];
+}
+
 #pragma mark - 初始化滚动视图
 - (void)setupScrollView {
+    
+    //不予许自动修改UIScrollView
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    //scrollView设置
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.backgroundColor = [UIColor redColor];
     scrollView.frame = self.view.bounds;
+    
+    
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.pagingEnabled = YES;
+    
     [self.view addSubview:scrollView];
     
 //    UISwitch *sw = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 50, 10)];
 //    [scrollView addSubview:sw];//注意在导航控制器下 向scrollView中添加子控件，一定是向scrollView中添加， 会默认往下移64；自动调整scrll顶部的内边距为64，让srollview的内容往下移64
+    
+    NSUInteger count = self.childViewControllers.count;
+    CGFloat scrollViewW = scrollView.gwd_width;
+    CGFloat scrollViewH = scrollView.gwd_height;
+    
+    for (NSInteger i = 0; i < count; i ++) {
+        //取出i位置子控制器的view
+//        UITableViewController *vc = self.childViewControllers[i];
+//        vc.tableView.contentInset = UIEdgeInsetsMake(35, 0, 120, 0);
+        
+        UIView *childVcView = self.childViewControllers[i].view;
+        childVcView.frame = CGRectMake(i * scrollViewW, 0, scrollViewW, scrollViewH);
+        [scrollView addSubview:childVcView];
+    }
+    
+    scrollView.contentSize = CGSizeMake(count * scrollViewW, 0);
 
 }
 
@@ -132,11 +179,12 @@
     [self.titleView addSubview:titleUnderLine];
     self.titleUnderline = titleUnderLine;
     
-    //切换按钮状态
+    //切换按钮状态（不是三部曲，前面为空）
     firstTitleBtn.selected = YES;
     self.previousCLickTitleBtn = firstTitleBtn;
     
-    [firstTitleBtn.titleLabel sizeToFit];//让label根据文字内容计算尺寸
+    [firstTitleBtn.titleLabel sizeToFit];//让label根据文字内容计算尺寸（开始的时候为0，因为在view将要显示的时候才会计算尺寸，这里强制让它算一下）
+    
     self.titleUnderline.gwd_width = firstTitleBtn.titleLabel.gwd_width + 10;
     self.titleUnderline.gwd_centerX = firstTitleBtn.gwd_centerX;
     
@@ -180,7 +228,7 @@
 //        attributes[NSFontAttributeName] = btn.titleLabel.font;
 //        self.titleUnderline.gwd_width = [btn.currentTitle sizeWithAttributes:attributes].width;
         
-        //简单的方法不用自己去计算宽度
+        //简单的方法不用自己去计算宽度（titleLabel包着字体）
         self.titleUnderline.gwd_width = btn.titleLabel.gwd_width + 10;
         self.titleUnderline.gwd_centerX = btn.gwd_centerX;
         

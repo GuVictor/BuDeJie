@@ -27,6 +27,8 @@
     
     //设置导航条背景图片
     [navBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+//    [navBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [navBar setTranslucent:YES];
     
     
 }
