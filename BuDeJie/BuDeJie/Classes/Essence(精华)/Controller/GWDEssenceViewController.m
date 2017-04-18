@@ -11,6 +11,19 @@
 //UIBarButtonItem:描述按钮具体的内容
 //UINavigationItem:设置导航条上内容（左边，右边，中间）
 //tabBarItem: 设置tabBar上按钮内容（tabBarButton）
+/*
+ 
+    为了跨平台，mac 和 iPhone，退出技术一般有一个适应期，下个版本再取代
+名字叫attributes并且是NSDictionary *类型的参数，它的key一般都有以下规律
+1.iOS7开始
+1> 所有的key都来源于： NSAttributedString.h
+2> 格式基本都是：NS***AttributeName
+
+2.iOS7之前
+1> 所有的key都来源于： UIStringDrawing.h
+2> 格式基本都是：UITextAttribute***
+*/
+
 
 @interface GWDEssenceViewController ()
 /** 标题栏 */
@@ -18,6 +31,9 @@
 
 /** 上次点击的标题按钮 */
 @property (weak, nonatomic) GWDTitleButton *previousCLickTitleBtn;
+
+/** 标题下面的下划线 */
+@property (weak, nonatomic) UIView *titleUnderline;
 
 
 @end
@@ -67,6 +83,9 @@
     //设置标题栏按钮
     [self setupTitleButtons];
     
+    //设置下划线
+    [self setupTitleUnderline];
+    
 }
 
 - (void)setupTitleButtons {
@@ -97,7 +116,31 @@
     }
 }
 
-
+#pragma mark - 设置按钮底部的下划线
+- (void)setupTitleUnderline {
+    //标题按钮
+    GWDTitleButton *firstTitleBtn = self.titleView.subviews.firstObject;
+    
+    //下划线
+    UIView *titleUnderLine = [[UIView alloc] init];
+    
+    titleUnderLine.gwd_height = 2;
+    titleUnderLine.gwd_y = self.titleView.gwd_height - titleUnderLine.gwd_height;
+    
+    titleUnderLine.backgroundColor = [firstTitleBtn titleColorForState:UIControlStateSelected];
+    
+    [self.titleView addSubview:titleUnderLine];
+    self.titleUnderline = titleUnderLine;
+    
+    //切换按钮状态
+    firstTitleBtn.selected = YES;
+    self.previousCLickTitleBtn = firstTitleBtn;
+    
+    [firstTitleBtn.titleLabel sizeToFit];//让label根据文字内容计算尺寸
+    self.titleUnderline.gwd_width = firstTitleBtn.titleLabel.gwd_width + 10;
+    self.titleUnderline.gwd_centerX = firstTitleBtn.gwd_centerX;
+    
+}
 
 #pragma mark - 设置导航条
 - (void)setUpNavBar {
@@ -124,9 +167,26 @@
 - (void)clickTitleButton:(GWDTitleButton *)btn {
     NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
     
+    //选中按钮处理
     self.previousCLickTitleBtn.selected = NO;
     btn.selected = YES;
     self.previousCLickTitleBtn = btn;
+    
+    //选中按钮的下划线处理
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        //要自己算
+//        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+//        attributes[NSFontAttributeName] = btn.titleLabel.font;
+//        self.titleUnderline.gwd_width = [btn.currentTitle sizeWithAttributes:attributes].width;
+        
+        //简单的方法不用自己去计算宽度
+        self.titleUnderline.gwd_width = btn.titleLabel.gwd_width + 10;
+        self.titleUnderline.gwd_centerX = btn.gwd_centerX;
+        
+        
+        
+    } completion:nil];
     
 }
 

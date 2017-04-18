@@ -20,7 +20,7 @@
     //设置标题位置
     self.titleLabel.gwd_y = self.gwd_height - self.titleLabel.gwd_height;
     
-    //计算文字宽度，设置label的宽度, 会改center的x
+    //计算文字宽度，设置label的宽度, 会改center的x （先确定宽度在设置中心点，锚点，向两边展开）
     [self.titleLabel sizeToFit];
     
     self.titleLabel.gwd_centerX = self.gwd_width * 0.5;
