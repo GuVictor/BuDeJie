@@ -32,7 +32,7 @@
 */
 
 
-@interface GWDEssenceViewController ()
+@interface GWDEssenceViewController ()<UIScrollViewDelegate>
 /** 标题栏 */
 @property (weak, nonatomic) UIView *titleView;
 
@@ -41,6 +41,10 @@
 
 /** 标题下面的下划线 */
 @property (weak, nonatomic) UIView *titleUnderline;
+
+/** 用来存放所有子控制器view的scrollVIew */
+@property (weak, nonatomic) UIScrollView *scrollView;
+
 
 
 @end
@@ -86,12 +90,16 @@
     scrollView.backgroundColor = [UIColor redColor];
     scrollView.frame = self.view.bounds;
     
-    
+    //隐藏指示器
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
-    scrollView.pagingEnabled = YES;
+    scrollView.pagingEnabled = YES;//开启分页
+    
+    //设置代理
+    scrollView.delegate = self;
     
     [self.view addSubview:scrollView];
+    _scrollView = scrollView;
     
 //    UISwitch *sw = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 50, 10)];
 //    [scrollView addSubview:sw];//注意在导航控制器下 向scrollView中添加子控件，一定是向scrollView中添加， 会默认往下移64；自动调整scrll顶部的内边距为64，让srollview的内容往下移64
@@ -148,6 +156,8 @@
     for (int i = 0; i < count; i++) {
         GWDTitleButton *titleButton = [[GWDTitleButton alloc] init];
         [titleButton addTarget:self action:@selector(clickTitleButton:) forControlEvents:UIControlEventTouchUpInside];
+        //给按钮绑定一个标识
+        titleButton.tag = i;
         
         //frame
         titleButton.frame = CGRectMake(i * titleBtnW, 0, titleBtnW, titleBtnH);
@@ -232,16 +242,51 @@
         self.titleUnderline.gwd_width = btn.titleLabel.gwd_width + 10;
         self.titleUnderline.gwd_centerX = btn.gwd_centerX;
         
-        
+        //知道按钮的标识，就知道偏移量是多少
+        CGFloat offsetX = self.scrollView.gwd_width * btn.tag;
+        //保持y值得的偏移量
+        self.scrollView.contentOffset = CGPointMake(offsetX, self.scrollView.contentOffset.y);
         
     } completion:nil];
     
 }
 
 
+/**
+ 正在滚动，减速也会调用
+
+ @param scrollView <#scrollView description#>
+ */
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
+//    CGFloat a =  scrollView.contentOffset.x / scrollView.gwd_width;
+}
 
 
+/**
+ 用户抬手离开，立即掉用，然后减速掉scrollViewDidScroll方法再到scrollViewDidEndDragging方法
 
+ @param scrollView <#scrollView description#>
+ @param decelerate <#decelerate description#>
+ */
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+//    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
+}
+
+/**
+ *  当用户松开scrollView并且滑动结束时调用这个代理方法（scrollView停止滚动的时候）
+ */
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
+    
+    //计算btn的标识
+    NSInteger index = scrollView.contentOffset.x / scrollView.gwd_width;
+    //取出对应的btn
+    GWDTitleButton *btn = self.titleView.subviews[index];
+    
+    //让按钮点击选中
+    [self clickTitleButton:btn];
+}
 
 
 
