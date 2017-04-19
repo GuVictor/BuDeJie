@@ -19,6 +19,7 @@
     
     self.view.backgroundColor = GWDRandomColor;
     self.tableView.contentInset = UIEdgeInsetsMake(GWDNavMaxY + GWDTitlesViewH, 0, GWDTabBarH, 0);
+    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
 }
 
 #pragma mark - 数据源
