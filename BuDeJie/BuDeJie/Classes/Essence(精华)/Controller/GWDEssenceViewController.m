@@ -98,6 +98,9 @@
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;//开启分页
     
+    //点击状态栏的时候,这个scrollVIew不会滚动到最顶部
+    scrollView.scrollsToTop = NO;
+    
     //设置代理
     scrollView.delegate = self;
     
@@ -125,7 +128,7 @@
 
 }
 
-#pragma mark - 初始化按钮标题
+#pragma mark - 初始化标题按钮栏
 - (void)setupTitlesView {
     UIView *titleView = [[UIView alloc] init];
     //设置半透明颜色的三种方式
@@ -146,6 +149,7 @@
     
 }
 
+#pragma mark - 往标题栏添加所有按钮
 - (void)setupTitleButtons {
     //文字
     NSArray *titles = @[@"全部", @"视频", @"声音", @"图片", @"段子"];
@@ -218,12 +222,12 @@
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MainTitle"]];
 }
 
-#pragma mark - 点击左侧按钮
+#pragma mark - 点击导航条左侧按钮
 - (void)game {
     NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
 }
 
-#pragma mark - 点击右侧按钮
+#pragma mark - 点击导航条右侧按钮
 - (void)random:(UIButton *)button {
     NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
 }
@@ -259,9 +263,27 @@
         [self addChildVcViewIntoScrollView:btn.tag];
     }];
     
+    //设置index文字对应的tableView.scrollsToTop = Yes,其他都设置为NO
+    for (NSUInteger i = 0; i < self.childViewControllers.count; i++) {
+        UIViewController *childVc = self.childViewControllers[i];
+        
+        //如果View还没有被裁剪,就不用去处理
+        if (!childVc.isViewLoaded) {
+            continue;
+        }
+        
+        
+        UIScrollView *scrollView = (UIScrollView *)childVc.view;
+        if (![scrollView isKindOfClass:[UIScrollView class]]) {
+            continue;
+        }
+        
+        scrollView.scrollsToTop = (i == btn.tag);
+    }
+    
 }
 
-
+#pragma mark - 加载控制器的view，点击那个加载那个
 /**
  添加第index个子控制器的VIew到scrollView中
 
@@ -270,7 +292,7 @@
     //取出按钮索引对应的控制器
     UIViewController *childVc = self.childViewControllers[index];
     
-    //如果view已经被加过，就直接返回
+    //如果view已经被加过，就直接返回（和下面一句不能反）
     if (childVc.isViewLoaded) {
         return;
     }
@@ -282,14 +304,15 @@
     CGFloat scrollViewW = self.scrollView.gwd_width;
     childVcView.frame = CGRectMake(index * scrollViewW, 0, scrollViewW, self.scrollView.gwd_height);
     
+    // 设置子控制器view的frame
+//    childVcView.frame = self.scrollView.bounds;
+    
     [self.scrollView addSubview:childVcView];
 }
 
-
+#pragma mark - 滚动视图代理
 /**
  正在滚动，减速也会调用
-
- @param scrollView <#scrollView description#>
  */
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 //    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
@@ -300,8 +323,6 @@
 /**
  用户抬手离开，立即掉用，然后减速掉scrollViewDidScroll方法再到scrollViewDidEndDragging方法
 
- @param scrollView <#scrollView description#>
- @param decelerate <#decelerate description#>
  */
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 //    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
@@ -322,8 +343,38 @@
     [self clickTitleButton:btn];
 }
 
+#pragma mark - 加载控制器的view的第二种方案没参数，点击那个加载那个
 
+/*
+ 
+ 第二种没有参数的方案
+- (void)addChildVcViewIntoScrollView
+{
+    CGFloat scrollViewW = self.scrollView.xmg_width;
+    
+    NSUInteger index = self.scrollView.contentOffset.x / scrollViewW;
+    
+    // 取出index位置对应的子控制器view
+    UIView *childVcView = self.childViewControllers[index].view;
+    
+    // 设置子控制器view的frame
+    childVcView.frame = self.scrollView.bounds;
+    
+    // 添加子控制器的view到scrollView中
+    [self.scrollView addSubview:childVcView];
+    
+    //    childVcView.frame = CGRectMake(self.scrollView.bounds.origin.x, self.scrollView.bounds.origin.y, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+    
+    //    childVcView.frame = CGRectMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+    
+    //    childVcView.frame = CGRectMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y, scrollViewW, self.scrollView.xmg_height);
+    
+    //    childVcView.frame = CGRectMake(self.scrollView.contentOffset.x, 0, scrollViewW, self.scrollView.xmg_height);
+    
+    //    childVcView.frame = CGRectMake(index * scrollViewW, 0, scrollViewW, self.scrollView.xmg_height);
+}
 
+ */
 
 
 
