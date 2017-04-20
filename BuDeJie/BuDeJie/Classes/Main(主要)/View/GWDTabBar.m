@@ -11,7 +11,11 @@
 
 @interface GWDTabBar ()
 
+/** 加号按钮 */
 @property (weak, nonatomic) UIButton *plusBtn;
+/** 上一次点击按钮*/
+@property (weak, nonatomic) UIControl *previousClickedTabButton;
+
 
 @end
 
@@ -60,8 +64,14 @@
     //私有类：打印出来了有个类，但是敲不出来，说明这个类是系统私有类
     //变量子控件 调整布局
     int i = 0;
-    for (UIView *tabBarButton in self.subviews) {
+    for (UIControl *tabBarButton in self.subviews) {
         if ([tabBarButton isKindOfClass:NSClassFromString(@"UITabBarButton")]) {
+            
+               //设置previousClickTarBarButton默认值为最前面的按钮
+            if (i==0 && self.previousClickedTabButton == nil) {//如果重新调用layoutsubView就会改变当前按钮（严谨）
+                _previousClickedTabButton = tabBarButton;
+            }
+            
             if (i == 2) {
                 i += 1;
             }
@@ -72,6 +82,10 @@
             
             //系统UITabBarButton按钮的frame
             tabBarButton.frame = CGRectMake(btnX, btnY, btnW, btnH);//错误就在在于放在for外面
+            
+            //监听按钮测点击
+            [tabBarButton addTarget:self action:@selector(tabBarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            
         }
         
         
@@ -83,6 +97,21 @@
     self.plusBtn.center = CGPointMake(self.gwd_width * 0.5, self.gwd_height * 0.5);
     
     
+}
+
+#pragma mark - tabbar按钮的点击
+- (void)tabBarButtonClick:(UIControl *)tabBarButton {
+    
+    //发通知
+    if (self.previousClickedTabButton == tabBarButton) {
+        NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
+
+        //发出通知,告诉外界tabBarButon被重复点击了
+        [[NSNotificationCenter defaultCenter] postNotificationName:GWDTabBarButtonDidRepeatClickNotification object:nil ];
+        
+    }
+    
+    self.previousClickedTabButton = tabBarButton;
 }
 
 @end

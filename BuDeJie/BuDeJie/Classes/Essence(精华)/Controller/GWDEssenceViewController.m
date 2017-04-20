@@ -273,7 +273,7 @@
         }
         
         
-        UIScrollView *scrollView = (UIScrollView *)childVc.view;
+        UIScrollView *scrollView = (UIScrollView *)childVc.view;//childVc.view这个会调Loadview加载5个view，所有前面做一个判断
         if (![scrollView isKindOfClass:[UIScrollView class]]) {
             continue;
         }
