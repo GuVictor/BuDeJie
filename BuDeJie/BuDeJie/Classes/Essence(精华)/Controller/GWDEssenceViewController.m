@@ -234,7 +234,10 @@
 
 #pragma mark - 点击标题按钮
 - (void)clickTitleButton:(GWDTitleButton *)btn {
-    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
+//    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
+    if (self.previousCLickTitleBtn == btn) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:GWDTitleButtonDidRepeatClickNotification object:nil];
+    }
     
     //选中按钮处理
     self.previousCLickTitleBtn.selected = NO;

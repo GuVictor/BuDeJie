@@ -30,7 +30,16 @@
 //    [_textFiled setGwd_PlaceHoder:@"hello"];
 //    _textFiled.placeholder = @"hello";
     
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:GWDTabBarButtonDidRepeatClickNotification object:nil];
     
+    
+}
+
+#pragma mark - tabBarButtonDidRepeatClick
+
+- (void)tabBarButtonDidRepeatClick {
+    if (self.view.window == nil) return;
+    NSLog(@"%s, line = %d, Friend" , __FUNCTION__, __LINE__);
 }
 #pragma mark - 设置右侧导航条
 - (void)setupNavBar {
@@ -50,5 +59,6 @@
     GWDLoginRegisterViewController *loginVc = [[GWDLoginRegisterViewController alloc] init];
     [self presentViewController:loginVc animated:YES completion:nil];
 }
+
 
 @end

@@ -34,8 +34,7 @@
         
         [self addSubview:btn];
         _plusBtn = btn;
-        
-        
+
     }
     
     return _plusBtn;

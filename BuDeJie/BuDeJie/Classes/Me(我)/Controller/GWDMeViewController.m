@@ -51,8 +51,17 @@ static CGFloat margin = 1;
     self.tableView.sectionFooterHeight = 10;
     
     self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0); // 35 - 15 = 10
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:GWDTabBarButtonDidRepeatClickNotification object:nil];
+    
+    
 }
 
+#pragma mark - tabBarButtonDidRepeatClick
+
+- (void)tabBarButtonDidRepeatClick {
+    if (self.view.window == nil) return;
+    NSLog(@"%s, line = %d, Me" , __FUNCTION__, __LINE__);
+}
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     //2017-04-16 17:01:47.291 BuDeJie[3162:214209] {64, 0, 49, 0} 默认滚动范围64，49是collectionView算出来的
