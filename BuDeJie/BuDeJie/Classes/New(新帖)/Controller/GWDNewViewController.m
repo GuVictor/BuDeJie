@@ -23,7 +23,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:GWDTabBarButtonDidRepeatClickNotification object:nil];
     
-    
 }
 
 #pragma mark - tabBarButtonDidRepeatClick

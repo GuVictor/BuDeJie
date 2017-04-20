@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //设置指示器的偏移量
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    
     self.view.backgroundColor = GWDRandomColor;
     
        self.tableView.contentInset = UIEdgeInsetsMake(GWDNavMaxY + GWDTitlesViewH, 0, GWDTabBarH, 0);

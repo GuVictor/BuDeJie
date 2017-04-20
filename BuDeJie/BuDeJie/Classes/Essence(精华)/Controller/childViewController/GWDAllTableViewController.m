@@ -9,6 +9,18 @@
 #import "GWDAllTableViewController.h"
 
 @interface GWDAllTableViewController ()
+/** 模拟数据量 */
+@property (assign, nonatomic) NSInteger  dataCount;
+
+/** 上拉刷新控件 */
+@property (weak, nonatomic) UIView *footer;
+
+/** 上拉刷新控件里面的文字 */
+@property (weak, nonatomic) UILabel *footerLabel;
+
+
+/** 上拉刷新控件时候正在刷新 */
+@property (assign, nonatomic, getter = isFooterRefreshing)  BOOL footerRefreshing;
 
 @end
 
@@ -17,13 +29,45 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //一开始给些数据
+    self.dataCount = 10;
+    
     self.view.backgroundColor = GWDRandomColor;
     self.tableView.contentInset = UIEdgeInsetsMake(GWDNavMaxY + GWDTitlesViewH, 0, GWDTabBarH, 0);
     
+    //设置指示器的偏移量
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    
+    //添加监听器
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:GWDTabBarButtonDidRepeatClickNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonDidRepeatClick) name:GWDTitleButtonDidRepeatClickNotification object:nil];
+    
+    //设置刷新view
+    [self setupRefresh];
 }
 
+#pragma mark - 设置tableFooterView为刷新更多数据
+- (void)setupRefresh {
+    UIView *footer = [[UIView alloc] init];
+    footer.frame = CGRectMake(0, 0, self.tableView.gwd_width, 35);
+    
+    self.tableView.tableFooterView = footer;
+    self.footer = footer;
+    
+    UILabel *footerLabel = [[UILabel alloc] init];
+    footerLabel.frame = footer.bounds;
+    footerLabel.backgroundColor = [UIColor redColor];
+    footerLabel.text = @"上拉可以加载更多";
+    footerLabel.textColor = [UIColor whiteColor];
+    footerLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [footer addSubview:footerLabel];
+    self.footerLabel = footerLabel;
+    
+    
+}
+
+#pragma mark - 移除监听器
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -36,11 +80,11 @@
     //如果显示在正中间的不是GWDAllTableViewController 直接返回
     if (self.tableView.scrollsToTop == NO) return;
     
-    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
+    NSLog(@"%s刷新数据, line = %d", __FUNCTION__, __LINE__);
     
 }
 
-#pragma mark - 标题按钮的重复点击
+#pragma mark - 监听标题按钮的重复点击
 - (void)titleButtonDidRepeatClick {
     //因为按钮重复点击的事情和精华按钮重复点击一样
     [self tabBarButtonDidRepeatClick];
@@ -49,7 +93,10 @@
 #pragma mark - 数据源
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 30;
+    //在这个方法监听有没有数据，没有就隐藏footView
+    self.footer.hidden = (self.dataCount == 0);
+    
+    return self.dataCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,6 +109,43 @@
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%@-%zd", self.class, indexPath.row];
     return cell;
+}
+
+#pragma mark - scrollView代理方法
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    //还没有任何内容的时候，不需要判断
+    if (self.tableView.contentSize.height == 0) return;
+    
+    //如果正在刷新,直接返回
+    if (self.isFooterRefreshing) return;
+    
+    //当scrollView的偏移量y值 >= ofsetY是, 代表footer意见完全出现
+    CGFloat ofsetY = self.tableView.contentSize.height + self.tableView.contentInset.bottom - self.tableView.gwd_height;
+    
+    if (self.tableView.contentOffset.y >= ofsetY) {
+        //进入刷新状态
+        self.footerRefreshing = YES;
+        self.footerLabel.text = @"正在加载数据";
+        self.footerLabel.backgroundColor = [UIColor blueColor];
+        
+        NSLog(@"%s, line = %d发送请求给服务器 - 加载更多数据", __FUNCTION__, __LINE__);
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //服务器请求返回了
+            self.dataCount += 5;
+            [self.tableView reloadData];
+            
+            //结束刷新
+
+            self.footerRefreshing = NO;
+            self.footerLabel.text = @"上拉可以加载更多";
+            self.footerLabel.backgroundColor = [UIColor redColor];
+        });
+        
+    }
+    
+    
 }
 
 

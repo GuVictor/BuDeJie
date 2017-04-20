@@ -19,6 +19,9 @@
     
     self.view.backgroundColor = GWDRandomColor;
     
+    //设置指示器的偏移量
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    
        self.tableView.contentInset = UIEdgeInsetsMake(GWDNavMaxY + GWDTitlesViewH, 0, GWDTabBarH, 0);
     NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:GWDTabBarButtonDidRepeatClickNotification object:nil];
