@@ -45,7 +45,7 @@
     [super viewDidLoad];
     
     //一开始给些数据
-    self.dataCount = 10;
+    self.dataCount = 5;
     
     self.view.backgroundColor = GWDRandomColor;
     self.tableView.contentInset = UIEdgeInsetsMake(GWDNavMaxY + GWDTitlesViewH , 0, GWDTabBarH, 0);
@@ -183,25 +183,11 @@
     //当scrollView的偏移量y值 >= ofsetY是, 代表footer意见完全出现
     CGFloat ofsetY = self.tableView.contentSize.height + self.tableView.contentInset.bottom - self.tableView.gwd_height;
     
-    if (self.tableView.contentOffset.y >= ofsetY) {
+    //判断的是上拉并且 大于一定的偏移量
+    if (self.tableView.contentOffset.y >= ofsetY && self.tableView.contentOffset.y > -(self.tableView.contentInset.top) ) {
         //进入刷新状态
-        self.footerRefreshing = YES;
-        self.footerLabel.text = @"正在加载数据";
-        self.footerLabel.backgroundColor = [UIColor blueColor];
-        
-        NSLog(@"%s, line = %d发送请求给服务器 - 加载更多数据", __FUNCTION__, __LINE__);
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //服务器请求返回了
-            self.dataCount += 5;
-            [self.tableView reloadData];
-            
-            //结束刷新
-            
-            self.footerRefreshing = NO;
-            self.footerLabel.text = @"上拉可以加载更多";
-            self.footerLabel.backgroundColor = [UIColor redColor];
-        });
+
+        [self footerBeginRefreshing];
         
     }
 
@@ -238,41 +224,101 @@
         //header已经完全出现
         
         //进入下拉刷新状态
-        self.headerLabel.text = @"正在刷新数据...";
-        self.headerLabel.backgroundColor = [UIColor blueColor];
-        self.headerRefreshing = YES;
-        
-        //增加内边距
-        [UIView animateWithDuration:0.25 animations:^{
-            UIEdgeInsets inset = self.tableView.contentInset;
-            inset.top += self.header.gwd_height;//增加的高度
-            
-            self.tableView.contentInset = inset;
-        }];
-        
-        GWDLog(@"发送请求给服务器，下拉刷新数据");
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.dataCount = 20;
-            [self.tableView reloadData];
-            
-            //结束刷新
-            self.headerRefreshing = NO;
-            //减少内边距
-            [UIView animateWithDuration:0.25 animations:^{
-                UIEdgeInsets inset = self.tableView.contentInset;
-                inset.top -= self.header.gwd_height;
-                
-                self.tableView.contentInset = inset;//还原内边距
-            }];
-        });
-        
-        
-        
+        [self headerBeginRefreshing];
         
     }
     
+}
+
+#pragma mark - 请求服务器数据处理
+
+/**
+ 发送请求给服务器，下拉请求新数据
+ */
+- (void)loadNewData {
+    GWDLog(@"发送请求给服务器，下拉刷新数据");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.dataCount = 20;
+        [self.tableView reloadData];
+        
+        //结束刷新
+        [self headerEndRefreshing];
+    });
+}
+
+
+/**
+ 发送请求给服务器，上拉家族更多数据
+ */
+- (void)loadMoreData {
+    NSLog(@"%s, line = %d发送请求给服务器 - 加载更多数据", __FUNCTION__, __LINE__);
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //服务器请求返回了
+        self.dataCount += 5;
+        [self.tableView reloadData];
+        
+        //结束刷新
+        [self footerEndRefreshing];
+    });
+
     
+}
+
+#pragma mark - 头部刷新处理
+- (void)headerBeginRefreshing {
+    //如果正在下拉刷新，直接返回
+    if (self.isHeaderRefreshing) return;
+
+    
+    //进入下拉刷新状态
+    self.headerLabel.text = @"正在刷新数据...";
+    self.headerLabel.backgroundColor = [UIColor blueColor];
+    self.headerRefreshing = YES;
+    
+    //增加内边距
+    [UIView animateWithDuration:0.25 animations:^{
+        UIEdgeInsets inset = self.tableView.contentInset;
+        inset.top += self.header.gwd_height;//增加的高度
+        
+        self.tableView.contentInset = inset;
+    }];
+    
+    [self loadNewData];
+
+}
+
+- (void)headerEndRefreshing {
+    self.headerRefreshing = NO;
+    //减少内边距
+    [UIView animateWithDuration:0.25 animations:^{
+        UIEdgeInsets inset = self.tableView.contentInset;
+        inset.top -= self.header.gwd_height;
+        
+        self.tableView.contentInset = inset;//还原内边距
+    }];
+}
+
+#pragma mark - 尾部刷新处理
+- (void)footerBeginRefreshing {
+    
+    //如果正在刷新,直接返回
+    if (self.isFooterRefreshing) return;
+
+    
+    self.footerRefreshing = YES;
+    self.footerLabel.text = @"正在加载数据";
+    self.footerLabel.backgroundColor = [UIColor blueColor];
+    
+    //发送请求数据给服务器,上拉家族更多数据
+    [self loadMoreData];
+    
+}
+
+- (void)footerEndRefreshing {
+    self.footerRefreshing = NO;
+    self.footerLabel.text = @"上拉可以加载更多";
+    self.footerLabel.backgroundColor = [UIColor redColor];
 }
 
 @end
