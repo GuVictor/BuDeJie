@@ -45,7 +45,7 @@
     [super viewDidLoad];
     
     //一开始给些数据
-    self.dataCount = 5;
+    self.dataCount = 0;
     
     self.view.backgroundColor = GWDRandomColor;
     self.tableView.contentInset = UIEdgeInsetsMake(GWDNavMaxY + GWDTitlesViewH , 0, GWDTabBarH, 0);
@@ -94,7 +94,8 @@
     [self.tableView addSubview:header];
     self.header = header;
     
-    
+    //让header自动刷新
+    [self headerBeginRefreshing];
     
     
     //footView
@@ -129,6 +130,8 @@
     
     //如果显示在正中间的不是GWDAllTableViewController 直接返回
     if (self.tableView.scrollsToTop == NO) return;
+    
+    [self headerBeginRefreshing];
     
     NSLog(@"%s刷新数据, line = %d", __FUNCTION__, __LINE__);
     
@@ -282,6 +285,7 @@
         inset.top += self.header.gwd_height;//增加的高度
         
         self.tableView.contentInset = inset;
+        self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, -(self.tableView.contentInset.top));
     }];
     
     [self loadNewData];
