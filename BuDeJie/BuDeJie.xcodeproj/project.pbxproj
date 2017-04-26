@@ -49,6 +49,8 @@
 		B57C16941EA34EED00B8BE0C /* GWDSquareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B57C16931EA34EED00B8BE0C /* GWDSquareItem.m */; };
 		B57C16981EA37ADC00B8BE0C /* GWDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57C16961EA37ADC00B8BE0C /* GWDWebViewController.m */; };
 		B57C16991EA37ADC00B8BE0C /* GWDWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57C16971EA37ADC00B8BE0C /* GWDWebViewController.xib */; };
+		B59444B31EAD81C5007FD78E /* GWDTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = B59444B21EAD81C5007FD78E /* GWDTopic.m */; };
+		B59444B51EAD99B4007FD78E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59444B41EAD99B4007FD78E /* Launch Screen.storyboard */; };
 		B59FF0471E9F82700089BAA8 /* GWDDdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59FF0451E9F82700089BAA8 /* GWDDdViewController.m */; };
 		B59FF0481E9F82700089BAA8 /* GWDDdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59FF0461E9F82700089BAA8 /* GWDDdViewController.xib */; };
 		B59FF0511E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59FF04A1E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png */; };
@@ -155,6 +157,9 @@
 		B57C16951EA37ADC00B8BE0C /* GWDWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDWebViewController.h; sourceTree = "<group>"; };
 		B57C16961EA37ADC00B8BE0C /* GWDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDWebViewController.m; sourceTree = "<group>"; };
 		B57C16971EA37ADC00B8BE0C /* GWDWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDWebViewController.xib; sourceTree = "<group>"; };
+		B59444B11EAD81C5007FD78E /* GWDTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopic.h; sourceTree = "<group>"; };
+		B59444B21EAD81C5007FD78E /* GWDTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopic.m; sourceTree = "<group>"; };
+		B59444B41EAD99B4007FD78E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B59FF0441E9F82700089BAA8 /* GWDDdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDDdViewController.h; sourceTree = "<group>"; };
 		B59FF0451E9F82700089BAA8 /* GWDDdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDDdViewController.m; sourceTree = "<group>"; };
 		B59FF0461E9F82700089BAA8 /* GWDDdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDDdViewController.xib; sourceTree = "<group>"; };
@@ -292,6 +297,8 @@
 		B56537361E9B14BD00594EFC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B59444B11EAD81C5007FD78E /* GWDTopic.h */,
+				B59444B21EAD81C5007FD78E /* GWDTopic.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -480,6 +487,7 @@
 				B5E6691A1E9E408400F196C2 /* BuDeJie.pch */,
 				B5123DA11EA67809009A0A34 /* GWDConst.h */,
 				B5123DA21EA67809009A0A34 /* GWDConst.m */,
+				B59444B41EAD99B4007FD78E /* Launch Screen.storyboard */,
 				B565374B1E9B14BD00594EFC /* Category */,
 			);
 			path = Other;
@@ -766,6 +774,7 @@
 				B59FF0531E9FDDBC0089BAA8 /* LaunchImage-700@2x.png in Resources */,
 				B57C16911EA31CC500B8BE0C /* GWDSquareCollectionViewCell.xib in Resources */,
 				B508B6DE1EA1C58D005B9767 /* GWDFriendTrendViewController.xib in Resources */,
+				B59444B51EAD99B4007FD78E /* Launch Screen.storyboard in Resources */,
 				B57C16991EA37ADC00B8BE0C /* GWDWebViewController.xib in Resources */,
 				B59FF0521E9FDDBC0089BAA8 /* LaunchImage-700-568h@2x.png in Resources */,
 				B59FF0481E9F82700089BAA8 /* GWDDdViewController.xib in Resources */,
@@ -852,6 +861,7 @@
 				B5123D901EA5B169009A0A34 /* GWDTitleButton.m in Sources */,
 				B56537501E9B14BD00594EFC /* AppDelegate.m in Sources */,
 				B56537531E9B15B600594EFC /* UIImage+OriginalImage.m in Sources */,
+				B59444B31EAD81C5007FD78E /* GWDTopic.m in Sources */,
 				B5644ECA1EA0B1A4009E9F89 /* GWDSubTagTableVC.m in Sources */,
 				B508B6E61EA20511005B9767 /* GWDLoginRegisterView.m in Sources */,
 				B56537561E9B17BC00594EFC /* GWDTabBarController.m in Sources */,

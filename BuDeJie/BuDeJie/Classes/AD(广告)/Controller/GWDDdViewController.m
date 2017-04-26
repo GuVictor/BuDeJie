@@ -157,6 +157,7 @@
     // 6:LaunchImage-800-667h@2x.png
     // 5:LaunchImage-568h@2x.png
     // 4s:LaunchImage@2x.png
+//    NSLog(@"%f", GWDScreenH);
 
     if (iphone6P) {
         self.launchImageView.image = [UIImage imageNamed:@"LaunchImage-800-Portrait-736h@3x"];

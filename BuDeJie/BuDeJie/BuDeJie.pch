@@ -21,6 +21,7 @@
 #define GWDColor(r,g,b) [UIColor colorWithRed:(r) / 256.0 green:(g) / 256.0 blue:(b) / 256.0 alpha:1]
 #define GWDRandomColor GWDColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
 
+#define GWDAFNWriteToPlist(filename) [responseObject writeToFile:[NSString stringWithFormat:@"/Users/guweidong/Desktop/plist文件/%@.plist", @#filename] atomically:YES];
 /***********屏幕适配*************/
 #define GWDScreenW [UIScreen mainScreen].bounds.size.width
 #define GWDScreenH [UIScreen mainScreen].bounds.size.height

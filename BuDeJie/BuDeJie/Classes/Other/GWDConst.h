@@ -22,3 +22,6 @@ UIKIT_EXTERN NSString * const GWDTabBarButtonDidRepeatClickNotification;
 
 /** 标题栏的标题按钮被重复点击的通知 */
 UIKIT_EXTERN NSString * const GWDTitleButtonDidRepeatClickNotification;
+
+/** 统一的一个请求路径 */
+UIKIT_EXTERN NSString * const GWDCommonURL;

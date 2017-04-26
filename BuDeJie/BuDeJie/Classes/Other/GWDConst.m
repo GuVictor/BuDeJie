@@ -22,3 +22,7 @@ NSString * const GWDTabBarButtonDidRepeatClickNotification = @"GWDTabBarButtonDi
 
 /** 标题栏的标题按钮被重复点击的通知 */
 NSString * const GWDTitleButtonDidRepeatClickNotification = @"GWDTitleButtonDidRepeatClickNotification";
+
+
+/** 统一的一个请求路径 */
+NSString * const GWDCommonURL = @"http://api.budejie.com/api/api_open.php";

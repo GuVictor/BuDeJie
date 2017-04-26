@@ -7,11 +7,17 @@
 //
 
 #import "GWDAllTableViewController.h"
-
+#import <AFNetworking.h>
+#import "GWDTopic.h"
+#import <MJExtension.h>
+#import <SVProgressHUD.h>
 @interface GWDAllTableViewController ()
 
+/** 当前帖子数据的描述信息，专门有了加载下一页数据 */
+@property (copy, nonatomic) NSString *maxtime;
+
 /** 模拟数据量 */
-@property (assign, nonatomic) NSInteger  dataCount;
+@property (strong, nonatomic) NSMutableArray *topics;
 
 /**>>>>>>>>>>>>>>>>>>>>>上拉刷新>>>>>>>>>>>>>>>>>>>>>>>*/
 
@@ -44,9 +50,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //一开始给些数据
-    self.dataCount = 0;
-    
+
+    //设置背景颜色
     self.view.backgroundColor = GWDRandomColor;
     self.tableView.contentInset = UIEdgeInsetsMake(GWDNavMaxY + GWDTitlesViewH , 0, GWDTabBarH, 0);
     
@@ -147,9 +152,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //在这个方法监听有没有数据，没有就隐藏footView
-    self.footer.hidden = (self.dataCount == 0);
+    self.footer.hidden = (self.topics.count == 0);
     
-    return self.dataCount;
+    
+    return self.topics.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -157,10 +163,14 @@
     static NSString *ID = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
         cell.backgroundColor = [UIColor clearColor];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%@-%zd", self.class, indexPath.row];
+    
+    GWDTopic *topic = self.topics[indexPath.row];
+    cell.textLabel.text = topic.name;
+    cell.detailTextLabel.text = topic.text;
+    
     return cell;
 }
 
@@ -171,7 +181,6 @@
     
     //处理header
     [self dealHeader];
-    
     
 }
 
@@ -235,40 +244,89 @@
 
 #pragma mark - 请求服务器数据处理
 
+
 /**
  发送请求给服务器，下拉请求新数据
  */
-- (void)loadNewData {
+- (void)loadNewTopics {
     GWDLog(@"发送请求给服务器，下拉刷新数据");
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.dataCount = 20;
+    
+    //1.创建请求会话管理者
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    //2.拼接参数
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"a"] = @"list";
+    parameters[@"c"] = @"data";
+    parameters[@"type"] = @"1";//这里发送@1(NSNumber)也是可行的
+    //3.发送请求
+    [mgr GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSLog(@"%@", responseObject);
+//        GWDAFNWriteToPlist(topic)
+//        [responseObject writeToFile:@"/Users/guweidong/Desktop/plist文件/me1.plist" atomically:YES];//记住在模拟器运行才能写入电脑桌面
+        self.topics =  [GWDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        //刷新表格
         [self.tableView reloadData];
+        //结束刷新
+        [self headerEndRefreshing];
+
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+        
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试!"];
         
         //结束刷新
         [self headerEndRefreshing];
-    });
-}
+    }];
+    }
 
 
 /**
- 发送请求给服务器，上拉家族更多数据
+ 发送请求给服务器，上拉加载更多数据
  */
-- (void)loadMoreData {
+- (void)loadMoreTopics {
     NSLog(@"%s, line = %d发送请求给服务器 - 加载更多数据", __FUNCTION__, __LINE__);
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //服务器请求返回了
-        self.dataCount += 5;
+
+    //1.创建会话管理者
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    //2.拼接参数
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"a"] = @"list";
+    parameters[@"c"] = @"data";
+    parameters[@"typa"] = @"1";//这里发送@1也可行的
+    
+    //3.发送请求
+    [mgr GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //字典转模型
+        NSArray *moreTopics = [GWDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+        //累计到旧数组的后面
+        [self.topics addObjectsFromArray:moreTopics];
+        
+        //刷新表格
         [self.tableView reloadData];
         
         //结束刷新
         [self footerEndRefreshing];
-    });
-
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+        
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        
+        //结束刷新
+        [self footerEndRefreshing];
+    }];
     
 }
 
 #pragma mark - 头部刷新处理
+/**>>>>>>>>>>>>>>>>>>>>>头部开始刷新>>>>>>>>>>>>>>>>>>>>>>>*/
+
 - (void)headerBeginRefreshing {
     //如果正在下拉刷新，直接返回
     if (self.isHeaderRefreshing) return;
@@ -288,9 +346,11 @@
         self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, -(self.tableView.contentInset.top));
     }];
     
-    [self loadNewData];
+    [self loadNewTopics];
 
 }
+
+/**>>>>>>>>>>>>>>>>>>>>>头部结束刷新>>>>>>>>>>>>>>>>>>>>>>>*/
 
 - (void)headerEndRefreshing {
     self.headerRefreshing = NO;
@@ -304,6 +364,8 @@
 }
 
 #pragma mark - 尾部刷新处理
+/**>>>>>>>>>>>>>>>>>>>>>尾部开始刷新>>>>>>>>>>>>>>>>>>>>>>>*/
+
 - (void)footerBeginRefreshing {
     
     //如果正在刷新,直接返回
@@ -315,9 +377,11 @@
     self.footerLabel.backgroundColor = [UIColor blueColor];
     
     //发送请求数据给服务器,上拉家族更多数据
-    [self loadMoreData];
+    [self loadMoreTopics];
     
 }
+
+/**>>>>>>>>>>>>>>>>>>>>>尾部结束刷新>>>>>>>>>>>>>>>>>>>>>>>*/
 
 - (void)footerEndRefreshing {
     self.footerRefreshing = NO;
