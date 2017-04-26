@@ -235,12 +235,16 @@
 }
 
 #pragma mark - 点击标题按钮
-- (void)clickTitleButton:(GWDTitleButton *)btn {
+- (IBAction)clickTitleButton:(GWDTitleButton *)btn {
 //    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
     if (self.previousCLickTitleBtn == btn) {
         [[NSNotificationCenter defaultCenter] postNotificationName:GWDTitleButtonDidRepeatClickNotification object:nil];
     }
     
+    [self dealTitleButtonClikc:btn];
+}
+
+- (void)dealTitleButtonClikc:(GWDTitleButton *)btn {
     //选中按钮处理
     self.previousCLickTitleBtn.selected = NO;
     btn.selected = YES;
@@ -250,9 +254,9 @@
     [UIView animateWithDuration:0.25 animations:^{
         
         //要自己算
-//        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
-//        attributes[NSFontAttributeName] = btn.titleLabel.font;
-//        self.titleUnderline.gwd_width = [btn.currentTitle sizeWithAttributes:attributes].width;
+        //        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+        //        attributes[NSFontAttributeName] = btn.titleLabel.font;
+        //        self.titleUnderline.gwd_width = [btn.currentTitle sizeWithAttributes:attributes].width;
         
         //简单的方法不用自己去计算宽度（titleLabel包着字体）
         self.titleUnderline.gwd_width = btn.titleLabel.gwd_width + 10;
@@ -285,7 +289,7 @@
         
         scrollView.scrollsToTop = (i == btn.tag);
     }
-    
+
 }
 
 #pragma mark - 加载控制器的view，点击那个加载那个
@@ -345,7 +349,9 @@
     GWDTitleButton *btn = self.titleView.subviews[index];
     
     //让按钮点击选中
-    [self clickTitleButton:btn];
+//    [self clickTitleButton:btn];
+    //因为滚动也有机会发生重复点击
+    [self dealTitleButtonClikc:btn];
 }
 
 #pragma mark - 加载控制器的view的第二种方案没参数，点击那个加载那个
