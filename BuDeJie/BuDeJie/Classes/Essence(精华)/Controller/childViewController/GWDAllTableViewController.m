@@ -40,7 +40,8 @@
 @property (assign, nonatomic, getter=isHeaderRefreshing) BOOL  headerRefreshing;
 /**>>>>>>>>>>>>>>>>>>>>>下拉刷新>>>>>>>>>>>>>>>>>>>>>>>*/
 
-
+/** 请求管理者 */
+@property (strong, nonatomic) AFHTTPSessionManager *manager;
 
 
 @end
@@ -64,6 +65,14 @@
     
     //设置刷新view(包括下拉刷新，和上拉刷新)
     [self setupRefresh];
+}
+
+#pragma mark - 懒加载
+- (AFHTTPSessionManager *)manager {
+    if (!_manager) {
+        _manager = [AFHTTPSessionManager manager];
+    }
+    return _manager;
 }
 
 #pragma mark - 设置tableFooterView为刷新更多数据
@@ -251,19 +260,32 @@
 - (void)loadNewTopics {
     GWDLog(@"发送请求给服务器，下拉刷新数据");
     
+    //1.取消所有的请求，并且关闭session(注意：一旦关闭了session，这个manager再也无法发送任何请求)
+//    [self.manager invalidateSessionCancelingTasks:YES];不可行
+    
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];//它会调用失败的方法
+    
+    
     //1.创建请求会话管理者
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
     
     //2.拼接参数
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
-    parameters[@"type"] = @"1";//这里发送@1(NSNumber)也是可行的
+    parameters[@"type"] = @"31";//这里发送@1(NSNumber)也是可行的, 31表示音频数据
+    
+    
     //3.发送请求
-    [mgr GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.manager GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        NSLog(@"%@", responseObject);
 //        GWDAFNWriteToPlist(topic)
 //        [responseObject writeToFile:@"/Users/guweidong/Desktop/plist文件/me1.plist" atomically:YES];//记住在模拟器运行才能写入电脑桌面
+        
+        //无论是上拉还是下拉都有储存maxtime
+        self.maxtime = responseObject[@"info"][@"maxtime"];
+        
+        //覆盖以前的
         self.topics =  [GWDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         //刷新表格
         [self.tableView reloadData];
@@ -274,12 +296,15 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);
         
-        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试!"];
+        if (error.code != NSURLErrorCancelled) {
+            
+            [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试!"];
+        }
         
         //结束刷新
         [self headerEndRefreshing];
     }];
-    }
+}
 
 
 /**
@@ -290,16 +315,23 @@
     
 
     //1.创建会话管理者
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     //2.拼接参数
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
-    parameters[@"typa"] = @"1";//这里发送@1也可行的
+    parameters[@"typa"] = @"31";//这里发送@1也可行的
+    parameters[@"maxtime"] = self.maxtime;
     
     //3.发送请求
-    [mgr GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.manager GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //存储maxtime
+        self.maxtime = responseObject[@"info"][@"maxtime"];
+        
         
         //字典转模型
         NSArray *moreTopics = [GWDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
@@ -315,8 +347,10 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);
-        
-        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        if (error.code != NSURLErrorCancelled) {
+            
+            [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        }
         
         //结束刷新
         [self footerEndRefreshing];
@@ -331,6 +365,7 @@
     //如果正在下拉刷新，直接返回
     if (self.isHeaderRefreshing) return;
 
+//    if (self.isFooterRefreshing) return;
     
     //进入下拉刷新状态
     self.headerLabel.text = @"正在刷新数据...";
@@ -371,6 +406,7 @@
     //如果正在刷新,直接返回
     if (self.isFooterRefreshing) return;
 
+//    if (self.isHeaderRefreshing) return;
     
     self.footerRefreshing = YES;
     self.footerLabel.text = @"正在加载数据";
