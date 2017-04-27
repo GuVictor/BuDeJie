@@ -9,6 +9,10 @@
 #import "GWDTopicCell.h"
 #import "GWDTopic.h"
 #import <UIImageView+WebCache.h>
+#import "GWDTopicVideoView.h"
+#import "GWDVoiceView.h"
+#import "GWDPictureView.h"
+
 @interface GWDTopicCell ()
 
 /*
@@ -29,6 +33,16 @@
 @property (weak, nonatomic) IBOutlet UIView *topCmtView;
 @property (weak, nonatomic) IBOutlet UILabel *topCmtLabel;
 
+//中间控件（声音， 视频， 图片）
+/** 图片控件 */
+@property (weak, nonatomic) GWDPictureView *pictureView;
+/** 视频控件 */
+@property (weak, nonatomic) GWDTopicVideoView *videoView;
+/** 声音控件 */
+@property (weak, nonatomic) GWDVoiceView *voiceView;
+
+
+
 @end
 
 @implementation GWDTopicCell
@@ -39,6 +53,36 @@
     UIImage *image = [UIImage imageNamed:@"mainCellBackground"];
     UIImage *stretchImage = [image stretchableImageWithLeftCapWidth:image.size.width * 0.5 topCapHeight:image.size.height * 0.5];
     self.backgroundView = [[UIImageView alloc] initWithImage:stretchImage];
+}
+
+#pragma mark - 懒加载
+- (GWDPictureView *)pictureView {
+    if (!_pictureView) {
+        GWDPictureView *pictureView = [GWDPictureView gwd_viewFromXib];
+        [self.contentView addSubview:pictureView];
+        _pictureView = pictureView;
+    }
+    
+    return _pictureView;
+}
+
+- (GWDTopicVideoView *)videoView {
+    if (!_videoView) {
+        _videoView = [GWDTopicVideoView gwd_viewFromXib];
+        [self.contentView addSubview:_videoView];
+    }
+    
+    return _videoView;
+}
+
+- (GWDVoiceView *)voiceView {
+    if (!_voiceView) {
+        GWDVoiceView *voiceView = [GWDVoiceView gwd_viewFromXib];
+        [self.contentView addSubview:voiceView];
+        _voiceView = voiceView;
+    }
+    
+    return _voiceView;
 }
 
 #pragma mark - 设置数据
@@ -78,6 +122,50 @@
         self.topCmtView.hidden = YES;
     }
     
+    //中间的内容
+    if (topic.type == GWDTopicTypePicture) {
+        //图片
+        self.pictureView.hidden = NO;
+        self.voiceView.hidden = YES;
+        self.videoView.hidden = YES;
+        
+    } else if (topic.type == GWDTopicTypeVoice){
+        //声音
+        self.pictureView.hidden = YES;
+        self.voiceView.hidden = NO;
+        self.videoView.hidden = YES;
+    } else if (topic.type == GWDTopicTypeVideo) {
+        //视频
+        self.pictureView.hidden = YES;
+        self.voiceView.hidden = YES;
+        self.videoView.hidden = NO;
+    } else {
+        //段子
+        self.pictureView.hidden = YES;
+        self.voiceView.hidden = YES;
+        self.videoView.hidden = YES;
+    }
+    
+}
+
+#pragma mark - 布局子控件
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    switch (self.topic.type) {
+        case GWDTopicTypePicture:
+            self.pictureView.frame = self.topic.middleFrame;
+            break;
+        case GWDTopicTypeVoice:
+            self.voiceView.frame = self.topic.middleFrame;
+            break;
+        case GWDTopicTypeVideo:
+            self.videoView.frame = self.topic.middleFrame;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 

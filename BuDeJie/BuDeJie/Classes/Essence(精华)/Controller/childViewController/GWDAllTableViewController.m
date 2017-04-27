@@ -233,7 +233,6 @@
         //进入刷新状态
 
         [self footerBeginRefreshing];
-        
     }
 
 }
@@ -352,6 +351,7 @@
     
     //3.发送请求
     [self.manager GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         
         //存储maxtime
         self.maxtime = responseObject[@"info"][@"maxtime"];

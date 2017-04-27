@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+/*
+ 
+ 写分类:避免跟其他开发者产生冲突,加前缀
+ 
+ */
 
 @interface UIView (Frame)
 
@@ -18,4 +23,5 @@
 @property CGFloat gwd_centerX;
 @property CGFloat gwd_centerY;
 
++ (instancetype)gwd_viewFromXib;
 @end

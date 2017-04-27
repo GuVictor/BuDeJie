@@ -74,5 +74,8 @@
     return self.center.y;
 }
 
++ (instancetype)gwd_viewFromXib {
+    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:0].firstObject;
+}
 
 @end

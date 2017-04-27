@@ -42,6 +42,14 @@ typedef NS_ENUM(NSUInteger, GWDTopicType) {
 /** 最热评论 */
 @property (strong, nonatomic) NSArray *top_cmt;
 
+/** 宽度(像素) */
+@property (assign, nonatomic) NSInteger  width;
+/** 高度(像素) */
+@property (assign, nonatomic) NSInteger  height;
+
+/** cell中间内容的frame */
+@property (assign, nonatomic) CGRect  middleFrame;
+
 /*额外增加属性(并非服务器返回的属性，仅仅是为了提高开发效率)*/
 /** 根据当前模型计算出来的cell高度 */
 @property (assign, nonatomic) CGFloat  cellHeight;

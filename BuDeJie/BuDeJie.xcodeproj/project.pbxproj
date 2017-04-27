@@ -26,6 +26,12 @@
 		B5123DA01EA60F69009A0A34 /* GWDWordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5123D9F1EA60F69009A0A34 /* GWDWordTableViewController.m */; };
 		B5123DA31EA67809009A0A34 /* GWDConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B5123DA21EA67809009A0A34 /* GWDConst.m */; };
 		B51D6B051EA47A850059B9C7 /* GWDFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B51D6B041EA47A850059B9C7 /* GWDFileTool.m */; };
+		B54E75E91EB216AA0037C4B0 /* GWDTopicVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E75E81EB216AA0037C4B0 /* GWDTopicVideoView.m */; };
+		B54E75EB1EB216BF0037C4B0 /* GWDTopicVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54E75EA1EB216BF0037C4B0 /* GWDTopicVideoView.xib */; };
+		B54E75EE1EB217330037C4B0 /* GWDVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E75ED1EB217330037C4B0 /* GWDVoiceView.m */; };
+		B54E75F01EB217430037C4B0 /* GWDVoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54E75EF1EB217430037C4B0 /* GWDVoiceView.xib */; };
+		B54E75F61EB2178A0037C4B0 /* GWDPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E75F51EB2178A0037C4B0 /* GWDPictureView.m */; };
+		B54E75F81EB217980037C4B0 /* GWDPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54E75F71EB217980037C4B0 /* GWDPictureView.xib */; };
 		B5644EC71EA069C7009E9F89 /* GWDAdItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC61EA069C7009E9F89 /* GWDAdItem.m */; };
 		B5644ECA1EA0B1A4009E9F89 /* GWDSubTagTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644EC91EA0B1A4009E9F89 /* GWDSubTagTableVC.m */; };
 		B5644ECD1EA0BD59009E9F89 /* GWDSubTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B5644ECC1EA0BD59009E9F89 /* GWDSubTagItem.m */; };
@@ -116,6 +122,15 @@
 		B5123DA21EA67809009A0A34 /* GWDConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDConst.m; sourceTree = "<group>"; };
 		B51D6B031EA47A850059B9C7 /* GWDFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDFileTool.h; sourceTree = "<group>"; };
 		B51D6B041EA47A850059B9C7 /* GWDFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDFileTool.m; sourceTree = "<group>"; };
+		B54E75E71EB216AA0037C4B0 /* GWDTopicVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopicVideoView.h; sourceTree = "<group>"; };
+		B54E75E81EB216AA0037C4B0 /* GWDTopicVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopicVideoView.m; sourceTree = "<group>"; };
+		B54E75EA1EB216BF0037C4B0 /* GWDTopicVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDTopicVideoView.xib; sourceTree = "<group>"; };
+		B54E75EC1EB217330037C4B0 /* GWDVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDVoiceView.h; sourceTree = "<group>"; };
+		B54E75ED1EB217330037C4B0 /* GWDVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDVoiceView.m; sourceTree = "<group>"; };
+		B54E75EF1EB217430037C4B0 /* GWDVoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDVoiceView.xib; sourceTree = "<group>"; };
+		B54E75F41EB2178A0037C4B0 /* GWDPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDPictureView.h; sourceTree = "<group>"; };
+		B54E75F51EB2178A0037C4B0 /* GWDPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDPictureView.m; sourceTree = "<group>"; };
+		B54E75F71EB217980037C4B0 /* GWDPictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDPictureView.xib; sourceTree = "<group>"; };
 		B5644EC51EA069C7009E9F89 /* GWDAdItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDAdItem.h; sourceTree = "<group>"; };
 		B5644EC61EA069C7009E9F89 /* GWDAdItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDAdItem.m; sourceTree = "<group>"; };
 		B5644EC81EA0B1A4009E9F89 /* GWDSubTagTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSubTagTableVC.h; sourceTree = "<group>"; };
@@ -319,6 +334,15 @@
 				B57D929A1EB0E6EB0084A78F /* GWDTopicCell.h */,
 				B57D929B1EB0E6EB0084A78F /* GWDTopicCell.m */,
 				B57D929C1EB0E6EB0084A78F /* GWDTopicCell.xib */,
+				B54E75E71EB216AA0037C4B0 /* GWDTopicVideoView.h */,
+				B54E75E81EB216AA0037C4B0 /* GWDTopicVideoView.m */,
+				B54E75EA1EB216BF0037C4B0 /* GWDTopicVideoView.xib */,
+				B54E75EC1EB217330037C4B0 /* GWDVoiceView.h */,
+				B54E75ED1EB217330037C4B0 /* GWDVoiceView.m */,
+				B54E75EF1EB217430037C4B0 /* GWDVoiceView.xib */,
+				B54E75F41EB2178A0037C4B0 /* GWDPictureView.h */,
+				B54E75F51EB2178A0037C4B0 /* GWDPictureView.m */,
+				B54E75F71EB217980037C4B0 /* GWDPictureView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -777,14 +801,17 @@
 			files = (
 				B57C168C1EA3157F00B8BE0C /* GWDMeViewController.storyboard in Resources */,
 				B5644ED91EA0D2E9009E9F89 /* GWDSubTagTableViewCell.xib in Resources */,
+				B54E75F01EB217430037C4B0 /* GWDVoiceView.xib in Resources */,
 				B59FF0561E9FDDBC0089BAA8 /* LaunchImage.png in Resources */,
 				B59FF0571E9FDDBC0089BAA8 /* LaunchImage@2x.png in Resources */,
 				B5761A3F1E9AF0E1009E7AED /* Assets.xcassets in Resources */,
+				B54E75EB1EB216BF0037C4B0 /* GWDTopicVideoView.xib in Resources */,
 				B59FF0541E9FDDBC0089BAA8 /* LaunchImage-800-667h@2x.png in Resources */,
 				B508B6E81EA20520005B9767 /* GWDLoginRegisterView.xib in Resources */,
 				B59FF0511E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png in Resources */,
 				B508B6ED1EA222F0005B9767 /* GWDFastLoginView.xib in Resources */,
 				B59FF0531E9FDDBC0089BAA8 /* LaunchImage-700@2x.png in Resources */,
+				B54E75F81EB217980037C4B0 /* GWDPictureView.xib in Resources */,
 				B57D929E1EB0E6EB0084A78F /* GWDTopicCell.xib in Resources */,
 				B57C16911EA31CC500B8BE0C /* GWDSquareCollectionViewCell.xib in Resources */,
 				B508B6DE1EA1C58D005B9767 /* GWDFriendTrendViewController.xib in Resources */,
@@ -874,6 +901,8 @@
 				B5123D9D1EA60F4F009A0A34 /* GWDPictureTableViewController.m in Sources */,
 				B56537651E9B1E0200594EFC /* GWDPublishViewController.m in Sources */,
 				B5123D901EA5B169009A0A34 /* GWDTitleButton.m in Sources */,
+				B54E75E91EB216AA0037C4B0 /* GWDTopicVideoView.m in Sources */,
+				B54E75F61EB2178A0037C4B0 /* GWDPictureView.m in Sources */,
 				B56537501E9B14BD00594EFC /* AppDelegate.m in Sources */,
 				B56537531E9B15B600594EFC /* UIImage+OriginalImage.m in Sources */,
 				B59444B31EAD81C5007FD78E /* GWDTopic.m in Sources */,
@@ -887,6 +916,7 @@
 				B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */,
 				B5E669241E9E9DD600F196C2 /* GWDSettingViewController.m in Sources */,
 				B5123D9A1EA60F3E009A0A34 /* GWDVoiceTableViewController.m in Sources */,
+				B54E75EE1EB217330037C4B0 /* GWDVoiceView.m in Sources */,
 				B51D6B051EA47A850059B9C7 /* GWDFileTool.m in Sources */,
 				B508B6E21EA1D99D005B9767 /* GWDLoginRegisterViewController.m in Sources */,
 				B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */,
