@@ -64,6 +64,10 @@
     //设置指示器的偏移量
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
+    //减少heightForRowAtIndexPath方法的调用
+    //设置cell的估算高度，每一行大约都是（或者使用代理方法）
+    self.tableView.estimatedRowHeight = 100;
+    
     //添加监听器
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:GWDTabBarButtonDidRepeatClickNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonDidRepeatClick) name:GWDTitleButtonDidRepeatClickNotification object:nil];

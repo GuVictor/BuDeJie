@@ -145,6 +145,34 @@
                             <constraint firstItem="Azp-kz-eaG" firstAttribute="top" secondItem="Pw1-79-Zja" secondAttribute="bottom" id="zt0-4a-CrC"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T62-T1-nWx" userLabel="最热评论整体">
+                        <rect key="frame" x="10" y="320.5" width="300" height="42"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最热评论" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvC-0L-7PI">
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最热评论最热评论最热评论最热评论最热评论最热评论最" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beS-0v-Gck">
+                                <rect key="frame" x="0.0" y="21" width="300" height="21"/>
+                                <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="beS-0v-Gck" firstAttribute="top" secondItem="xvC-0L-7PI" secondAttribute="bottom" id="0a2-Rz-E5b"/>
+                            <constraint firstItem="xvC-0L-7PI" firstAttribute="top" secondItem="T62-T1-nWx" secondAttribute="top" id="97z-mg-8xA"/>
+                            <constraint firstAttribute="bottom" secondItem="beS-0v-Gck" secondAttribute="bottom" id="J2h-73-R5b"/>
+                            <constraint firstItem="xvC-0L-7PI" firstAttribute="leading" secondItem="T62-T1-nWx" secondAttribute="leading" id="PRR-uD-Ngn"/>
+                            <constraint firstAttribute="trailing" secondItem="beS-0v-Gck" secondAttribute="trailing" id="SuA-GM-zcX"/>
+                            <constraint firstItem="beS-0v-Gck" firstAttribute="leading" secondItem="T62-T1-nWx" secondAttribute="leading" id="faP-HV-FuF"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="cof-Z0-h9U" firstAttribute="top" secondItem="c36-Ul-xh9" secondAttribute="top" id="3m5-dg-wqb"/>
@@ -157,10 +185,13 @@
                     <constraint firstItem="c36-Ul-xh9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Ir3-IV-BSs"/>
                     <constraint firstAttribute="bottom" secondItem="Who-wy-BEV" secondAttribute="bottom" id="MNb-0c-Qvs"/>
                     <constraint firstItem="f0u-HN-CKi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Pve-wC-cGS"/>
+                    <constraint firstItem="T62-T1-nWx" firstAttribute="trailing" secondItem="aHK-ns-TzH" secondAttribute="trailing" id="T7X-Ms-IGF"/>
                     <constraint firstAttribute="trailing" secondItem="Who-wy-BEV" secondAttribute="trailing" id="abF-88-gZX"/>
                     <constraint firstItem="aHK-ns-TzH" firstAttribute="top" secondItem="c36-Ul-xh9" secondAttribute="bottom" constant="10" id="d21-JN-hl9"/>
                     <constraint firstItem="c36-Ul-xh9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="dZK-Tg-XEh"/>
+                    <constraint firstItem="T62-T1-nWx" firstAttribute="leading" secondItem="aHK-ns-TzH" secondAttribute="leading" id="gVu-E8-D1T"/>
                     <constraint firstAttribute="trailing" secondItem="f0u-HN-CKi" secondAttribute="trailing" constant="10" id="iZS-7L-C9H"/>
+                    <constraint firstItem="Who-wy-BEV" firstAttribute="top" secondItem="T62-T1-nWx" secondAttribute="bottom" id="kr9-qB-pww"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -172,6 +203,8 @@
                 <outlet property="profileImageView" destination="c36-Ul-xh9" id="teI-ni-GTW"/>
                 <outlet property="repostButton" destination="MDC-8l-ntY" id="UMa-kh-Ebl"/>
                 <outlet property="text_label" destination="aHK-ns-TzH" id="3Ac-fh-w4v"/>
+                <outlet property="topCmtLabel" destination="beS-0v-Gck" id="h0x-6v-dIF"/>
+                <outlet property="topCmtView" destination="T62-T1-nWx" id="1IL-ak-FiQ"/>
             </connections>
         </tableViewCell>
     </objects>
