@@ -57,8 +57,6 @@
     self.view.backgroundColor = GWDGrayColor(206);
     self.tableView.contentInset = UIEdgeInsetsMake(GWDNavMaxY + GWDTitlesViewH , 0, GWDTabBarH, 0);
     
-    //设置cell行高
-    self.tableView.rowHeight = 200;
     
     //设置分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -167,7 +165,7 @@
     [self tabBarButtonDidRepeatClick];
 }
 
-#pragma mark - 数据源
+#pragma mark - tableView数据源
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //在这个方法监听有没有数据，没有就隐藏footView
@@ -175,6 +173,20 @@
     
     
     return self.topics.count;
+}
+
+#pragma mark - tableView代理
+/**
+ 这个方法的特点：
+ 1.默认情况下
+ 1> 每次刷新表格时，有多少数据，这个方法就一次性调用多少次（比如有100条数据，每次reloadData时，这个方法就会一次性调用100次）
+ 2> 每当有cell进入屏幕范围内，就会调用一次这个方法
+ */
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    GWDTopic *topic = self.topics[indexPath.row];
+    
+    return topic.cellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

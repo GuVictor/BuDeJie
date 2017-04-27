@@ -35,4 +35,8 @@ typedef NS_ENUM(NSUInteger, GWDTopicType) {
 @property (nonatomic, assign) NSInteger repost;
 /** 评论数量 */
 @property (nonatomic, assign) NSInteger comment;
+
+/*额外增加属性(并非服务器返回的属性，仅仅是为了提高开发效率)*/
+/** 根据当前模型计算出来的cell高度 */
+@property (assign, nonatomic) CGFloat  cellHeight;
 @end

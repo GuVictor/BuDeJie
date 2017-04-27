@@ -139,7 +139,7 @@
     //    titlesView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     
     //子控制器会继承父控制器设置的透明度，如果父控制器透明，子控制器也透明；
-    titleView.frame = CGRectMake(0, 64, self.view.gwd_width, 35);
+    titleView.frame = CGRectMake(0, GWDNavMaxY, self.view.gwd_width, GWDTitlesViewH);
     
     [self.view addSubview:titleView];
     _titleView = titleView;
