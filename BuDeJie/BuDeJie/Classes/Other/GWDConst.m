@@ -17,6 +17,9 @@ CGFloat const GWDNavMaxY = 64;
 /** 标题栏的高度 */
 CGFloat const GWDTitlesViewH = 35;
 
+/** 全局统一的间距 */
+CGFloat const GWDMarin = 10;
+
 /** TabBarButton被重复点击的通知 */
 NSString * const GWDTabBarButtonDidRepeatClickNotification = @"GWDTabBarButtonDidRepeatClickNotification";
 

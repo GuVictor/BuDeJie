@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, GWDTopicType) {
+    /** 全部 */
+    GWDTopicTypeAll = 1,
+    GWDTopicTypePicture = 10,
+    GWDTopicTypeWord = 29,
+    GWDTopicTypeVoice = 31,
+    GWDTopicTypeVideo = 41
+};
+
 @interface GWDTopic : NSObject
 /** 用户的名字 */
 @property (nonatomic, copy) NSString *name;

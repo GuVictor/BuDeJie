@@ -41,6 +41,7 @@
 		B56537651E9B1E0200594EFC /* GWDPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56537641E9B1E0200594EFC /* GWDPublishViewController.m */; };
 		B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B56537671E9B1E8500594EFC /* GWDNewViewController.m */; };
 		B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B565376A1E9B2A2B00594EFC /* GWDNavgationController.m */; };
+		B56A19111EB0FC1C006AAF35 /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = B56A19101EB0FC1C006AAF35 /* UIImage+Image.m */; };
 		B5761A3F1E9AF0E1009E7AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5761A3E1E9AF0E1009E7AED /* Assets.xcassets */; };
 		B5761A4D1E9AF0E1009E7AED /* BuDeJieUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5761A4C1E9AF0E1009E7AED /* BuDeJieUITests.m */; };
 		B57C168C1EA3157F00B8BE0C /* GWDMeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57C168B1EA3157F00B8BE0C /* GWDMeViewController.storyboard */; };
@@ -49,6 +50,8 @@
 		B57C16941EA34EED00B8BE0C /* GWDSquareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B57C16931EA34EED00B8BE0C /* GWDSquareItem.m */; };
 		B57C16981EA37ADC00B8BE0C /* GWDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57C16961EA37ADC00B8BE0C /* GWDWebViewController.m */; };
 		B57C16991EA37ADC00B8BE0C /* GWDWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57C16971EA37ADC00B8BE0C /* GWDWebViewController.xib */; };
+		B57D929D1EB0E6EB0084A78F /* GWDTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B57D929B1EB0E6EB0084A78F /* GWDTopicCell.m */; };
+		B57D929E1EB0E6EB0084A78F /* GWDTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57D929C1EB0E6EB0084A78F /* GWDTopicCell.xib */; };
 		B59444B31EAD81C5007FD78E /* GWDTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = B59444B21EAD81C5007FD78E /* GWDTopic.m */; };
 		B59444B51EAD99B4007FD78E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59444B41EAD99B4007FD78E /* Launch Screen.storyboard */; };
 		B59FF0471E9F82700089BAA8 /* GWDDdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59FF0451E9F82700089BAA8 /* GWDDdViewController.m */; };
@@ -142,6 +145,8 @@
 		B56537671E9B1E8500594EFC /* GWDNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDNewViewController.m; sourceTree = "<group>"; };
 		B56537691E9B2A2B00594EFC /* GWDNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDNavgationController.h; sourceTree = "<group>"; };
 		B565376A1E9B2A2B00594EFC /* GWDNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDNavgationController.m; sourceTree = "<group>"; };
+		B56A190F1EB0FC1C006AAF35 /* UIImage+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Image.h"; sourceTree = "<group>"; };
+		B56A19101EB0FC1C006AAF35 /* UIImage+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Image.m"; sourceTree = "<group>"; };
 		B5761A2F1E9AF0E1009E7AED /* BuDeJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuDeJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5761A3E1E9AF0E1009E7AED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5761A431E9AF0E1009E7AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -157,6 +162,9 @@
 		B57C16951EA37ADC00B8BE0C /* GWDWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDWebViewController.h; sourceTree = "<group>"; };
 		B57C16961EA37ADC00B8BE0C /* GWDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDWebViewController.m; sourceTree = "<group>"; };
 		B57C16971EA37ADC00B8BE0C /* GWDWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDWebViewController.xib; sourceTree = "<group>"; };
+		B57D929A1EB0E6EB0084A78F /* GWDTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopicCell.h; sourceTree = "<group>"; };
+		B57D929B1EB0E6EB0084A78F /* GWDTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopicCell.m; sourceTree = "<group>"; };
+		B57D929C1EB0E6EB0084A78F /* GWDTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDTopicCell.xib; sourceTree = "<group>"; };
 		B59444B11EAD81C5007FD78E /* GWDTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopic.h; sourceTree = "<group>"; };
 		B59444B21EAD81C5007FD78E /* GWDTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopic.m; sourceTree = "<group>"; };
 		B59444B41EAD99B4007FD78E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -308,6 +316,9 @@
 			children = (
 				B5123D8E1EA5B169009A0A34 /* GWDTitleButton.h */,
 				B5123D8F1EA5B169009A0A34 /* GWDTitleButton.m */,
+				B57D929A1EB0E6EB0084A78F /* GWDTopicCell.h */,
+				B57D929B1EB0E6EB0084A78F /* GWDTopicCell.m */,
+				B57D929C1EB0E6EB0084A78F /* GWDTopicCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -506,6 +517,8 @@
 				B5E669171E9E2FFB00F196C2 /* UIView+Frame.m */,
 				B508B6F41EA28853005B9767 /* UITextField+Placeholder.h */,
 				B508B6F51EA28853005B9767 /* UITextField+Placeholder.m */,
+				B56A190F1EB0FC1C006AAF35 /* UIImage+Image.h */,
+				B56A19101EB0FC1C006AAF35 /* UIImage+Image.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -772,6 +785,7 @@
 				B59FF0511E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png in Resources */,
 				B508B6ED1EA222F0005B9767 /* GWDFastLoginView.xib in Resources */,
 				B59FF0531E9FDDBC0089BAA8 /* LaunchImage-700@2x.png in Resources */,
+				B57D929E1EB0E6EB0084A78F /* GWDTopicCell.xib in Resources */,
 				B57C16911EA31CC500B8BE0C /* GWDSquareCollectionViewCell.xib in Resources */,
 				B508B6DE1EA1C58D005B9767 /* GWDFriendTrendViewController.xib in Resources */,
 				B59444B51EAD99B4007FD78E /* Launch Screen.storyboard in Resources */,
@@ -855,6 +869,7 @@
 				B565375F1E9B1DB600594EFC /* GWDMeViewController.m in Sources */,
 				B508B6F61EA28853005B9767 /* UITextField+Placeholder.m in Sources */,
 				B508B6F31EA27DCD005B9767 /* GWDLoginTextField.m in Sources */,
+				B57D929D1EB0E6EB0084A78F /* GWDTopicCell.m in Sources */,
 				B5644ECD1EA0BD59009E9F89 /* GWDSubTagItem.m in Sources */,
 				B5123D9D1EA60F4F009A0A34 /* GWDPictureTableViewController.m in Sources */,
 				B56537651E9B1E0200594EFC /* GWDPublishViewController.m in Sources */,
@@ -868,6 +883,7 @@
 				B5E6691D1E9E7D3400F196C2 /* UIBarButtonItem+Item.m in Sources */,
 				B5123DA31EA67809009A0A34 /* GWDConst.m in Sources */,
 				B565375C1E9B1D8200594EFC /* GWDFriendTrendViewController.m in Sources */,
+				B56A19111EB0FC1C006AAF35 /* UIImage+Image.m in Sources */,
 				B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */,
 				B5E669241E9E9DD600F196C2 /* GWDSettingViewController.m in Sources */,
 				B5123D9A1EA60F3E009A0A34 /* GWDVoiceTableViewController.m in Sources */,

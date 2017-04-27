@@ -11,6 +11,7 @@
 #import "GWDTopic.h"
 #import <MJExtension.h>
 #import <SVProgressHUD.h>
+#import "GWDTopicCell.h"
 @interface GWDAllTableViewController ()
 
 /** 当前帖子数据的描述信息，专门有了加载下一页数据 */
@@ -53,8 +54,14 @@
     
 
     //设置背景颜色
-    self.view.backgroundColor = GWDRandomColor;
+    self.view.backgroundColor = GWDGrayColor(206);
     self.tableView.contentInset = UIEdgeInsetsMake(GWDNavMaxY + GWDTitlesViewH , 0, GWDTabBarH, 0);
+    
+    //设置cell行高
+    self.tableView.rowHeight = 200;
+    
+    //设置分割线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     //设置指示器的偏移量
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
@@ -62,6 +69,9 @@
     //添加监听器
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:GWDTabBarButtonDidRepeatClickNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonDidRepeatClick) name:GWDTitleButtonDidRepeatClickNotification object:nil];
+    
+    //注册cell
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GWDTopicCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([GWDTopicCell class])];
     
     //设置刷新view(包括下拉刷新，和上拉刷新)
     [self setupRefresh];
@@ -169,16 +179,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *ID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-        cell.backgroundColor = [UIColor clearColor];
-    }
+
+    // control + command + 空格 -> 弹出emoji表情键盘
+    //    cell.textLabel.text = @"⚠️哈哈";
+
+    GWDTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GWDTopicCell class])];
     
-    GWDTopic *topic = self.topics[indexPath.row];
-    cell.textLabel.text = topic.name;
-    cell.detailTextLabel.text = topic.text;
+    
+    cell.topic = self.topics[indexPath.row];
     
     return cell;
 }

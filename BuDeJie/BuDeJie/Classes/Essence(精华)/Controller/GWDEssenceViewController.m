@@ -208,7 +208,7 @@
     
     [firstTitleBtn.titleLabel sizeToFit];//让label根据文字内容计算尺寸（开始的时候为0，因为在view将要显示的时候才会计算尺寸，这里强制让它算一下）
     
-    self.titleUnderline.gwd_width = firstTitleBtn.titleLabel.gwd_width + 10;
+    self.titleUnderline.gwd_width = firstTitleBtn.titleLabel.gwd_width + GWDMarin;
     self.titleUnderline.gwd_centerX = firstTitleBtn.gwd_centerX;
     
 }
@@ -259,7 +259,7 @@
         //        self.titleUnderline.gwd_width = [btn.currentTitle sizeWithAttributes:attributes].width;
         
         //简单的方法不用自己去计算宽度（titleLabel包着字体）
-        self.titleUnderline.gwd_width = btn.titleLabel.gwd_width + 10;
+        self.titleUnderline.gwd_width = btn.titleLabel.gwd_width + GWDMarin;
         self.titleUnderline.gwd_centerX = btn.gwd_centerX;
         
         //知道按钮的标识，就知道偏移量是多少

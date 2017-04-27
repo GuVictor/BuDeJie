@@ -48,7 +48,7 @@ static CGFloat margin = 1;
     
     //处理cell间距 -> 默认tableView分组样式，有额外头部和尾部
     self.tableView.sectionHeaderHeight = 0;
-    self.tableView.sectionFooterHeight = 10;
+    self.tableView.sectionFooterHeight = GWDMarin;
     
     self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0); // 35 - 15 = 10
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:GWDTabBarButtonDidRepeatClickNotification object:nil];

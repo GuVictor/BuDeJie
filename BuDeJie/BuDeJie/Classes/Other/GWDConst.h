@@ -17,6 +17,9 @@ UIKIT_EXTERN CGFloat const GWDNavMaxY;
 /** 标题栏的高度 */
 UIKIT_EXTERN CGFloat const GWDTitlesViewH;
 
+/** 全局统一的间距 */
+UIKIT_EXTERN CGFloat const GWDMarin;
+
 /** TabBarButton被重复点击的通知 */
 UIKIT_EXTERN NSString * const GWDTabBarButtonDidRepeatClickNotification;
 
