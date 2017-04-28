@@ -12,12 +12,56 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GWDVoiceView">
-            <rect key="frame" x="0.0" y="0.0" width="268" height="177"/>
+            <rect key="frame" x="0.0" y="0.0" width="311" height="225"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GMb-00-qRH">
+                    <rect key="frame" x="0.0" y="0.0" width="311" height="225"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN3-DQ-L7g">
+                    <rect key="frame" x="123.5" y="81" width="63" height="63"/>
+                    <state key="normal" image="playButtonPlay" backgroundImage="playButton"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4343播放" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jg-GY-c4l">
+                    <rect key="frame" x="243" y="0.0" width="68" height="18"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03:20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36d-Vz-gl9">
+                    <rect key="frame" x="270" y="207" width="41" height="18"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7Jg-GY-c4l" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Gxs-bv-no5"/>
+                <constraint firstAttribute="trailing" secondItem="36d-Vz-gl9" secondAttribute="trailing" id="H7M-v6-Jr4"/>
+                <constraint firstAttribute="trailing" secondItem="GMb-00-qRH" secondAttribute="trailing" id="IVs-NU-trI"/>
+                <constraint firstAttribute="bottom" secondItem="36d-Vz-gl9" secondAttribute="bottom" id="M8y-YY-xg0"/>
+                <constraint firstItem="TN3-DQ-L7g" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MDN-Op-Mhg"/>
+                <constraint firstAttribute="trailing" secondItem="7Jg-GY-c4l" secondAttribute="trailing" id="VOD-Gj-ykE"/>
+                <constraint firstItem="GMb-00-qRH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Xnd-Rw-j62"/>
+                <constraint firstItem="GMb-00-qRH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oDU-4i-BHx"/>
+                <constraint firstItem="TN3-DQ-L7g" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="oc5-ym-v4U"/>
+                <constraint firstAttribute="bottom" secondItem="GMb-00-qRH" secondAttribute="bottom" id="ypR-8o-Fhn"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-20" y="-191.5"/>
+            <connections>
+                <outlet property="imageView" destination="GMb-00-qRH" id="sSO-Qu-8Yi"/>
+                <outlet property="playcountLabel" destination="7Jg-GY-c4l" id="blf-Qh-g0j"/>
+                <outlet property="voicetimeLabel" destination="36d-Vz-gl9" id="PFx-oh-bZf"/>
+            </connections>
+            <point key="canvasLocation" x="1.5" y="-167.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="playButton" width="63" height="63"/>
+        <image name="playButtonPlay" width="30" height="30"/>
+    </resources>
 </document>

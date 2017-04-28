@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class GWDTopic;
+
 @interface GWDVoiceView : UIView
 
+@property (strong, nonatomic) GWDTopic *topic;
 @end

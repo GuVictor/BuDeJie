@@ -12,6 +12,7 @@
 #import <MJExtension.h>
 #import <SVProgressHUD.h>
 #import "GWDTopicCell.h"
+#import "NSDictionary+Property.h"
 @interface GWDAllTableViewController ()
 
 /** 当前帖子数据的描述信息，专门有了加载下一页数据 */
@@ -157,9 +158,9 @@
     //如果显示在正中间的不是GWDAllTableViewController 直接返回
     if (self.tableView.scrollsToTop == NO) return;
     
+    NSLog(@"%s调用开始刷新数据, line = %d", __FUNCTION__, __LINE__);
     [self headerBeginRefreshing];
     
-    NSLog(@"%s刷新数据, line = %d", __FUNCTION__, __LINE__);
     
 }
 
@@ -224,6 +225,9 @@
     
     //如果正在刷新,直接返回
     if (self.isFooterRefreshing) return;
+
+#warning <#message#>
+//    if (self.isHeaderRefreshing) return;
     
     //当scrollView的偏移量y值 >= ofsetY是, 代表footer意见完全出现
     CGFloat ofsetY = self.tableView.contentSize.height + self.tableView.contentInset.bottom - self.tableView.gwd_height;
@@ -305,11 +309,13 @@
 //        GWDAFNWriteToPlist(topic)
 //        [responseObject writeToFile:@"/Users/guweidong/Desktop/plist文件/me1.plist" atomically:YES];//记住在模拟器运行才能写入电脑桌面
         
+//        [responseObject[@"list"][0] createPropertyCode];
         //无论是上拉还是下拉都有储存maxtime
         self.maxtime = responseObject[@"info"][@"maxtime"];
         
         //覆盖以前的
         self.topics =  [GWDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        NSLog(@"%s, line = %d  %ld", __FUNCTION__, __LINE__, self.topics.count);
         //刷新表格
         [self.tableView reloadData];
         //结束刷新
@@ -346,7 +352,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
-    parameters[@"typa"] = @"31";//这里发送@1也可行的
+    parameters[@"type"] = @"31";//这里发送@1也可行的
     parameters[@"maxtime"] = self.maxtime;
     
     //3.发送请求
@@ -362,7 +368,9 @@
         
         //累计到旧数组的后面
         [self.topics addObjectsFromArray:moreTopics];
-        
+        NSLog(@"%s, line = %d  %ld", __FUNCTION__, __LINE__, self.topics.count);
+
+#warning 刷新表格，contentoffset会改变吗
         //刷新表格
         [self.tableView reloadData];
         
@@ -402,7 +410,9 @@
         inset.top += self.header.gwd_height;//增加的高度
         
         self.tableView.contentInset = inset;
-        self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, -(self.tableView.contentInset.top));
+        
+#warning (self.tableView.contentInset.top)
+        self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, - inset.top);
     }];
     
     [self loadNewTopics];

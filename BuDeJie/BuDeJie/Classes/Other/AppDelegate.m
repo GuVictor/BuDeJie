@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "GWDTabBarController.h"
 #import "GWDDdViewController.h"
+#import <AFNetworking.h>
 @interface AppDelegate ()
 
 @end
@@ -52,6 +53,9 @@
     
     //显示窗口
     [self.window makeKeyAndVisible];
+    
+    //开始监听网络状态
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     return YES;
 }

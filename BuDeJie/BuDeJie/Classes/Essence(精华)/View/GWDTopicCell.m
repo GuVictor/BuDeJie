@@ -134,6 +134,9 @@
         self.pictureView.hidden = YES;
         self.voiceView.hidden = NO;
         self.videoView.hidden = YES;
+#warning  模型传递
+        _voiceView.topic = _topic;
+        
     } else if (topic.type == GWDTopicTypeVideo) {
         //视频
         self.pictureView.hidden = YES;
