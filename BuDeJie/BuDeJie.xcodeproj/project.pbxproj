@@ -59,6 +59,7 @@
 		B57C16991EA37ADC00B8BE0C /* GWDWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57C16971EA37ADC00B8BE0C /* GWDWebViewController.xib */; };
 		B57D929D1EB0E6EB0084A78F /* GWDTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B57D929B1EB0E6EB0084A78F /* GWDTopicCell.m */; };
 		B57D929E1EB0E6EB0084A78F /* GWDTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57D929C1EB0E6EB0084A78F /* GWDTopicCell.xib */; };
+		B588D2DB1EB3A6C700E8C17D /* UIImageView+Download.m in Sources */ = {isa = PBXBuildFile; fileRef = B588D2DA1EB3A6C700E8C17D /* UIImageView+Download.m */; };
 		B59444B31EAD81C5007FD78E /* GWDTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = B59444B21EAD81C5007FD78E /* GWDTopic.m */; };
 		B59444B51EAD99B4007FD78E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59444B41EAD99B4007FD78E /* Launch Screen.storyboard */; };
 		B59FF0471E9F82700089BAA8 /* GWDDdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59FF0451E9F82700089BAA8 /* GWDDdViewController.m */; };
@@ -183,6 +184,8 @@
 		B57D929A1EB0E6EB0084A78F /* GWDTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopicCell.h; sourceTree = "<group>"; };
 		B57D929B1EB0E6EB0084A78F /* GWDTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopicCell.m; sourceTree = "<group>"; };
 		B57D929C1EB0E6EB0084A78F /* GWDTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDTopicCell.xib; sourceTree = "<group>"; };
+		B588D2D91EB3A6C700E8C17D /* UIImageView+Download.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Download.h"; sourceTree = "<group>"; };
+		B588D2DA1EB3A6C700E8C17D /* UIImageView+Download.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Download.m"; sourceTree = "<group>"; };
 		B59444B11EAD81C5007FD78E /* GWDTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopic.h; sourceTree = "<group>"; };
 		B59444B21EAD81C5007FD78E /* GWDTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopic.m; sourceTree = "<group>"; };
 		B59444B41EAD99B4007FD78E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -548,6 +551,8 @@
 				B508B6F51EA28853005B9767 /* UITextField+Placeholder.m */,
 				B56A190F1EB0FC1C006AAF35 /* UIImage+Image.h */,
 				B56A19101EB0FC1C006AAF35 /* UIImage+Image.m */,
+				B588D2D91EB3A6C700E8C17D /* UIImageView+Download.h */,
+				B588D2DA1EB3A6C700E8C17D /* UIImageView+Download.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -907,6 +912,7 @@
 				B5123D9D1EA60F4F009A0A34 /* GWDPictureTableViewController.m in Sources */,
 				B56537651E9B1E0200594EFC /* GWDPublishViewController.m in Sources */,
 				B5123D901EA5B169009A0A34 /* GWDTitleButton.m in Sources */,
+				B588D2DB1EB3A6C700E8C17D /* UIImageView+Download.m in Sources */,
 				B54E75E91EB216AA0037C4B0 /* GWDTopicVideoView.m in Sources */,
 				B54E75F61EB2178A0037C4B0 /* GWDPictureView.m in Sources */,
 				B56537501E9B14BD00594EFC /* AppDelegate.m in Sources */,

@@ -58,24 +58,25 @@
     [self resolveNum];
     
     //设置圆形图片
-    [_iconImageV sd_setImageWithURL:[NSURL URLWithString:item.image_list] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] options:SDWebImageCacheMemoryOnly completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        //1.开启上下文
-            //最后一个参数，是比例参数，6P 3X ， 6 2X ， 4s 1; 传0自动适配设备
-        UIGraphicsBeginImageContextWithOptions(image.size, NO, 0);
-        //2.描述裁剪区域
-        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
-        
-        //3.设置裁剪区域
-        [path addClip];
-        //4.画图片
-        [image drawAtPoint:CGPointZero];
-        //5.取出图片
-        image = UIGraphicsGetImageFromCurrentImageContext();
-        _iconImageV.image = [image imageAntialias];//抗锯齿
-        
-        //6.关闭上下文
-        UIGraphicsEndImageContext();
-    }  ];
+    [_iconImageV gwd_setHeader:item.image_list];
+//    [_iconImageV sd_setImageWithURL:[NSURL URLWithString:item.image_list] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] options:SDWebImageCacheMemoryOnly completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        //1.开启上下文
+//            //最后一个参数，是比例参数，6P 3X ， 6 2X ， 4s 1; 传0自动适配设备
+//        UIGraphicsBeginImageContextWithOptions(image.size, NO, 0);
+//        //2.描述裁剪区域
+//        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+//        
+//        //3.设置裁剪区域
+//        [path addClip];
+//        //4.画图片
+//        [image drawAtPoint:CGPointZero];
+//        //5.取出图片
+//        image = UIGraphicsGetImageFromCurrentImageContext();
+//        _iconImageV.image = [image imageAntialias];//抗锯齿
+//        
+//        //6.关闭上下文
+//        UIGraphicsEndImageContext();
+//    }  ];
 }
 
 #pragma mark - 处理订阅数字

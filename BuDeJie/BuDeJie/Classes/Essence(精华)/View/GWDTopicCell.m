@@ -90,12 +90,13 @@
     _topic = topic;
     
     //顶部控件的数据
-    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[[UIImage imageNamed:@"defaultUserIcon"] gwd_circleImage] options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        //图片下载失败直接返回，安装它的默认做法
-        if (!image) return ;
-        
-        self.profileImageView.image = [image gwd_circleImage];
-    }];
+    [self.profileImageView gwd_setHeader:topic.profile_image];
+//    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[[UIImage imageNamed:@"defaultUserIcon"] gwd_circleImage] options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        //图片下载失败直接返回，安装它的默认做法
+//        if (!image) return ;
+//        
+//        self.profileImageView.image = [image gwd_circleImage];
+//    }];
     
     self.nameLabel.text = topic.name;
     self.passtimeLabel.text = topic.passtime;
