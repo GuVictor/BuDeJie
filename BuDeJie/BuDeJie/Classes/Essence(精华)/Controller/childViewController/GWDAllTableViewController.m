@@ -19,7 +19,7 @@
 @property (copy, nonatomic) NSString *maxtime;
 
 /** 模拟数据量 */
-@property (strong, nonatomic) NSMutableArray *topics;
+@property (strong, nonatomic) NSMutableArray<GWDTopic *> *topics;
 
 /**>>>>>>>>>>>>>>>>>>>>>上拉刷新>>>>>>>>>>>>>>>>>>>>>>>*/
 
@@ -172,6 +172,121 @@
     [self tabBarButtonDidRepeatClick];
 }
 
+#pragma mark - 请求服务器数据处理
+- (GWDTopicType)type {
+    return GWDTopicTypePicture;
+}
+
+/**
+ 发送请求给服务器，下拉请求新数据
+ */
+- (void)loadNewTopics {
+    GWDLog(@"发送请求给服务器，下拉刷新数据");
+    
+    //1.取消所有的请求，并且关闭session(注意：一旦关闭了session，这个manager再也无法发送任何请求)
+    //    [self.manager invalidateSessionCancelingTasks:YES];不可行
+    
+    
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];//它会调用失败的方法
+    
+    
+    //1.创建请求会话管理者
+    //    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    //2.拼接参数
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"a"] = @"list";
+    parameters[@"c"] = @"data";
+    parameters[@"type"] = @(self.type);//这里发送@1(NSNumber)也是可行的, 31表示音频数据
+    
+    
+    //3.发送请求
+    [self.manager GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //        NSLog(@"%@", responseObject);
+        GWDAFNWriteToPlist(topic)
+        //        [responseObject writeToFile:@"/Users/guweidong/Desktop/plist文件/me1.plist" atomically:YES];//记住在模拟器运行才能写入电脑桌面
+        
+        //        [responseObject[@"list"][0] createPropertyCode];
+        //无论是上拉还是下拉都有储存maxtime
+        self.maxtime = responseObject[@"info"][@"maxtime"];
+        
+        //覆盖以前的
+        self.topics =  [GWDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        NSLog(@"%s, line = %d  %ld", __FUNCTION__, __LINE__, self.topics.count);
+        //刷新表格
+        [self.tableView reloadData];
+        //结束刷新
+        [self headerEndRefreshing];
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+        
+        if (error.code != NSURLErrorCancelled) {
+            
+            [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试!"];
+        }
+        
+        //结束刷新
+        [self headerEndRefreshing];
+    }];
+}
+
+
+/**
+ 发送请求给服务器，上拉加载更多数据
+ */
+- (void)loadMoreTopics {
+    NSLog(@"%s, line = %d发送请求给服务器 - 加载更多数据", __FUNCTION__, __LINE__);
+    
+    
+    //1.创建会话管理者
+    //    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //2.拼接参数
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"a"] = @"list";
+    parameters[@"c"] = @"data";
+    parameters[@"type"] = @(self.type);//这里发送@1也可行的
+    parameters[@"maxtime"] = self.maxtime;
+    
+    //3.发送请求
+    [self.manager GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        
+        //存储maxtime
+        self.maxtime = responseObject[@"info"][@"maxtime"];
+        
+        
+        //字典转模型
+        NSArray *moreTopics = [GWDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+        //累计到旧数组的后面
+        [self.topics addObjectsFromArray:moreTopics];
+        NSLog(@"%s, line = %d  %ld", __FUNCTION__, __LINE__, self.topics.count);
+        
+#warning 刷新表格，contentoffset会改变吗
+        //刷新表格
+        [self.tableView reloadData];
+        
+        //结束刷新
+        [self footerEndRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+        if (error.code != NSURLErrorCancelled) {
+            
+            [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        }
+        
+        //结束刷新
+        [self footerEndRefreshing];
+    }];
+    
+}
+
 #pragma mark - tableView数据源
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -190,10 +305,14 @@
  2> 每当有cell进入屏幕范围内，就会调用一次这个方法
  */
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GWDTopic *topic = self.topics[indexPath.row];
-    
-    return topic.cellHeight;
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    GWDTopic *topic = self.topics[indexPath.row];
+//    
+//    return topic.cellHeight;
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return self.topics[indexPath.row].cellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -280,119 +399,6 @@
     
 }
 
-#pragma mark - 请求服务器数据处理
-- (GWDTopicType)type {
-    return GWDTopicTypeVideo;
-}
-
-/**
- 发送请求给服务器，下拉请求新数据
- */
-- (void)loadNewTopics {
-    GWDLog(@"发送请求给服务器，下拉刷新数据");
-    
-    //1.取消所有的请求，并且关闭session(注意：一旦关闭了session，这个manager再也无法发送任何请求)
-//    [self.manager invalidateSessionCancelingTasks:YES];不可行
-    
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];//它会调用失败的方法
-    
-    
-    //1.创建请求会话管理者
-//    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    
-    //2.拼接参数
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"a"] = @"list";
-    parameters[@"c"] = @"data";
-    parameters[@"type"] = @(self.type);//这里发送@1(NSNumber)也是可行的, 31表示音频数据
-    
-    
-    //3.发送请求
-    [self.manager GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSLog(@"%@", responseObject);
-//        GWDAFNWriteToPlist(topic)
-//        [responseObject writeToFile:@"/Users/guweidong/Desktop/plist文件/me1.plist" atomically:YES];//记住在模拟器运行才能写入电脑桌面
-        
-//        [responseObject[@"list"][0] createPropertyCode];
-        //无论是上拉还是下拉都有储存maxtime
-        self.maxtime = responseObject[@"info"][@"maxtime"];
-        
-        //覆盖以前的
-        self.topics =  [GWDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
-        NSLog(@"%s, line = %d  %ld", __FUNCTION__, __LINE__, self.topics.count);
-        //刷新表格
-        [self.tableView reloadData];
-        //结束刷新
-        [self headerEndRefreshing];
-
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", error);
-        
-        if (error.code != NSURLErrorCancelled) {
-            
-            [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试!"];
-        }
-        
-        //结束刷新
-        [self headerEndRefreshing];
-    }];
-}
-
-
-/**
- 发送请求给服务器，上拉加载更多数据
- */
-- (void)loadMoreTopics {
-    NSLog(@"%s, line = %d发送请求给服务器 - 加载更多数据", __FUNCTION__, __LINE__);
-    
-
-    //1.创建会话管理者
-//    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.拼接参数
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"a"] = @"list";
-    parameters[@"c"] = @"data";
-    parameters[@"type"] = @(self.type);//这里发送@1也可行的
-    parameters[@"maxtime"] = self.maxtime;
-    
-    //3.发送请求
-    [self.manager GET:GWDCommonURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        
-        //存储maxtime
-        self.maxtime = responseObject[@"info"][@"maxtime"];
-        
-        
-        //字典转模型
-        NSArray *moreTopics = [GWDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
-        
-        //累计到旧数组的后面
-        [self.topics addObjectsFromArray:moreTopics];
-        NSLog(@"%s, line = %d  %ld", __FUNCTION__, __LINE__, self.topics.count);
-
-#warning 刷新表格，contentoffset会改变吗
-        //刷新表格
-        [self.tableView reloadData];
-        
-        //结束刷新
-        [self footerEndRefreshing];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", error);
-        if (error.code != NSURLErrorCancelled) {
-            
-            [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
-        }
-        
-        //结束刷新
-        [self footerEndRefreshing];
-    }];
-    
-}
 
 #pragma mark - 头部刷新处理
 /**>>>>>>>>>>>>>>>>>>>>>头部开始刷新>>>>>>>>>>>>>>>>>>>>>>>*/

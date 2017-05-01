@@ -56,6 +56,8 @@ typedef NS_ENUM(NSUInteger, GWDTopicType) {
 @property (assign, nonatomic) NSInteger  width;
 /** 高度(像素) */
 @property (assign, nonatomic) NSInteger  height;
+/** 是否为动态图 */
+@property (nonatomic, assign) BOOL is_gif;
 
 
 
@@ -71,13 +73,16 @@ typedef NS_ENUM(NSUInteger, GWDTopicType) {
 
  @property (nonatomic, assign) NSInteger playcount;
 
-/** cell中间内容的frame */
-@property (assign, nonatomic) CGRect  middleFrame;
 
 /*额外增加属性(并非服务器返回的属性，仅仅是为了提高开发效率)*/
 /** 根据当前模型计算出来的cell高度 */
 @property (assign, nonatomic) CGFloat  cellHeight;
 
+/** cell中间内容的frame */
+@property (assign, nonatomic) CGRect  middleFrame;
+
+/** 是否为超长图片 */
+@property (assign, nonatomic, getter=isBigPicture ) BOOL  bigPicture;
 @end
 
 

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class GWDTopic;
 @interface GWDPictureView : UIView
 
+@property (strong, nonatomic) GWDTopic *topic;
 @end

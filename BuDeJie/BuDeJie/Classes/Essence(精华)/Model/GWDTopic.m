@@ -29,6 +29,14 @@
         
         CGFloat middleW = GWDScreenW - 2 * GWDMarin;
         CGFloat middleH = self.height * middleW / self.width;
+        
+        if (middleH >= GWDScreenH) {
+            //显示的图片高度超过一个屏幕,就是超长图片
+            middleH = 200;
+            //长图
+            self.bigPicture = YES;
+        }
+        
         CGFloat middleX = GWDMarin;
 
         CGFloat middleY = _cellHeight;
