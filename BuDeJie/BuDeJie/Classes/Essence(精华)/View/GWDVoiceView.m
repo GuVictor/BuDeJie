@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *playcountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *voicetimeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *placeholderView;
 
 @end
 
@@ -31,7 +32,11 @@
     _topic =topic;
     
     // 占位图片
-    [self.imageView gwd_setOriginImage:topic.image1 thumbnailImage:topic.image0 placeholder:nil];
+    [self.imageView gwd_setOriginImage:topic.image1 thumbnailImage:topic.image0 placeholder:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (!image) return ;
+        
+        self.placeholderView.hidden = YES;
+    }];
 //    UIImage *placeholder = nil;
 //    // 根据网络状态来加载图片
 //    AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];

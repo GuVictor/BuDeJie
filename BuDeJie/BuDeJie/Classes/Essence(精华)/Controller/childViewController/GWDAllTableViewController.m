@@ -45,6 +45,8 @@
 /** 请求管理者 */
 @property (strong, nonatomic) AFHTTPSessionManager *manager;
 
+//有了方法声明，点语法才会有智能提示
+- (GWDTopicType)type;
 
 @end
 
@@ -279,7 +281,9 @@
 }
 
 #pragma mark - 请求服务器数据处理
-
+- (GWDTopicType)type {
+    return GWDTopicTypeVideo;
+}
 
 /**
  发送请求给服务器，下拉请求新数据
@@ -300,7 +304,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
-    parameters[@"type"] = @"31";//这里发送@1(NSNumber)也是可行的, 31表示音频数据
+    parameters[@"type"] = @(self.type);//这里发送@1(NSNumber)也是可行的, 31表示音频数据
     
     
     //3.发送请求
@@ -352,7 +356,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
-    parameters[@"type"] = @"31";//这里发送@1也可行的
+    parameters[@"type"] = @(self.type);//这里发送@1也可行的
     parameters[@"maxtime"] = self.maxtime;
     
     //3.发送请求

@@ -143,6 +143,8 @@
         self.pictureView.hidden = YES;
         self.voiceView.hidden = YES;
         self.videoView.hidden = NO;
+#warning 模型传递
+        _videoView.topic = _topic;
     } else {
         //段子
         self.pictureView.hidden = YES;
