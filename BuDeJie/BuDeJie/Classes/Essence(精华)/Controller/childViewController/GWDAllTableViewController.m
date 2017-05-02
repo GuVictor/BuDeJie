@@ -18,7 +18,7 @@
 /** 当前帖子数据的描述信息，专门有了加载下一页数据 */
 @property (copy, nonatomic) NSString *maxtime;
 
-/** 模拟数据量 */
+/** 所有提帖子数据量 */
 @property (strong, nonatomic) NSMutableArray<GWDTopic *> *topics;
 
 /**>>>>>>>>>>>>>>>>>>>>>上拉刷新>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -32,6 +32,7 @@
 /** 上拉刷新控件时候正在刷新 */
 @property (assign, nonatomic, getter = isFooterRefreshing)  BOOL footerRefreshing;
 /**>>>>>>>>>>>>>>>>>>>>>上拉刷新>>>>>>>>>>>>>>>>>>>>>>>*/
+
 
 /**>>>>>>>>>>>>>>>>>>>>>下拉刷新>>>>>>>>>>>>>>>>>>>>>>>*/
 /** 下拉刷新控件 */
@@ -52,12 +53,14 @@
 
 @implementation GWDAllTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 
     //设置背景颜色
     self.view.backgroundColor = GWDGrayColor(206);
+    
     self.tableView.contentInset = UIEdgeInsetsMake(GWDNavMaxY + GWDTitlesViewH , 0, GWDTabBarH, 0);
     
     
@@ -103,7 +106,7 @@
     
     self.tableView.tableHeaderView = label;
     
-    //header
+    //header(tableView的子控件)
     UIView *header = [[UIView alloc] init];
     header.frame = CGRectMake(0, -50, self.tableView.gwd_width, 50);
     header.backgroundColor = [UIColor grayColor];
@@ -297,6 +300,20 @@
     return self.topics.count;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    // control + command + 空格 -> 弹出emoji表情键盘
+    //    cell.textLabel.text = @"⚠️哈哈";
+    
+    GWDTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GWDTopicCell class])];
+    
+    
+    cell.topic = self.topics[indexPath.row];
+    
+    return cell;
+}
+
 #pragma mark - tableView代理
 /**
  这个方法的特点：
@@ -315,27 +332,37 @@
     return self.topics[indexPath.row].cellHeight;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-    // control + command + 空格 -> 弹出emoji表情键盘
-    //    cell.textLabel.text = @"⚠️哈哈";
-
-    GWDTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GWDTopicCell class])];
-    
-    
-    cell.topic = self.topics[indexPath.row];
-    
-    return cell;
-}
 
 #pragma mark - scrollView代理方法
+
+/**
+ 用户松开scrollView时调用
+ 
+ */
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {//改变内边距会影响contentOffSet
+    //如果正在下拉刷新，直接返回
+    if (self.isHeaderRefreshing) return;
+    
+    CGFloat offsetY = - (self.tableView.contentInset.top + self.header.gwd_height);
+    if (self.tableView.contentOffset.y <= offsetY) {
+        //header已经完全出现
+        
+        //进入下拉刷新状态
+        [self headerBeginRefreshing];
+        
+    }
+    
+}
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    //处理header
+    [self dealHeader];
+
+    
     //处理footer
     [self dealFooter];
     
-    //处理header
-    [self dealHeader];
     
 }
 
@@ -378,25 +405,6 @@
         self.headerLabel.text = @"下拉可以刷新";
         self.headerLabel.backgroundColor = [UIColor redColor];
     }
-}
-
-/**
- 用户松开scrollView时调用
-
- */
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {//改变内边距会影响contentOffSet
-    //如果正在下拉刷新，直接返回
-    if (self.isHeaderRefreshing) return;
-    
-    CGFloat offsetY = - (self.tableView.contentInset.top + self.header.gwd_height);
-    if (self.tableView.contentOffset.y <= offsetY) {
-        //header已经完全出现
-        
-        //进入下拉刷新状态
-        [self headerBeginRefreshing];
-        
-    }
-    
 }
 
 
