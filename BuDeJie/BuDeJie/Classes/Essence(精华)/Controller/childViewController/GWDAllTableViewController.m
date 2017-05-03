@@ -177,7 +177,7 @@
 
 #pragma mark - 请求服务器数据处理
 - (GWDTopicType)type {
-    return GWDTopicTypePicture;
+    return GWDTopicTypeVoice;
 }
 
 /**

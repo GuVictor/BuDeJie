@@ -18,6 +18,7 @@
 
 #import "GWDSeeBigPictureViewController.h"
 #import "GWDTopic.h"
+#import <SVProgressHUD.h>
 
 @interface GWDSeeBigPictureViewController ()<UIScrollViewDelegate>
 /** 保存图片按钮 */
@@ -81,12 +82,78 @@
     return self.imageView;//scrollView的子控件
 }
 
+#pragma mark - 按钮的点击
 - (IBAction)savePucture:(UIButton *)sender {
+    UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    if (error) {
+        [SVProgressHUD showErrorWithStatus:@"保存失败"];
+    } else {
+        [SVProgressHUD showSuccessWithStatus:@"保存成功!"];
+    }
 }
 
 - (IBAction)back:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+/*
+ 一、保存图片到【自定义相册】
+ 1.保存图片到【相机胶卷】
+ 1> C语言函数UIImageWriteToSavedPhotosAlbum
+ 2> AssetsLibrary框架
+ 3> Photos框架
+ 
+ 2.拥有一个【自定义相册】
+ 1> AssetsLibrary框架
+ 2> Photos框架
+ 
+ 3.添加刚才保存的图片到【自定义相册】
+ 1> AssetsLibrary框架
+ 2> Photos框架
+ */
+
+/*
+ [UIView animateWithDuration:2.0 animations:^{
+ self.view.frame = CGRectMake(0, 0, 100, 100);
+ } completion:^(BOOL finished) {
+ 
+ }];
+ 
+ [UIView beginAnimations:nil context:nil];
+ [UIView setAnimationDuration:2.0];
+ [UIView setAnimationDelegate:self];
+ [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+ self.view.frame = CGRectMake(0, 0, 100, 100);
+ [UIView commitAnimations];
+ 
+ - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+ {
+ 
+ }*/
+
+//  UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(a:b:c:), nil);
+//- (void)a:(UIImage *)image b:(NSError *)error c:(void *)contextInfo
+//{
+//    if (error) {
+//        [SVProgressHUD showErrorWithStatus:@"保存失败！"];
+//    } else {
+//        [SVProgressHUD showSuccessWithStatus:@"保存成功！"];
+//    }
+//}
+
+//- (void)done
+//{
+//    XMGFunc
+//}
+
+/*
+ 错误信息：-[NSInvocation setArgument:atIndex:]: index (2) out of bounds [-1, 1]
+ 错误解释：参数越界错误，方法的参数个数和实际传递的参数个数不一致
+ */
 
 //- (UIScrollView *)scrollView
 //{
@@ -105,4 +172,7 @@
 //
 //    self.scrollView.frame = self.view.bounds;
 //}
+
+
+
 @end
