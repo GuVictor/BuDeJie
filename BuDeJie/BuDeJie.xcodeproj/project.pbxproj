@@ -60,6 +60,8 @@
 		B57D929D1EB0E6EB0084A78F /* GWDTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B57D929B1EB0E6EB0084A78F /* GWDTopicCell.m */; };
 		B57D929E1EB0E6EB0084A78F /* GWDTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57D929C1EB0E6EB0084A78F /* GWDTopicCell.xib */; };
 		B588D2DB1EB3A6C700E8C17D /* UIImageView+Download.m in Sources */ = {isa = PBXBuildFile; fileRef = B588D2DA1EB3A6C700E8C17D /* UIImageView+Download.m */; };
+		B58D24F01EB9A527005F6BED /* GWDSeeBigPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B58D24EE1EB9A527005F6BED /* GWDSeeBigPictureViewController.m */; };
+		B58D24F11EB9A527005F6BED /* GWDSeeBigPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B58D24EF1EB9A527005F6BED /* GWDSeeBigPictureViewController.xib */; };
 		B59444B31EAD81C5007FD78E /* GWDTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = B59444B21EAD81C5007FD78E /* GWDTopic.m */; };
 		B59444B51EAD99B4007FD78E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59444B41EAD99B4007FD78E /* Launch Screen.storyboard */; };
 		B59FF0471E9F82700089BAA8 /* GWDDdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59FF0451E9F82700089BAA8 /* GWDDdViewController.m */; };
@@ -186,6 +188,9 @@
 		B57D929C1EB0E6EB0084A78F /* GWDTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDTopicCell.xib; sourceTree = "<group>"; };
 		B588D2D91EB3A6C700E8C17D /* UIImageView+Download.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Download.h"; sourceTree = "<group>"; };
 		B588D2DA1EB3A6C700E8C17D /* UIImageView+Download.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Download.m"; sourceTree = "<group>"; };
+		B58D24ED1EB9A527005F6BED /* GWDSeeBigPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSeeBigPictureViewController.h; sourceTree = "<group>"; };
+		B58D24EE1EB9A527005F6BED /* GWDSeeBigPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDSeeBigPictureViewController.m; sourceTree = "<group>"; };
+		B58D24EF1EB9A527005F6BED /* GWDSeeBigPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDSeeBigPictureViewController.xib; sourceTree = "<group>"; };
 		B59444B11EAD81C5007FD78E /* GWDTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopic.h; sourceTree = "<group>"; };
 		B59444B21EAD81C5007FD78E /* GWDTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopic.m; sourceTree = "<group>"; };
 		B59444B41EAD99B4007FD78E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -263,6 +268,9 @@
 				B5123D9C1EA60F4F009A0A34 /* GWDPictureTableViewController.m */,
 				B5123D9E1EA60F69009A0A34 /* GWDWordTableViewController.h */,
 				B5123D9F1EA60F69009A0A34 /* GWDWordTableViewController.m */,
+				B58D24ED1EB9A527005F6BED /* GWDSeeBigPictureViewController.h */,
+				B58D24EE1EB9A527005F6BED /* GWDSeeBigPictureViewController.m */,
+				B58D24EF1EB9A527005F6BED /* GWDSeeBigPictureViewController.xib */,
 			);
 			path = childViewController;
 			sourceTree = "<group>";
@@ -818,6 +826,7 @@
 				B54E75EB1EB216BF0037C4B0 /* GWDTopicVideoView.xib in Resources */,
 				B59FF0541E9FDDBC0089BAA8 /* LaunchImage-800-667h@2x.png in Resources */,
 				B508B6E81EA20520005B9767 /* GWDLoginRegisterView.xib in Resources */,
+				B58D24F11EB9A527005F6BED /* GWDSeeBigPictureViewController.xib in Resources */,
 				B59FF0511E9FDDBC0089BAA8 /* LaunchImage-568h@2x.png in Resources */,
 				B508B6ED1EA222F0005B9767 /* GWDFastLoginView.xib in Resources */,
 				B59FF0531E9FDDBC0089BAA8 /* LaunchImage-700@2x.png in Resources */,
@@ -940,6 +949,7 @@
 				B5123D941EA60F22009A0A34 /* GWDAllTableViewController.m in Sources */,
 				B59FF0471E9F82700089BAA8 /* GWDDdViewController.m in Sources */,
 				B508B6F01EA22804005B9767 /* GWDFastButton.m in Sources */,
+				B58D24F01EB9A527005F6BED /* GWDSeeBigPictureViewController.m in Sources */,
 				B5123DA01EA60F69009A0A34 /* GWDWordTableViewController.m in Sources */,
 				B5E669151E9E20DC00F196C2 /* GWDTabBar.m in Sources */,
 			);

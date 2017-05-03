@@ -365,6 +365,15 @@
     [[SDImageCache sharedImageCache] clearMemory];
     
     //    NSLog(@"%@", NSStringFromCGPoint(self.tableView.contentOffset));
+    
+    // 设置缓存时长为1个月
+    //    [SDImageCache sharedImageCache].maxCacheAge = 30 * 24 * 60 * 60;
+    
+    // 清除沙盒中所有使用SD缓存的过期图片（缓存时长 > 一个星期）
+    //    [[SDImageCache sharedImageCache] cleanDisk];
+    
+    // 清除沙盒中所有使用SD缓存的图片
+    //    [[SDImageCache sharedImageCache] clearDisk];
 }
 
 //处理footer

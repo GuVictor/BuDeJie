@@ -31,7 +31,7 @@
                         <constraint firstAttribute="height" constant="31" id="zPC-j7-tmA"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3a-eh-VEF">
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3a-eh-VEF">
                     <rect key="frame" x="0.0" y="182" width="311" height="43"/>
                     <state key="normal" title="点击查看大图" image="see-big-picture" backgroundImage="see-big-picture-background"/>
                 </button>

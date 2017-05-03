@@ -8,6 +8,7 @@
 
 #import "GWDTopicVideoView.h"
 #import "GWDTopic.h"
+#import "GWDSeeBigPictureViewController.h"
 @interface GWDTopicVideoView ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *playcountLabel;
@@ -22,6 +23,18 @@
     [super awakeFromNib];
     
     self.autoresizingMask = UIViewAutoresizingNone;
+    
+    //给imageVIew添加手势
+    self.imageView.userInteractionEnabled = YES;
+    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPicture)]];
+    
+}
+
+#pragma mark - 点击图片显示大图
+- (void)seeBigPicture {
+    GWDSeeBigPictureViewController *vc = [[GWDSeeBigPictureViewController alloc] init];
+    vc.topic = _topic;
+    [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
 
 }
 

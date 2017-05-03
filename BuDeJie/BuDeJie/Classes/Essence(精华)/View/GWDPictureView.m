@@ -8,6 +8,7 @@
 
 #import "GWDPictureView.h"
 #import "GWDTopic.h"
+#import "GWDSeeBigPictureViewController.h"
 @interface GWDPictureView ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *placeholderView;
@@ -29,6 +30,18 @@
     _seeBigPictureButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     _seeBigPictureButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
     
+    //给imageVIew添加手势
+    self.imageView.userInteractionEnabled = YES;
+    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPicture)]];
+    
+}
+
+#pragma mark - 点击图片显示大图
+- (void)seeBigPicture {
+    GWDSeeBigPictureViewController *vc = [[GWDSeeBigPictureViewController alloc] init];
+    vc.topic = _topic;
+    [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
+    
 }
 
 - (void)setTopic:(GWDTopic *)topic {
@@ -45,13 +58,6 @@
     
     // gif
     self.gifView.hidden = !topic.is_gif;
-    // http://ww2.sinaimg.cn/bmiddle/005yUFpDjw1f297c6vgzig306y04rnpd.GIF
-    //    if ([topic.image1.lowercaseString hasSuffix:@"gif"]) {
-    //    if ([topic.image1.pathExtension.lowercaseString isEqualToString:@"gif"]) {
-    //        self.gifView.hidden = NO;
-    //    } else {
-    //        self.gifView.hidden = YES;
-    //    }
     
     // 点击查看大图
     if (topic.isBigPicture) { // 超长图
@@ -81,7 +87,15 @@
 
 }
 
-
+//    [UIApplication sharedApplication].keyWindow.rootViewController;
+//判断后缀名
+// http://ww2.sinaimg.cn/bmiddle/005yUFpDjw1f297c6vgzig306y04rnpd.GIF
+//    if ([topic.image1.lowercaseString hasSuffix:@"gif"]) {
+//    if ([topic.image1.pathExtension.lowercaseString isEqualToString:@"gif"]) {
+//        self.gifView.hidden = NO;
+//    } else {
+//        self.gifView.hidden = YES;
+//    }
 
 
 
