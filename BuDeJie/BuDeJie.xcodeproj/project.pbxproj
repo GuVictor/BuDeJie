@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3285B0670519A93E3F8BA70D /* libPods-BuDeJie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3932E15098A00BAF220C78 /* libPods-BuDeJie.a */; };
+		B50567BA1EBB1E2F007AD7C4 /* GWDTopicBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50567B91EBB1E2F007AD7C4 /* GWDTopicBaseViewController.m */; };
 		B508B6DE1EA1C58D005B9767 /* GWDFriendTrendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508B6DD1EA1C58D005B9767 /* GWDFriendTrendViewController.xib */; };
 		B508B6E21EA1D99D005B9767 /* GWDLoginRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6E01EA1D99D005B9767 /* GWDLoginRegisterViewController.m */; };
 		B508B6E31EA1D99D005B9767 /* GWDLoginRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508B6E11EA1D99D005B9767 /* GWDLoginRegisterViewController.xib */; };
@@ -94,6 +95,8 @@
 /* Begin PBXFileReference section */
 		125B78F8F41FD7135C3A08E2 /* Pods-BuDeJie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuDeJie.release.xcconfig"; path = "Pods/Target Support Files/Pods-BuDeJie/Pods-BuDeJie.release.xcconfig"; sourceTree = "<group>"; };
 		2E3932E15098A00BAF220C78 /* libPods-BuDeJie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BuDeJie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B50567B81EBB1E2F007AD7C4 /* GWDTopicBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopicBaseViewController.h; sourceTree = "<group>"; };
+		B50567B91EBB1E2F007AD7C4 /* GWDTopicBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopicBaseViewController.m; sourceTree = "<group>"; };
 		B508B6DD1EA1C58D005B9767 /* GWDFriendTrendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDFriendTrendViewController.xib; sourceTree = "<group>"; };
 		B508B6DF1EA1D99D005B9767 /* GWDLoginRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDLoginRegisterViewController.h; sourceTree = "<group>"; };
 		B508B6E01EA1D99D005B9767 /* GWDLoginRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDLoginRegisterViewController.m; sourceTree = "<group>"; };
@@ -188,9 +191,9 @@
 		B57D929C1EB0E6EB0084A78F /* GWDTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDTopicCell.xib; sourceTree = "<group>"; };
 		B588D2D91EB3A6C700E8C17D /* UIImageView+Download.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Download.h"; sourceTree = "<group>"; };
 		B588D2DA1EB3A6C700E8C17D /* UIImageView+Download.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Download.m"; sourceTree = "<group>"; };
-		B58D24ED1EB9A527005F6BED /* GWDSeeBigPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDSeeBigPictureViewController.h; sourceTree = "<group>"; };
-		B58D24EE1EB9A527005F6BED /* GWDSeeBigPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDSeeBigPictureViewController.m; sourceTree = "<group>"; };
-		B58D24EF1EB9A527005F6BED /* GWDSeeBigPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDSeeBigPictureViewController.xib; sourceTree = "<group>"; };
+		B58D24ED1EB9A527005F6BED /* GWDSeeBigPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GWDSeeBigPictureViewController.h; path = childViewController/GWDSeeBigPictureViewController.h; sourceTree = "<group>"; };
+		B58D24EE1EB9A527005F6BED /* GWDSeeBigPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GWDSeeBigPictureViewController.m; path = childViewController/GWDSeeBigPictureViewController.m; sourceTree = "<group>"; };
+		B58D24EF1EB9A527005F6BED /* GWDSeeBigPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GWDSeeBigPictureViewController.xib; path = childViewController/GWDSeeBigPictureViewController.xib; sourceTree = "<group>"; };
 		B59444B11EAD81C5007FD78E /* GWDTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopic.h; sourceTree = "<group>"; };
 		B59444B21EAD81C5007FD78E /* GWDTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopic.m; sourceTree = "<group>"; };
 		B59444B41EAD99B4007FD78E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 		B5123D911EA60EE7009A0A34 /* childViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B50567B81EBB1E2F007AD7C4 /* GWDTopicBaseViewController.h */,
+				B50567B91EBB1E2F007AD7C4 /* GWDTopicBaseViewController.m */,
 				B5123D921EA60F22009A0A34 /* GWDAllTableViewController.h */,
 				B5123D931EA60F22009A0A34 /* GWDAllTableViewController.m */,
 				B5123D951EA60F31009A0A34 /* GWDVideoTableViewController.h */,
@@ -268,9 +273,6 @@
 				B5123D9C1EA60F4F009A0A34 /* GWDPictureTableViewController.m */,
 				B5123D9E1EA60F69009A0A34 /* GWDWordTableViewController.h */,
 				B5123D9F1EA60F69009A0A34 /* GWDWordTableViewController.m */,
-				B58D24ED1EB9A527005F6BED /* GWDSeeBigPictureViewController.h */,
-				B58D24EE1EB9A527005F6BED /* GWDSeeBigPictureViewController.m */,
-				B58D24EF1EB9A527005F6BED /* GWDSeeBigPictureViewController.xib */,
 			);
 			path = childViewController;
 			sourceTree = "<group>";
@@ -326,6 +328,9 @@
 				B56537581E9B1D5800594EFC /* GWDEssenceViewController.m */,
 				B5F664191EA52B9800C5A7EF /* ViewController.h */,
 				B5F6641A1EA52B9800C5A7EF /* ViewController.m */,
+				B58D24ED1EB9A527005F6BED /* GWDSeeBigPictureViewController.h */,
+				B58D24EE1EB9A527005F6BED /* GWDSeeBigPictureViewController.m */,
+				B58D24EF1EB9A527005F6BED /* GWDSeeBigPictureViewController.xib */,
 				B5123D911EA60EE7009A0A34 /* childViewController */,
 			);
 			path = Controller;
@@ -939,6 +944,7 @@
 				B5123D9A1EA60F3E009A0A34 /* GWDVoiceTableViewController.m in Sources */,
 				B54E75EE1EB217330037C4B0 /* GWDVoiceView.m in Sources */,
 				B51D6B051EA47A850059B9C7 /* GWDFileTool.m in Sources */,
+				B50567BA1EBB1E2F007AD7C4 /* GWDTopicBaseViewController.m in Sources */,
 				B508B6E21EA1D99D005B9767 /* GWDLoginRegisterViewController.m in Sources */,
 				B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */,
 				B57C16901EA31CC500B8BE0C /* GWDSquareCollectionViewCell.m in Sources */,
@@ -1076,7 +1082,7 @@
 				INFOPLIST_FILE = BuDeJie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.victorgu.BuDeJie1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.victorgu.BuDeJie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1093,7 +1099,7 @@
 				INFOPLIST_FILE = BuDeJie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.victorgu.BuDeJie1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.victorgu.BuDeJie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

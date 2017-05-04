@@ -6,8 +6,7 @@
 //  Copyright © 2017年 victorgu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface GWDVoiceTableViewController : UITableViewController
+#import "GWDTopicBaseViewController.h"
+@interface GWDVoiceTableViewController : GWDTopicBaseViewController
 
 @end
