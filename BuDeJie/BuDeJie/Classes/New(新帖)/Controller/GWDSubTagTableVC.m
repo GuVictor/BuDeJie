@@ -14,6 +14,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import  <MJExtension.h>
 #import <SVProgressHUD.h>
+#import <MJRefresh.h>
 @interface GWDSubTagTableVC ()
 @property (strong, nonatomic) NSArray *subTags;
 
@@ -51,7 +52,12 @@
     //提示用户当前正在加载数据 SVpro
     [SVProgressHUD showWithStatus:@"正在加载ing..."];
     
-    
+    [self setupRefresh];
+}
+
+- (void)setupRefresh {
+    //header
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -88,6 +94,7 @@
         _subTags = [GWDSubTagItem mj_objectArrayWithKeyValuesArray:responseObject];
         //刷新表格
         [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -95,6 +102,8 @@
         
         //销毁指示器
         [SVProgressHUD dismiss];
+        
+           [self.tableView.mj_header endRefreshing];
 
     }];
 }
