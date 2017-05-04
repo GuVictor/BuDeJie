@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3285B0670519A93E3F8BA70D /* libPods-BuDeJie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3932E15098A00BAF220C78 /* libPods-BuDeJie.a */; };
 		B50567BA1EBB1E2F007AD7C4 /* GWDTopicBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50567B91EBB1E2F007AD7C4 /* GWDTopicBaseViewController.m */; };
+		B50567BD1EBB7BCC007AD7C4 /* GWDfreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B50567BC1EBB7BCC007AD7C4 /* GWDfreshHeader.m */; };
+		B50567C01EBB807B007AD7C4 /* GWDTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B50567BF1EBB807B007AD7C4 /* GWDTTPSessionManager.m */; };
+		B50567C31EBB84C6007AD7C4 /* GWDDIYHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B50567C21EBB84C6007AD7C4 /* GWDDIYHeader.m */; };
 		B508B6DE1EA1C58D005B9767 /* GWDFriendTrendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508B6DD1EA1C58D005B9767 /* GWDFriendTrendViewController.xib */; };
 		B508B6E21EA1D99D005B9767 /* GWDLoginRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B508B6E01EA1D99D005B9767 /* GWDLoginRegisterViewController.m */; };
 		B508B6E31EA1D99D005B9767 /* GWDLoginRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B508B6E11EA1D99D005B9767 /* GWDLoginRegisterViewController.xib */; };
@@ -97,6 +100,12 @@
 		2E3932E15098A00BAF220C78 /* libPods-BuDeJie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BuDeJie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50567B81EBB1E2F007AD7C4 /* GWDTopicBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopicBaseViewController.h; sourceTree = "<group>"; };
 		B50567B91EBB1E2F007AD7C4 /* GWDTopicBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopicBaseViewController.m; sourceTree = "<group>"; };
+		B50567BB1EBB7BCC007AD7C4 /* GWDfreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDfreshHeader.h; sourceTree = "<group>"; };
+		B50567BC1EBB7BCC007AD7C4 /* GWDfreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDfreshHeader.m; sourceTree = "<group>"; };
+		B50567BE1EBB807B007AD7C4 /* GWDTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTTPSessionManager.h; sourceTree = "<group>"; };
+		B50567BF1EBB807B007AD7C4 /* GWDTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTTPSessionManager.m; sourceTree = "<group>"; };
+		B50567C11EBB84C6007AD7C4 /* GWDDIYHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDDIYHeader.h; sourceTree = "<group>"; };
+		B50567C21EBB84C6007AD7C4 /* GWDDIYHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDDIYHeader.m; sourceTree = "<group>"; };
 		B508B6DD1EA1C58D005B9767 /* GWDFriendTrendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDFriendTrendViewController.xib; sourceTree = "<group>"; };
 		B508B6DF1EA1D99D005B9767 /* GWDLoginRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDLoginRegisterViewController.h; sourceTree = "<group>"; };
 		B508B6E01EA1D99D005B9767 /* GWDLoginRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDLoginRegisterViewController.m; sourceTree = "<group>"; };
@@ -430,6 +439,8 @@
 				B56537551E9B17BC00594EFC /* GWDTabBarController.m */,
 				B56537691E9B2A2B00594EFC /* GWDNavgationController.h */,
 				B565376A1E9B2A2B00594EFC /* GWDNavgationController.m */,
+				B50567BE1EBB807B007AD7C4 /* GWDTTPSessionManager.h */,
+				B50567BF1EBB807B007AD7C4 /* GWDTTPSessionManager.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -446,6 +457,10 @@
 			children = (
 				B5E669131E9E20DC00F196C2 /* GWDTabBar.h */,
 				B5E669141E9E20DC00F196C2 /* GWDTabBar.m */,
+				B50567BB1EBB7BCC007AD7C4 /* GWDfreshHeader.h */,
+				B50567BC1EBB7BCC007AD7C4 /* GWDfreshHeader.m */,
+				B50567C11EBB84C6007AD7C4 /* GWDDIYHeader.h */,
+				B50567C21EBB84C6007AD7C4 /* GWDDIYHeader.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -914,6 +929,7 @@
 				B54E75FB1EB237B10037C4B0 /* NSDictionary+Property.m in Sources */,
 				B5644EDC1EA12711009E9F89 /* UIImage+Antialias.m in Sources */,
 				B57C16981EA37ADC00B8BE0C /* GWDWebViewController.m in Sources */,
+				B50567C31EBB84C6007AD7C4 /* GWDDIYHeader.m in Sources */,
 				B5E669181E9E2FFB00F196C2 /* UIView+Frame.m in Sources */,
 				B5644ED81EA0D2E9009E9F89 /* GWDSubTagTableViewCell.m in Sources */,
 				B5A9D9241E9B5E2200C0F414 /* main.m in Sources */,
@@ -948,6 +964,7 @@
 				B508B6E21EA1D99D005B9767 /* GWDLoginRegisterViewController.m in Sources */,
 				B56537681E9B1E8500594EFC /* GWDNewViewController.m in Sources */,
 				B57C16901EA31CC500B8BE0C /* GWDSquareCollectionViewCell.m in Sources */,
+				B50567BD1EBB7BCC007AD7C4 /* GWDfreshHeader.m in Sources */,
 				B5F6641B1EA52B9800C5A7EF /* ViewController.m in Sources */,
 				B5644EC71EA069C7009E9F89 /* GWDAdItem.m in Sources */,
 				B508B6EB1EA222D5005B9767 /* GWDFastLoginView.m in Sources */,
@@ -957,6 +974,7 @@
 				B508B6F01EA22804005B9767 /* GWDFastButton.m in Sources */,
 				B58D24F01EB9A527005F6BED /* GWDSeeBigPictureViewController.m in Sources */,
 				B5123DA01EA60F69009A0A34 /* GWDWordTableViewController.m in Sources */,
+				B50567C01EBB807B007AD7C4 /* GWDTTPSessionManager.m in Sources */,
 				B5E669151E9E20DC00F196C2 /* GWDTabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

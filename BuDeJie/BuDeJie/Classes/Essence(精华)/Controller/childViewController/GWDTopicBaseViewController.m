@@ -7,13 +7,14 @@
 //
 
 #import "GWDTopicBaseViewController.h"
-#import <AFNetworking.h>
+#import "GWDTTPSessionManager.h"
 #import "GWDTopic.h"
 #import <MJExtension.h>
 #import <SVProgressHUD.h>
 #import "GWDTopicCell.h"
 #import "NSDictionary+Property.h"
-#import <MJRefresh.h>
+#import "GWDfreshHeader.h"
+#import "GWDDIYHeader.h"
 @interface GWDTopicBaseViewController ()
 
 /** 当前帖子数据的描述信息，专门有了加载下一页数据 */
@@ -23,7 +24,7 @@
 @property (strong, nonatomic) NSMutableArray<GWDTopic *> *topics;
 
 /** 请求管理者 */
-@property (strong, nonatomic) AFHTTPSessionManager *manager;
+@property (strong, nonatomic) GWDTTPSessionManager *manager;
 
 @end
 
@@ -44,7 +45,7 @@
     //设置分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    //设置指示器的偏移量
+    //设置指示器的偏移量 
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
     //减少heightForRowAtIndexPath方法的调用
@@ -63,9 +64,9 @@
 }
 
 #pragma mark - 懒加载
-- (AFHTTPSessionManager *)manager {
+- (GWDTTPSessionManager *)manager {
     if (!_manager) {
-        _manager = [AFHTTPSessionManager manager];
+        _manager = [GWDTTPSessionManager manager];
     }
     return _manager;
 }
@@ -84,11 +85,11 @@
     self.tableView.tableHeaderView = label;
     
     //设置头部刷新控件
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewTopics)];
-    //自动切换透明度
-    self.tableView.mj_header.automaticallyChangeAlpha = YES;
-    
-    //让header自动刷新
+    self.tableView.mj_header = [GWDDIYHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewTopics)];
+//    //自动切换透明度
+//    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+//    
+//    //让header自动刷新
     [self.tableView.mj_header beginRefreshing];
     
     //footer
