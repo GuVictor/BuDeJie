@@ -12,6 +12,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <MJExtension.h>
 #import <UIImageView+WebCache.h>
+#import "GWDWebViewController.h"
 /*
  1.广告业务逻辑
  2.占位视图思想：有个控件不能确定尺寸，但是层次就给已经确定，就可以使用占位视图
@@ -143,12 +144,20 @@
     NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
     
     //界面跳转 => safari
+    
     NSURL *url = [NSURL URLWithString:_adItem.ori_curl];
     UIApplication *app = [UIApplication sharedApplication];
     if ([app canOpenURL:url]) {
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [app openURL:url options:dict completionHandler:nil];
     }
+    
+    //自己的web控制器(不能这样搞)
+//    GWDWebViewController *webVc = [[GWDWebViewController alloc] init];
+//    webVc.url = [NSURL URLWithString:_adItem.ori_curl];
+//    [self.navigationController pushViewController:webVc animated:YES];
+    
+    
 }
 
 #pragma mark - 设置启动图片

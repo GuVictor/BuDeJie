@@ -74,6 +74,17 @@
     return self.center.y;
 }
 
+
+#pragma mark - 通过xib加载View
+/*使用实例：- (GWDPictureView *)pictureView {
+ if (!_pictureView) {
+ GWDPictureView *pictureView = [GWDPictureView gwd_viewFromXib];
+ [self.contentView addSubview:pictureView];
+ _pictureView = pictureView;
+ }
+ 
+ return _pictureView;
+ }*/
 + (instancetype)gwd_viewFromXib {
     return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:0].firstObject;
 }

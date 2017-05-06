@@ -50,7 +50,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - 点击注册按钮
+#pragma mark - 点击注册账号按钮
 - (IBAction)clickRegister:(UIButton *)sender {
     sender.selected = !sender.selected;
     
@@ -67,6 +67,7 @@
     //一定要调用super
     [super viewDidLayoutSubviews];
     
+    //中间有两个控件
     GWDLoginRegisterView *loginView = self.MiddleView.subviews[0];
     loginView.frame = CGRectMake(0, 0, self.MiddleView.gwd_width * 0.5, self.MiddleView.gwd_height );
     

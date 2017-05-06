@@ -16,7 +16,7 @@
     return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
-#pragma mark - 圆形图片
+#pragma mark - 对已有的图片对象进行圆形处理
 - (instancetype)gwd_circleImage {
     // 1.开启图形上下文
     // 比例因素:当前点与像素比例
@@ -35,6 +35,7 @@
     return image;
 }
 
+#pragma mark - 传入名字返回一张圆形图片
 + (instancetype)gwd_circleImageNamed:(NSString *)name {
     return [[self imageNamed:name] gwd_circleImage];
 }

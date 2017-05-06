@@ -82,7 +82,7 @@
             //系统UITabBarButton按钮的frame
             tabBarButton.frame = CGRectMake(btnX, btnY, btnW, btnH);//错误就在在于放在for外面
             
-            //监听按钮测点击
+            //监听按钮测点击（我自己添加一个监听，系统自己也有不然怎么切换界面）
             [tabBarButton addTarget:self action:@selector(tabBarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             
         }

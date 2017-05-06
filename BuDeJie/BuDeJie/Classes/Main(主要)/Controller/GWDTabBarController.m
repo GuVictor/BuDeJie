@@ -69,6 +69,7 @@
     
 }
 
+#pragma mark - 设置所有子控制器
 - (void)setupAllChildViewController {
     //精华
     GWDEssenceViewController *essenceVc = [[GWDEssenceViewController alloc] init];
@@ -97,6 +98,7 @@
     
 }
 
+#pragma mark - 设置一个子控制器
 - (void)setUpOneChildVC:(UIViewController *)vc image:(UIImage *)image selImage:(UIImage *)selImage title:(NSString *)title {
     GWDNavgationController *nav = [[GWDNavgationController alloc] initWithRootViewController:vc];
     nav.tabBarItem.title = title;

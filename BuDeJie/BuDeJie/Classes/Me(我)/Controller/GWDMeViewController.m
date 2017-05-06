@@ -13,10 +13,12 @@
 #import <MJExtension/MJExtension.h>
 #import "GWDSquareItem.h"
 #import "GWDWebViewController.h"
+#import <MJRefresh.h>
 //#import <SafariServices/SafariServices.h>
 
 static NSInteger cols = 4;
 static CGFloat margin = 1;
+//每个item的宽高
 #define itemWH ( GWDScreenW - (cols - 1) * margin ) / cols
 
 
@@ -43,24 +45,36 @@ static CGFloat margin = 1;
     [self setupFootView];
     
     
-    //展示方块内容 -> 请求数据
-    [self loadData];
+    
     
     //处理cell间距 -> 默认tableView分组样式，有额外头部和尾部
     self.tableView.sectionHeaderHeight = 0;
     self.tableView.sectionFooterHeight = GWDMarin;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0); // 35 - 15 = 10
+//    self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0); // 35 - 15 = 10
+    
+    //监听按钮的重复点击
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:GWDTabBarButtonDidRepeatClickNotification object:nil];
     
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        //展示方块内容 -> 请求数据
+        [self loadData];
+    }];
     
+    [self.tableView.mj_header beginRefreshing];
 }
 
-#pragma mark - tabBarButtonDidRepeatClick
+#pragma mark - 移除监听器
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - 导航按钮重复点击tabBarButtonDidRepeatClick
 
 - (void)tabBarButtonDidRepeatClick {
     if (self.view.window == nil) return;
     NSLog(@"%s, line = %d, Me" , __FUNCTION__, __LINE__);
+    [self.tableView.mj_header beginRefreshing];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -121,16 +135,17 @@ static CGFloat margin = 1;
         //刷新collection表格
         [self.collectionView reloadData];
         
-    
+    [self.tableView.mj_header endRefreshing];
         
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);
+        [self.tableView.mj_header endRefreshing];
     }];
 }
 
-#pragma mark - 处理请求完成数据
+#pragma mark - 处理请求完成数据(补齐好看一点)
 - (void)resloveData {
     //判断下缺几个,创建几个补齐
     //3 % 4 = 3 cols - 3 = 1
@@ -177,7 +192,7 @@ static CGFloat margin = 1;
     //设置collectionVIew不能滚动
     collectionView.scrollEnabled = NO;
     
-    //注册cell
+    //collectionView必须注册cell
     [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([GWDSquareCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([self class])];
     
 }
@@ -233,7 +248,7 @@ static CGFloat margin = 1;
 #pragma mark - 设置导航条
 - (void)setupNavBar {
     //右边按钮
-    //把UIButton暴走成UIBarButtonItem.就导致按钮点击区域扩大
+    //把UIButton包装成UIBarButtonItem.就导致按钮点击区域扩大，所有在添加一个占位图，以后设置导航按钮直接把分类拿过去
     UIBarButtonItem *btnSettiongItem = [UIBarButtonItem itemWithImage:[UIImage imageNamed:@"mine-setting-icon"] highImage:[UIImage imageNamed:@"mine-setting-icon-click"] target:self action:@selector(setting)];
     
     UIBarButtonItem *nightBtnItem = [UIBarButtonItem itemWithImage:[UIImage imageNamed:@"mine-moon-icon"] selLimage:[UIImage imageNamed:@"mine-moon-icon-click"] target:self action:@selector(night:)];

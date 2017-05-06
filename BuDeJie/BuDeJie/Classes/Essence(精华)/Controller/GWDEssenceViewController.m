@@ -87,7 +87,7 @@
 #pragma mark - 初始化滚动视图
 - (void)setupScrollView {
     
-    //不予许自动修改UIScrollView
+    //不予许自动修改UIScrollView设置默认滚动距离
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     //scrollView设置
@@ -126,6 +126,7 @@
 //        [scrollView addSubview:childVcView];
 //    }
     
+    //设置滚动范围
     scrollView.contentSize = CGSizeMake(count * scrollViewW, 0);
 
 }
@@ -208,6 +209,7 @@
     
     [firstTitleBtn.titleLabel sizeToFit];//让label根据文字内容计算尺寸（开始的时候为0，因为在view将要显示的时候才会计算尺寸，这里强制让它算一下）
     
+    //一按钮的中心点移动
     self.titleUnderline.gwd_width = firstTitleBtn.titleLabel.gwd_width + GWDMarin;
     self.titleUnderline.gwd_centerX = firstTitleBtn.gwd_centerX;
     
@@ -241,9 +243,12 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:GWDTitleButtonDidRepeatClickNotification object:nil];
     }
     
+    //处理按钮选中
     [self dealTitleButtonClikc:btn];
 }
 
+
+#pragma mark - 点击按钮会加载View ***这个方法是重点
 - (void)dealTitleButtonClikc:(GWDTitleButton *)btn {
     //选中按钮处理
     self.previousCLickTitleBtn.selected = NO;
@@ -287,6 +292,7 @@
             continue;
         }
         
+        //设置点击滚动最顶部
         scrollView.scrollsToTop = (i == btn.tag);
     }
 
@@ -337,6 +343,8 @@
 //    NSLog(@"%s, line = %d", __FUNCTION__, __LINE__);
 }
 
+
+#pragma mark - 滚动按钮调用，点击按钮
 /**
  *  当用户松开scrollView并且滑动结束时调用这个代理方法（scrollView停止滚动的时候）
  */

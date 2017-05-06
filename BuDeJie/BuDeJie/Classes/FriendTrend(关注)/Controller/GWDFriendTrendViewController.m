@@ -44,7 +44,7 @@
 #pragma mark - 设置右侧导航条
 - (void)setupNavBar {
     //左边按钮
-    //把UIButton暴走成UIBarButtonItem.就导致按钮点击区域扩大
+    //把UIButton包装成UIBarButtonItem.就导致按钮点击区域扩大
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:[UIImage imageNamed:@"friendsRecommentIcon"] highImage:[UIImage imageNamed:@"friendsRecommentIcon-click"] target:self action:@selector(friendRecomment)];
     
     self.navigationItem.title = @"我的关注";

@@ -109,6 +109,7 @@
         
     }
      */
+    _totalSize = 0;
     
     [self.tableView reloadData];
     

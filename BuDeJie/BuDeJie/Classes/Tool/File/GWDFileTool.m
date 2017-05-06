@@ -10,7 +10,7 @@
 
 @implementation GWDFileTool
 
-#pragma mark - 给一个路径，帮您删除该路径下所有的文件，不包括文件夹？
+#pragma mark - 给一个路径，帮您删除该路径下所有的文件
 + (void)removeDirectoryPath:(NSString *)directoryPath {
     //获得文件管理者
     NSFileManager *mgr = [NSFileManager defaultManager];
@@ -43,6 +43,22 @@
     }
     
 }
+
+/* 使用实例
+ [SVProgressHUD showWithStatus:@"正在计算缓存尺寸"];
+ 
+ //计算文件夹尺寸
+ //文件夹非常小，如果我文件非常大
+ [GWDFileTool getFileSize:[CachePath stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"] completion:^(NSInteger totalSize) {
+ _totalSize = totalSize;
+ 
+ [self.tableView reloadData];
+ NSLog(@"%@ %d",[NSThread currentThread], __LINE__);
+ [SVProgressHUD dismiss];
+ 
+ }];
+
+ */
 
 #pragma mark - 自己去计算SDwebImage做的缓存
 

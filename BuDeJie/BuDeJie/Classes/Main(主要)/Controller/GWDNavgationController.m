@@ -64,6 +64,7 @@
     //控制手势什么时候触发，只有非根控制器才触发手势
     pan.delegate = self;
     
+    //关闭系统的手势
     self.interactivePopGestureRecognizer.enabled = NO;
     
     

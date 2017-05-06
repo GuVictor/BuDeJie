@@ -10,7 +10,17 @@
 #import <objc/message.h>
 
 @implementation UITextField (Placeholder)
+/*
+ //分析:为什么先设置占位位置颜色,就没有效果 => 占位文字label拿不到
+ //1.保存起来
+ //设置占位文字颜色
+ //    _textFiled.placeholderColor = [UIColor blueColor];
+ //设置占位位置:每次设置占位文字的后，再拿到之前保存占位文字颜色，重新设置
+ //    [_textFiled setGwd_PlaceHoder:@"hello"];
+ //    _textFiled.placeholder = @"hello";
 
+ */
+#pragma mark - 交换方法
 + (void)load {
     Method setPlaceHolderMethod = class_getInstanceMethod(self, @selector(setPlaceholder:));
     Method setGwd_PlaceHolderMethod = class_getInstanceMethod(self, @selector(setGwd_PlaceHoder:));

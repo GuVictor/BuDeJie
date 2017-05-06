@@ -30,6 +30,7 @@
 		B5123DA01EA60F69009A0A34 /* GWDWordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5123D9F1EA60F69009A0A34 /* GWDWordTableViewController.m */; };
 		B5123DA31EA67809009A0A34 /* GWDConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B5123DA21EA67809009A0A34 /* GWDConst.m */; };
 		B51D6B051EA47A850059B9C7 /* GWDFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B51D6B041EA47A850059B9C7 /* GWDFileTool.m */; };
+		B539A05A1EBC24FE00B2CF47 /* NSString+SizeStr.m in Sources */ = {isa = PBXBuildFile; fileRef = B539A0591EBC24FE00B2CF47 /* NSString+SizeStr.m */; };
 		B54E75E91EB216AA0037C4B0 /* GWDTopicVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E75E81EB216AA0037C4B0 /* GWDTopicVideoView.m */; };
 		B54E75EB1EB216BF0037C4B0 /* GWDTopicVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54E75EA1EB216BF0037C4B0 /* GWDTopicVideoView.xib */; };
 		B54E75EE1EB217330037C4B0 /* GWDVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E75ED1EB217330037C4B0 /* GWDVoiceView.m */; };
@@ -138,6 +139,8 @@
 		B5123DA21EA67809009A0A34 /* GWDConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDConst.m; sourceTree = "<group>"; };
 		B51D6B031EA47A850059B9C7 /* GWDFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDFileTool.h; sourceTree = "<group>"; };
 		B51D6B041EA47A850059B9C7 /* GWDFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDFileTool.m; sourceTree = "<group>"; };
+		B539A0581EBC24FE00B2CF47 /* NSString+SizeStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SizeStr.h"; sourceTree = "<group>"; };
+		B539A0591EBC24FE00B2CF47 /* NSString+SizeStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SizeStr.m"; sourceTree = "<group>"; };
 		B54E75E71EB216AA0037C4B0 /* GWDTopicVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWDTopicVideoView.h; sourceTree = "<group>"; };
 		B54E75E81EB216AA0037C4B0 /* GWDTopicVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWDTopicVideoView.m; sourceTree = "<group>"; };
 		B54E75EA1EB216BF0037C4B0 /* GWDTopicVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWDTopicVideoView.xib; sourceTree = "<group>"; };
@@ -581,6 +584,8 @@
 				B56A19101EB0FC1C006AAF35 /* UIImage+Image.m */,
 				B588D2D91EB3A6C700E8C17D /* UIImageView+Download.h */,
 				B588D2DA1EB3A6C700E8C17D /* UIImageView+Download.m */,
+				B539A0581EBC24FE00B2CF47 /* NSString+SizeStr.h */,
+				B539A0591EBC24FE00B2CF47 /* NSString+SizeStr.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -953,6 +958,7 @@
 				B56537561E9B17BC00594EFC /* GWDTabBarController.m in Sources */,
 				B5E6691D1E9E7D3400F196C2 /* UIBarButtonItem+Item.m in Sources */,
 				B5123DA31EA67809009A0A34 /* GWDConst.m in Sources */,
+				B539A05A1EBC24FE00B2CF47 /* NSString+SizeStr.m in Sources */,
 				B565375C1E9B1D8200594EFC /* GWDFriendTrendViewController.m in Sources */,
 				B56A19111EB0FC1C006AAF35 /* UIImage+Image.m in Sources */,
 				B565376B1E9B2A2B00594EFC /* GWDNavgationController.m in Sources */,

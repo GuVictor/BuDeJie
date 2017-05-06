@@ -10,5 +10,6 @@
 
 @interface GWDFastLoginView : UIView
 
+#pragma mark - 快速登录界面从xib加载，如qq，微博等
 + (instancetype)fastLoginView;
 @end

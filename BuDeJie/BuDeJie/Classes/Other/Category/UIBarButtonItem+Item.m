@@ -10,7 +10,9 @@
 
 @implementation UIBarButtonItem (Item)
 
-
+#pragma mark - 导航条按钮高亮模式
+/*  使用实例  左边按钮
+ self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:[UIImage imageNamed:@"nav_item_game_icon"] highImage:[UIImage imageNamed:@"nav_item_game_click_icon"] target:self action:@selector(game)];*/
 + (UIBarButtonItem *)itemWithImage:(UIImage *)image highImage:(UIImage *)highImage target:(id)target action:(SEL)action {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setImage:image forState:UIControlStateNormal];
@@ -24,7 +26,8 @@
     return [[UIBarButtonItem alloc] initWithCustomView:containView];
 
 }
-
+/*UIBarButtonItem *nightBtnItem = [UIBarButtonItem itemWithImage:[UIImage imageNamed:@"mine-moon-icon"] selLimage:[UIImage imageNamed:@"mine-moon-icon-click"] target:self action:@selector(night:)];*/
+#pragma mark - 导航条按钮的选中模式
 + (UIBarButtonItem *)itemWithImage:(UIImage *)image selLimage:(UIImage *)selImage target:(id)traget action:(SEL)action {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setImage:image forState:UIControlStateNormal];
@@ -38,6 +41,10 @@
     
 }
 
+/*使用实例
+  viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithImage:[UIImage imageNamed:@"navigationButtonReturn"] highImage:[UIImage imageNamed:@"navigationButtonReturnClick"] target:self action:@selector(back) title:@"返回"];
+ */
+#pragma mark - 导航条的返回返回按钮，自定义btn
 + (UIBarButtonItem *)backItemWithImage:(UIImage *)image highImage:(UIImage *)highImage target:(id)traget action:(SEL)action title:(NSString *)title {
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setTitle:title forState:UIControlStateNormal];

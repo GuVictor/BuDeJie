@@ -46,10 +46,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     //设置跟控制器
-    GWDTabBarController *tabBarVc = [[GWDTabBarController alloc] init];
-    self.window.rootViewController = tabBarVc;
-//    GWDDdViewController *adVC = [[GWDDdViewController alloc] init];
-//    self.window.rootViewController = adVC;
+//    GWDTabBarController *tabBarVc = [[GWDTabBarController alloc] init];
+//    self.window.rootViewController = tabBarVc;
+    //进入广告界面
+    GWDDdViewController *adVC = [[GWDDdViewController alloc] init];
+    self.window.rootViewController = adVC;
     
     //显示窗口
     [self.window makeKeyAndVisible];
